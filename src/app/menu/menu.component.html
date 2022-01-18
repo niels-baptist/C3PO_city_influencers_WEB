@@ -1,9 +1,33 @@
-<nav>
-  <ul>
-      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a></li>
-      <li><a routerLink="/influencers" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Influencers</a></li>
-      <li><a routerLink="/campagnes" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Campagnes</a></li>
-      <li><a href="#">Vouchers</a></li>
-      <li><a routerLink="/gebruikers" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Gebruikers</a></li>
-  </ul>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/">City Influencers</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link" routerLink="/influencers">Influencers</a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/campagnes">Campagnes</a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/">Vouchers</a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/gebruikers">Gebruikers</a>
+        </li>
+
+    </ul>
+</div>
 </nav>
