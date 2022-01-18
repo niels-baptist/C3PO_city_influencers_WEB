@@ -9,6 +9,8 @@ import { CampagneListComponent } from './campagne-list/campagne-list.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { InfluencerListComponent } from './influencer-list/influencer-list.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +22,8 @@ import { InfluencerListComponent } from './influencer-list/influencer-list.compo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
