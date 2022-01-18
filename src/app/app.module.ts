@@ -5,9 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { MenuComponent } from './menu/menu.component';
-import { CampagneListComponent } from './campagne-list/campagne-list.component';
-import { UserListComponent } from './user-list/user-list.component';
-import { InfluencerListComponent } from './influencer-list/influencer-list.component';
+
+import { ChampaingModule } from './campaing/champaing.module';
+import { InfluencerModule } from './influencer/influencer.module';
+
+import {SharedModule} from './shared/shared.module';
+import {AdminModule} from './admin/admin.module';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -16,14 +19,16 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     HomeComponent,
     MenuComponent,
-    CampagneListComponent,
-    UserListComponent,
-    InfluencerListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+
+    ChampaingModule,
+    InfluencerModule,
+    SharedModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]
