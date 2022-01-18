@@ -1,0 +1,22 @@
+{
+  "users": [
+      {
+          "GebruikerId": 1,
+          "LocatieId": "1",
+          "email": "jos.vermeulen@gmail.com",
+          "Password": "jos123",
+          "Voornaam": "Jos",
+          "Naam": "Vermeulen",
+          "Geboortedatum": "01/01/2001"
+      },
+      {
+        "GebruikerId": 2,
+        "LocatieId": "1",
+        "email": "rita.smeulders@gmail.com",
+        "Password": "rita123",
+        "Voornaam": "Rita",
+        "Naam": "Smeulders",
+        "Geboortedatum": "01/01/2001"
+      }
+  ]
+}

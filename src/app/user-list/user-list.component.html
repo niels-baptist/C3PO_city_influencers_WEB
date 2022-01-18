@@ -1,2 +1,39 @@
+<div class="container">
 <h1>Gebruikers</h1>
 <p>This is the User-page of our City Influencers app!</p>
+<!--
+<div *ngFor="let user of (users$ | async)">
+
+  <article *ngIf="user">
+    <h1>{{user.Voornaam}} {{user.Naam}}</h1>
+<h4>{{article.subtitle}}</h4>
+    <figure>
+        <img src="{{article.imageUrl}}"
+            alt="{{article.imageCaption}}">
+        <figcaption>{{article.imageCaption}}</figcaption>
+    </figure>
+    <p>
+        {{article.content}}
+    </p>
+    <footer>
+        <p>Author: {{article.author}}, Published: {{article.publishDate}}</p>
+    </footer>
+  </article>
+
+</div> -->
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Naam account</th>
+      <th scope="col">Type gebruiker</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let user of (users$ | async)">
+    <tr>
+      <td scope="row">{{user.Voornaam}} {{user.Naam}}</td>
+      <td>administrator</td>
+    </tr>
+  </tbody>
+</table>
+</div>
