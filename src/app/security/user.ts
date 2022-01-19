@@ -5,5 +5,6 @@ export interface User {
   password: string,
   voornaam: string,
   naam: string,
-  geboortedatum: string
+  geboortedatum: string,
+  token: string
 }

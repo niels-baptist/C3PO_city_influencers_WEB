@@ -12,13 +12,13 @@ import { Observable } from 'rxjs';
 })
 export class UserListComponent implements OnInit {
   @Input() user: User = {
-    GebruikerId: 0,
-    LocatieId: 0,
+    gebruikerId: 0,
+    locatieId: 0,
     email: '',
-    Password: '',
-    Voornaam: '',
-    Naam: '',
-    Geboortedatum: ''
+    password: '',
+    voornaam: '',
+    naam: '',
+    geboortedatum: ''
   };
 
   users$: Observable<User[]> = new Observable<User[]>();
