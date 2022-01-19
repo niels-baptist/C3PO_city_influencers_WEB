@@ -7,11 +7,17 @@ import { CampagneListComponent } from './campaing/campagne-list/campagne-list.co
 import { UserListComponent } from './admin/user/user-list/user-list.component';
 import { InfluencerListComponent } from './influencer/influencer-list/influencer-list.component';
 
+import { SecurityComponent } from './security/security/security.component';
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'campagnes', component: CampagneListComponent },
   { path: 'gebruikers', component: UserListComponent },
   { path: 'influencers', component: InfluencerListComponent },
+
+  { path: 'login', component: SecurityComponent},
+  { path: 'register', component: SecurityComponent},
+  { path: 'logout', component: SecurityComponent}
 ];
 
 @NgModule({

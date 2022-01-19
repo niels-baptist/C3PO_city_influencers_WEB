@@ -6,4 +6,5 @@ export interface User {
   voornaam: string,
   naam: string,
   geboortedatum: string
+  token: string;
 }

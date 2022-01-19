@@ -14,6 +14,7 @@ import {AdminModule} from './admin/admin.module';
 
 import { HttpClientModule } from '@angular/common/http';
 
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,10 @@ import { HttpClientModule } from '@angular/common/http';
     ChampaingModule,
     InfluencerModule,
     SharedModule,
-    AdminModule
+    AdminModule,
+
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
