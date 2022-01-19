@@ -1,9 +1,9 @@
 export interface User {
-  GebruikerId: number,
-  LocatieId: number,
+  gebruikerId: number,
+  locatieId: number,
   email: string,
-  Password: string,
-  Voornaam: string,
-  Naam: string,
-  Geboortedatum: string
+  password: string,
+  voornaam: string,
+  naam: string,
+  geboortedatum: string
 }

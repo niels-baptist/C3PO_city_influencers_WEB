@@ -1,22 +1,22 @@
 {
   "users": [
       {
-          "GebruikerId": 1,
-          "LocatieId": "1",
+          "gebruikerId": 1,
+          "locatieId": "1",
           "email": "jos.vermeulen@gmail.com",
-          "Password": "jos123",
-          "Voornaam": "Jos",
-          "Naam": "Vermeulen",
-          "Geboortedatum": "01/01/2001"
+          "password": "jos123",
+          "voornaam": "Jos",
+          "naam": "Vermeulen",
+          "geboortedatum": "01/01/2001"
       },
       {
-        "GebruikerId": 2,
-        "LocatieId": "1",
+        "gebruikerId": 2,
+        "locatieId": "1",
         "email": "rita.smeulders@gmail.com",
-        "Password": "rita123",
-        "Voornaam": "Rita",
-        "Naam": "Smeulders",
-        "Geboortedatum": "01/01/2001"
+        "password": "rita123",
+        "voornaam": "Rita",
+        "naam": "Smeulders",
+        "geboortedatum": "01/01/2001"
       }
   ]
 }
