@@ -27,7 +27,7 @@
 <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
   {{errorMessage}}
 </div>
-<form (ngSubmit)="onSubmit()" >
+<form (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="email">Email</label>
     <input type="email" name="email" id="email" class="form-control" required email>
