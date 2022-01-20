@@ -24,7 +24,7 @@ import { SecurityComponent } from './security/security/security.component';
     AppComponent,
     HomeComponent,
     MenuComponent,
-    SecurityComponent
+
   ],
   imports: [
     BrowserModule,

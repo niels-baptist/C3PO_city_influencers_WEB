@@ -4,7 +4,7 @@
 <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
   {{errorMessage}}
 </div>
-<form (ngSubmit)="onSubmit()" #authForm ngForm>
+<form (ngSubmit)="onSubmit()" #authForm="ngForm">
   <div class="form-group">
     <label for="email">Email</label>
     <input type="email" name="email" id="email" class="form-control" [(ngModel)]="user.email" required email>
@@ -13,6 +13,6 @@
     <label for="password">Password</label>
     <input type="password" name="password" id="password" class="form-control" minlength="4" [(ngModel)]="user.password" required="">
   </div>
-  <input name="login" id="login" class="btn btn-block btn-primary mb-4" type="submit" value="Login" [disabled]="!authForm.form.valid || isSubmitted">
+  <input name="login" id="login" class="btn btn-block btn-primary mb-4" type="submit" value="Login" [disabled]="!authForm.form.valid">
 </form>
 </div>
