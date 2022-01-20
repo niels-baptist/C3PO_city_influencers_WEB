@@ -12,6 +12,9 @@ import { SecurityComponent } from './security/security.component';
   imports: [
     CommonModule,
     SharedModule
+  ],
+  providers: [
+    SharedModule
   ]
 })
 export class SecurityModule { }
