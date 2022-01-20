@@ -40,7 +40,7 @@
 
 <ol class="breadcrumb">
   <li>Injectables</li>
-  <li >UserService</li>
+  <li >AuthService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -58,7 +58,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/admin/user/user.service.ts</code>
+            <code>src/app/security/auth.service.ts</code>
         </p>
 
 
@@ -79,10 +79,19 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#getUserById" >getUserById</a>
+                                <a href="#authenticate" >authenticate</a>
                             </li>
                             <li>
-                                <a href="#getUsers" >getUsers</a>
+                                <a href="#deleteToken" >deleteToken</a>
+                            </li>
+                            <li>
+                                <a href="#getToken" >getToken</a>
+                            </li>
+                            <li>
+                                <a href="#getUser" >getUser</a>
+                            </li>
+                            <li>
+                                <a href="#isLoggedIn" >isLoggedIn</a>
                             </li>
                         </ul>
                     </td>
@@ -107,7 +116,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/admin/user/user.service.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/security/auth.service.ts:10</a></div>
                             </td>
                         </tr>
 
@@ -154,24 +163,24 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getUserById"></a>
+                    <a name="authenticate"></a>
                     <span class="name">
-                        <span ><b>getUserById</b></span>
-                        <a href="#getUserById"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>authenticate</b></span>
+                        <a href="#authenticate"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getUserById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+<code>authenticate(user: <a href="../interfaces/User.html" target="_self">User</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/app/admin/user/user.service.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/app/security/auth.service.ts:43</a></div>
                 </td>
             </tr>
 
@@ -192,9 +201,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>id</td>
+                                    <td>user</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                                <code><a href="../interfaces/User.html" target="_self" >User</a></code>
                                     </td>
 
                                     <td>
@@ -209,7 +218,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;User&gt;</code>
+                        <b>Returns : </b>    <code>Observable&lt;UserResponse&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -223,24 +232,24 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getUsers"></a>
+                    <a name="deleteToken"></a>
                     <span class="name">
-                        <span ><b>getUsers</b></span>
-                        <a href="#getUsers"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>deleteToken</b></span>
+                        <a href="#deleteToken"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getUsers()</code>
+<code>deleteToken()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">src/app/admin/user/user.service.ts:15</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/app/security/auth.service.ts:35</a></div>
                 </td>
             </tr>
 
@@ -249,7 +258,118 @@
                 <td class="col-md-4">
 
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;User[]&gt;</code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getToken"></a>
+                    <span class="name">
+                        <span ><b>getToken</b></span>
+                        <a href="#getToken"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getToken()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="15"
+                            class="link-to-prism">src/app/security/auth.service.ts:15</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getUser"></a>
+                    <span class="name">
+                        <span ><b>getUser</b></span>
+                        <a href="#getUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getUser()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="19"
+                            class="link-to-prism">src/app/security/auth.service.ts:19</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>User | null</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isLoggedIn"></a>
+                    <span class="name">
+                        <span ><b>isLoggedIn</b></span>
+                        <a href="#isLoggedIn"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isLoggedIn()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">src/app/security/auth.service.ts:39</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                     </div>
                 </td>
@@ -263,27 +383,54 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { User } from &#x27;./user&#x27;;
-
-import { HttpClient } from &#x27;@angular/common/http&#x27;;
-import { Observable } from &#x27;rxjs&#x27;;
+import {HttpClient} from &#x27;@angular/common/http&#x27;;
+import {User} from &#x27;./user&#x27;;
+import {Observable} from &#x27;rxjs&#x27;;
+import {UserResponse} from &#x27;./userResponse&#x27;;
 
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
-export class UserService {
+export class AuthService {
 
   constructor(private httpClient: HttpClient) {
   }
 
-  getUsers(): Observable&lt;User[]&gt; {
-    return this.httpClient.get&lt;User[]&gt;(&quot;http://localhost:3000/users&quot;);
+  getToken(): string {
+    return localStorage.getItem(&#x27;token&#x27;) ?? &#x27;&#x27;;
   }
 
-  getUserById(id: number): Observable&lt;User&gt; {
-    return this.httpClient.get&lt;User&gt;(&quot;http://localhost:3000/users/&quot; + id);
+  getUser(): User | null {
+    if (this.isLoggedIn()){
+      return {
+        gebruikerId : parseInt(localStorage.getItem(&#x27;gebruikerId&#x27;) ?? &#x27;0&#x27;),
+        locatieId : 0,
+        email: localStorage.getItem(&#x27;email&#x27;) ?? &#x27;&#x27;,
+        password: &#x27;&#x27;,
+        voornaam: &#x27;&#x27;,
+        naam: &#x27;&#x27;,
+        geboortedatum: &#x27;&#x27;,
+        token: this.getToken()  };
+    } else {
+      return null;
+    }
   }
 
+  deleteToken(): void {
+    localStorage.removeItem(&#x27;token&#x27;);
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem(&#x27;token&#x27;);
+  }
+
+  authenticate(user: User): Observable&lt;UserResponse&gt; {
+    return this.httpClient.post&lt;UserResponse&gt;(&#x27;http://localhost:3000/login&#x27;, user);
+  }
+
+  // register(user: User): Observable&lt;UserResponse&gt; {
+  //   return this.httpClient.post&lt;UserResponse&gt;(&#x27;http://localhost:3000/register&#x27;, user);
+  // }
 }
 </code></pre>
     </div>
@@ -327,7 +474,7 @@ export class UserService {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'UserService.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'AuthService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

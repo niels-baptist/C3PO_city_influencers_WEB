@@ -7,7 +7,7 @@ import { SecurityComponent } from './security/security.component';
 
 @NgModule({
   declarations: [
-    SecurityComponent
+
   ],
   imports: [
     CommonModule,
