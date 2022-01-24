@@ -9,10 +9,16 @@ import { InfluencerListComponent } from './influencer/influencer-list/influencer
 
 import { SecurityComponent } from './security/security/security.component';
 
+import { AdminModule } from './admin/admin.module';
+import { AuthGuard } from './security/auth.guard';
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'campagnes', component: CampagneListComponent },
-  { path: 'gebruikers', component: UserListComponent },
+  // { path: 'gebruikers', component: UserListComponent },
+
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard], canActivateChild: [AuthGuard]},
+
   { path: 'influencers', component: InfluencerListComponent },
   { path: 'login', component: SecurityComponent},
   { path: 'logout', component: SecurityComponent}

@@ -28,7 +28,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content injectable">
+               <div class="content interceptor">
                    <div class="content-data">
 
 
@@ -38,9 +38,10 @@
 
 
 
+
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li >UserService</li>
+  <li>Interceptors</li>
+  <li >SecurityInterceptor</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -58,9 +59,8 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/app/admin/user/user.service.ts</code>
+            <code>src/app/security/security.interceptor.ts</code>
         </p>
-
 
 
 
@@ -79,10 +79,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#getUserById" >getUserById</a>
-                            </li>
-                            <li>
-                                <a href="#getUsers" >getUsers</a>
+                                <a href="#intercept" >intercept</a>
                             </li>
                         </ul>
                     </td>
@@ -102,12 +99,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(httpClient: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>)</code>
+<code>constructor(authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/admin/user/user.service.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/security/security.interceptor.ts:9</a></div>
                             </td>
                         </tr>
 
@@ -125,10 +122,22 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>httpClient</td>
+                                                        <td>authService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -154,24 +163,24 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getUserById"></a>
+                    <a name="intercept"></a>
                     <span class="name">
-                        <span ><b>getUserById</b></span>
-                        <a href="#getUserById"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>intercept</b></span>
+                        <a href="#intercept"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>getUserById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+<code>intercept(request: HttpRequest<any>, next: <a href="https://angular.io/api/common/http/HttpHandler" target="_blank">HttpHandler</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="19"
-                            class="link-to-prism">src/app/admin/user/user.service.ts:19</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="13"
+                            class="link-to-prism">src/app/security/security.interceptor.ts:13</a></div>
                 </td>
             </tr>
 
@@ -192,9 +201,21 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>id</td>
+                                    <td>request</td>
                                     <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            <code>HttpRequest&lt;any&gt;</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>next</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/common/http/HttpHandler" target="_blank" >HttpHandler</a></code>
                                     </td>
 
                                     <td>
@@ -209,48 +230,11 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;User&gt;</code>
+                        <b>Returns : </b>    <code>Observable&lt;HttpEvent&lt;any&gt;&gt;</code>
 
                     </div>
                     <div class="io-description">
                         
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getUsers"></a>
-                    <span class="name">
-                        <span ><b>getUsers</b></span>
-                        <a href="#getUsers"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>getUsers()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="15"
-                            class="link-to-prism">src/app/admin/user/user.service.ts:15</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Observable&lt;User[]&gt;</code>
-
                     </div>
                 </td>
             </tr>
@@ -262,34 +246,39 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import { User } from &#x27;./user&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {Injectable} from &#x27;@angular/core&#x27;;
+import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from &#x27;@angular/common/http&#x27;;
+import {Router} from &#x27;@angular/router&#x27;;
+import {Observable, throwError} from &#x27;rxjs&#x27;;
+import {catchError} from &#x27;rxjs/operators&#x27;;
+import {AuthService} from &#x27;./auth.service&#x27;;
 
-import { HttpClient } from &#x27;@angular/common/http&#x27;;
-import { Observable } from &#x27;rxjs&#x27;;
-
-@Injectable({
-  providedIn: &#x27;root&#x27;
-})
-export class UserService {
-
-  constructor(private httpClient: HttpClient) {
+@Injectable()
+export class SecurityInterceptor implements HttpInterceptor {
+  constructor(private authService: AuthService, private router: Router) {
   }
 
-  getUsers(): Observable&lt;User[]&gt; {
-    return this.httpClient.get&lt;User[]&gt;(&quot;http://localhost:3000/users&quot;);
+  intercept(request: HttpRequest&lt;any&gt;, next: HttpHandler): Observable&lt;HttpEvent&lt;any&gt;&gt; {
+    const token &#x3D; this.authService.getToken();
+    if (token) {
+      request &#x3D; request.clone({
+        setHeaders: {
+          Authorization: &#x27;Bearer &#x27; + token
+        }
+      });
+    }
+    return next.handle(request).pipe(
+      catchError(err &#x3D;&gt; {
+        if (err.status &#x3D;&#x3D;&#x3D; 401) {
+          this.router.navigate([&#x27;login&#x27;]);
+        }
+        return throwError(err);
+      }));
   }
-
-  getUserById(id: number): Observable&lt;User&gt; {
-    return this.httpClient.get&lt;User&gt;(&quot;http://localhost:3000/users/&quot; + id);
-  }
-
 }
 </code></pre>
     </div>
-
 </div>
-
 
 
 
@@ -326,8 +315,8 @@ export class UserService {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'UserService.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interceptor';
+            var COMPODOC_CURRENT_PAGE_URL = 'SecurityInterceptor.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

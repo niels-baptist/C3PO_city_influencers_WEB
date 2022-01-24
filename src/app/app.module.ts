@@ -14,11 +14,17 @@ import {AdminModule} from './admin/admin.module';
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { SecurityModule } from './security/security.module';
+import { SecurityComponent } from './security/security/security.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MenuComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -28,7 +34,13 @@ import { HttpClientModule } from '@angular/common/http';
     ChampaingModule,
     InfluencerModule,
     SharedModule,
-    AdminModule
+    // AdminModule,
+
+    FormsModule,
+    ReactiveFormsModule,
+
+
+    SecurityModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

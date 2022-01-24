@@ -20,4 +20,7 @@ export class UserService {
     return this.httpClient.get<User>("http://localhost:3000/users/" + id);
   }
 
+  // getUserByEmail(userName: string): Observable<User> {
+  //   return this.httpClient.get<User>("http://localhost:3000/users/" + userName);
+  // }
 }

@@ -81,11 +81,20 @@ import { CampagneListComponent } from &#x27;./campaing/campagne-list/campagne-li
 import { UserListComponent } from &#x27;./admin/user/user-list/user-list.component&#x27;;
 import { InfluencerListComponent } from &#x27;./influencer/influencer-list/influencer-list.component&#x27;;
 
+import { SecurityComponent } from &#x27;./security/security/security.component&#x27;;
+
+import { AdminModule } from &#x27;./admin/admin.module&#x27;;
+
 const routes: Routes &#x3D; [
   { path: &#x27;&#x27;, component: HomeComponent },
   { path: &#x27;campagnes&#x27;, component: CampagneListComponent },
-  { path: &#x27;gebruikers&#x27;, component: UserListComponent },
+  // { path: &#x27;gebruikers&#x27;, component: UserListComponent },
+
+  { path: &#x27;admin&#x27;, loadChildren: () &#x3D;&gt; &quot;import(&#x27;./admin/admin.module&#x27;).then(m &#x3D;&gt; m.AdminModule)&quot; },
+
   { path: &#x27;influencers&#x27;, component: InfluencerListComponent },
+  { path: &#x27;login&#x27;, component: SecurityComponent},
+  { path: &#x27;logout&#x27;, component: SecurityComponent}
 ];
 
 @NgModule({
