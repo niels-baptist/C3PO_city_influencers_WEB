@@ -20,12 +20,12 @@ export class AuthService {
     if (this.isLoggedIn()){
       return {
         gebruikerId : parseInt(localStorage.getItem('gebruikerId') ?? '0'),
-        locatieId : 0,
+        // locatieId : 0,
         email: localStorage.getItem('email') ?? '',
         password: '',
-        voornaam: '',
-        naam: '',
-        geboortedatum: '',
+        // voornaam: '',
+        // naam: '',
+        // geboortedatum: '',
         token: this.getToken()  };
     } else {
       return null;
@@ -41,6 +41,8 @@ export class AuthService {
   }
 
   authenticate(user: User): Observable<UserResponse> {
+    // alert(user.email + " - " + user.geboortedatum + " - " + user.gebruikerId + " - " + user.locatieId + " - " + user.naam + " - " + user.password + " - " + user.token + " - " + user.voornaam)
+    //alert(user.email + " - " + user.gebruikerId + " - " + user.password + " - " + user.token)
     return this.httpClient.post<UserResponse>('http://localhost:3000/login', user);
   }
 

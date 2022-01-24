@@ -11,12 +11,12 @@ import {Router} from '@angular/router';
 export class SecurityComponent implements OnInit {
   user: User = {
     gebruikerId: 0,
-    locatieId: 0,
+    // locatieId: 0,
     email: '',
     password: '',
-    voornaam: '',
-    naam: '',
-    geboortedatum: '',
+    // voornaam: '',
+    // naam: '',
+    // geboortedatum: '',
     token: ''
   };
 
@@ -68,6 +68,7 @@ export class SecurityComponent implements OnInit {
       }, error => {
         this.errorMessage = 'Email/password not correct!';
         this.isSubmitted = false;
+        // this.router.navigate(['/']);
       });
     } else {
       alert('work in progress');
