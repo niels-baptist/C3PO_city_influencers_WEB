@@ -18,12 +18,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SecurityModule } from './security/security.module';
 import { SecurityComponent } from './security/security/security.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MenuComponent,
+    DashboardComponent,
 
   ],
   imports: [
@@ -34,6 +38,7 @@ import { SecurityComponent } from './security/security/security.component';
     ChampaingModule,
     InfluencerModule,
     SharedModule,
+    NgChartsModule,
     // AdminModule,
 
     FormsModule,

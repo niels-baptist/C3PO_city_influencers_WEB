@@ -1,0 +1,14 @@
+// parent flexbox container
+.container
+{
+
+  justify-content: center;
+}
+
+//child flex item
+canvas {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  height: 100%;
+  width: fit-content;
+}

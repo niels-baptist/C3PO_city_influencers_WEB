@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="./dashboard.component.scss">
+<div class="container w-100">
+  <div class="row w-100">
+    <div class="col-sm-12 col-lg-6 w-100">
+        <h3 class="p-4 h3 text-center">User distribution</h3>
+        <canvas baseChart
+          [data]="UserDistributionData"
+          [type]="UserDistributionType"
+          [options]="UserDistributionOptions"
+          [legend]="UserDistributionLegend">
+        </canvas>
+    </div>
+    <div class="col-sm-12 col-lg-6 w-100">
+      <h3 class="h3 p-4 text-center">Post statuses</h3>
+      <canvas baseChart
+        [data]="PostStatusesData"
+        [type]="PostStatusesType"
+        [options]="PostStatusesOptions">
+      </canvas>
+    </div>
+  </div>
+    <div class="row w-100">
+      <div class="col-sm-12 dashboard-item">
+        <h3 class="h3 p-4 text-center">Campaigns</h3>
+        <canvas baseChart
+          [data]="CampaignsData"
+          [type]="CampaignsType"
+          [options]="CampaignsOptions">
+        </canvas>
+      </div>
+  </div>
+</div>

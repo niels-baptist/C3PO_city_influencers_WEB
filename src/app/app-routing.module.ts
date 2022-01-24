@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 
@@ -21,7 +22,8 @@ const routes: Routes = [
 
   { path: 'influencers', component: InfluencerListComponent },
   { path: 'login', component: SecurityComponent},
-  { path: 'logout', component: SecurityComponent}
+  { path: 'logout', component: SecurityComponent},
+  { path: 'dashboard', component: DashboardComponent }
 ];
 
 @NgModule({
