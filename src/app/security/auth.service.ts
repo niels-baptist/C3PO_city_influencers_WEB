@@ -24,11 +24,11 @@ export class AuthService {
         userId : parseInt(localStorage.getItem('gebruikerId') ?? '0'),
         location : {},
         email: localStorage.getItem('email') ?? '',
-        password: '',
+        password: localStorage.getItem('password') ?? '',
         firstname: '',
         lastname: '',
         birthdate: '',
-        username:''
+        username: localStorage.getItem('userName') ?? ''
         // token: this.getToken()  };
       }
     } else {
@@ -37,11 +37,12 @@ export class AuthService {
   }
 
   deleteToken(): void {
-    localStorage.removeItem('token');
+    localStorage.removeItem('password');
+    localStorage.removeItem('userName');
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
+    return !!localStorage.getItem('password');
   }
 
   authenticate(username: string, password: string): Observable<Object> {
