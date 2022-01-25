@@ -14,5 +14,5 @@ export class UserPersonalService {
   // rooturl: string = 'http://java-rest-api-c3po.westeurope.cloudapp.azure.com:8080/api/';
   getPersonalUsers(): Observable<UserPersonal[]> {
     return this.httpClient.get<UserPersonal[]>(this.rooturl + 'users');
-  
-}
+
+}}
