@@ -3,12 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "start npm run api && start ng serve -o --port 5878",
+    "start": "start ng serve -o --port 5878",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "api": "json-server-auth --watch json-server-local\\db.json -r json-server-local\\routes.json",
     "compodoc": "npx compodoc -p tsconfig.doc.json"
   },
   "private": true,
@@ -24,7 +23,10 @@
     "bootstrap": "^4.5.3",
     "chart.js": "^3.7.0",
     "jquery": "^3.5.1",
+<<<<<<< HEAD
     "ng2-charts": "^3.0.8",
+=======
+>>>>>>> 76a5c74a6649a235b5bdc77e3acf82d66c72b850
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"
