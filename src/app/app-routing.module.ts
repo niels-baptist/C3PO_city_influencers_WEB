@@ -16,7 +16,8 @@ import { AuthGuard } from './security/auth.guard';
 import { UserPersonalComponent } from './user-personal/user-personal.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: SecurityComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'campagnes', component: CampagneListComponent },
   // { path: 'gebruikers', component: UserListComponent },
 
