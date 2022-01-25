@@ -5,18 +5,16 @@ import { AppComponent } from './app.component';
 
 import { HomeComponent } from './home/home.component';
 import { CampagneListComponent } from './campaing/campagne-list/campagne-list.component';
-// import { UserListComponent } from './admin/user/user-list/user-list.component';
+import { UserListComponent } from './admin/user/user-list/user-list.component';
 import { InfluencerListComponent } from './influencer/influencer-list/influencer-list.component';
 
 import { SecurityComponent } from './security/security/security.component';
 
 import { AdminModule } from './admin/admin.module';
 import { AuthGuard } from './security/auth.guard';
-import { LocationListComponent } from './location/location-list/location-list.component';
 
 const routes: Routes = [
-  { path: '', component: SecurityComponent },
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'campagnes', component: CampagneListComponent },
   // { path: 'gebruikers', component: UserListComponent },
 
@@ -26,7 +24,6 @@ const routes: Routes = [
   { path: 'login', component: SecurityComponent},
   { path: 'logout', component: SecurityComponent},
   { path: 'dashboard', component: DashboardComponent }
-  { path: 'locations', component: LocationListComponent}
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
-import {User} from '../admin/user/user';
+import {User} from './user';
 
 export interface UserResponse {
-  // accessToken: string;
+  accessToken: string;
   user: User;
 }
