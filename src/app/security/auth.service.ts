@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {User} from './user';
+import {User} from '../admin/user/user';
 import {Observable} from 'rxjs';
-import {UserResponse} from './userResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -19,31 +18,35 @@ export class AuthService {
   getUser(): User | null {
     if (this.isLoggedIn()){
       return {
-        gebruikerId : parseInt(localStorage.getItem('gebruikerId') ?? '0'),
-        // locatieId : 0,
+        userId : parseInt(localStorage.getItem('gebruikerId') ?? '0'),
+        location : {},
         email: localStorage.getItem('email') ?? '',
-        password: '',
-        // voornaam: '',
-        // naam: '',
-        // geboortedatum: '',
-        token: this.getToken()  };
+        password: localStorage.getItem('password') ?? '',
+        firstname: '',
+        lastname: '',
+        birthdate: '',
+        username: localStorage.getItem('userName') ?? ''
+        // token: this.getToken()  };
+      }
     } else {
       return null;
     }
   }
 
   deleteToken(): void {
-    localStorage.removeItem('token');
+    localStorage.removeItem('password');
+    localStorage.removeItem('userName');
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
+    return !!localStorage.getItem('password');
   }
 
-  authenticate(user: User): Observable<UserResponse> {
-    // alert(user.email + " - " + user.geboortedatum + " - " + user.gebruikerId + " - " + user.locatieId + " - " + user.naam + " - " + user.password + " - " + user.token + " - " + user.voornaam)
-    //alert(user.email + " - " + user.gebruikerId + " - " + user.password + " - " + user.token)
-    return this.httpClient.post<UserResponse>('http://localhost:3000/login', user);
+  authenticate(username: string, password: string): Observable<Object> {
+
+    //const result = this.httpClient.post('http://java-rest-api-c3po.westeurope.cloudapp.azure.com:8080/api/users/login/?user_name=', username + '&password=' + password);
+    const result = this.httpClient.post('http://java-rest-api-c3po.westeurope.cloudapp.azure.com:8080/api/users/login/?user_name='+ username + '&password=' + password, username + password );
+    return result;
   }
 
   // register(user: User): Observable<UserResponse> {
