@@ -1,15 +1,22 @@
 <link rel="stylesheet" href="./dashboard.component.scss">
 <div class="container w-100">
-  <div class="row w-100">
-    <div class="col-sm-12 col-lg-6 w-100">
-        <h3 class="p-4 h3 text-center">User distribution</h3>
-        <canvas baseChart
-          [data]="UserDistributionData"
-          [type]="UserDistributionType"
-          [options]="UserDistributionOptions"
-          [legend]="UserDistributionLegend">
-        </canvas>
+  <div class="row w-100 p-1">
+    <div class="col-sm-4">
+      <button class="btn btn-blue w-100">Activity</button>
     </div>
+    <div class="col-sm-4">
+      <button class="btn btn-blue w-100" href="">Accounts</button>
+    </div>
+    <div class="col-sm-4">
+      <button class="btn btn-blue w-100" href="">Financial</button>
+    </div>
+  </div>
+
+  <div class="financial">
+
+  </div>
+
+  <div class="row" id="activity">
     <div class="col-sm-12 col-lg-6 w-100">
       <h3 class="h3 p-4 text-center">Post statuses</h3>
       <canvas baseChart
@@ -18,15 +25,39 @@
         [options]="PostStatusesOptions">
       </canvas>
     </div>
+    <div class="col-sm-12 col-lg-6 w-100">
+      <h3 class="p-4 h3 text-center w-100">User distribution</h3>
+      <canvas baseChart
+        [data]="UserDistributionData"
+        [type]="UserDistributionType"
+        [options]="UserDistributionOptions"
+        [legend]="UserDistributionLegend">
+      </canvas>
+    </div>
   </div>
+
+  <div class="accounts">
     <div class="row w-100">
       <div class="col-sm-12 dashboard-item">
-        <h3 class="h3 p-4 text-center">Campaigns</h3>
+        <h3 class="h3 p-4 text-center w-100">Creation of Campaigns</h3>
         <canvas baseChart
-          [data]="CampaignsData"
-          [type]="CampaignsType"
-          [options]="CampaignsOptions">
+          [data]="CampaignsData" [type]="CampaignsType" [options]="CampaignsOptions">
         </canvas>
       </div>
+      <div class="col-sm-12 dashboard-item">
+        <h3 class="h3 p-4 text-center w-100">Locations</h3>
+        <!-- make a bootstrap card containing a h3 without a header -->
+          <div class="card w-100">
+            <div class="card-body scrollable">
+              <h3 class="h3">Amount of locations: {{this.lengthLocations$}}</h3>
+              <ul>
+                <li *ngFor="let listItem of locations$| async">
+                  {{ listItem.name }}
+                </li>
+              </ul>
+            </div>
+          </div>
+      </div>
+    </div>
   </div>
 </div>
