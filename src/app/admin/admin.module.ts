@@ -7,7 +7,8 @@ import { UserModule } from './user/user.module';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     SharedModule,

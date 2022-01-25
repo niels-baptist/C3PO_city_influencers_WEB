@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../user';
+import {User} from '../../admin/user/user';
 import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
 
@@ -9,16 +9,16 @@ import {Router} from '@angular/router';
   styleUrls: ['./security.component.scss']
 })
 export class SecurityComponent implements OnInit {
-  user: User = {
-    gebruikerId: 0,
-    locatieId: 0,
-    email: '',
-    password: '',
-    voornaam: '',
-    naam: '',
-    geboortedatum: '',
-    token: ''
-  };
+  // user: User = {
+  //   userId: 0,
+  //   location: 0,
+  //   email: '',
+  //   password: '',
+  //   firstname: '',
+  //   lastname: '',
+  //   username: '',
+  //   birthdate: ''
+  // };
 
   isSubmitted: boolean = false;
   errorMessage: string = '';
@@ -54,23 +54,22 @@ export class SecurityComponent implements OnInit {
     }
   }
 
-  onSubmit(): void {
-    this.isSubmitted = true;
+  // onSubmit(): void {
+  //   this.isSubmitted = true;
 
-    if (this.isLogin) {
-      this.authService.authenticate(this.user).subscribe(result => {
-        this.errorMessage = '';
-        // save access token localstorage
-        localStorage.setItem('token', result.accessToken);
-        localStorage.setItem('id', result.user.gebruikerId.toString());
-        localStorage.setItem('email', result.user.email);
-        this.router.navigate(['']);
-      }, error => {
-        this.errorMessage = 'Email/password not correct!';
-        this.isSubmitted = false;
-      });
-    } else {
-      alert('work in progress');
-    }
-  }
+  //   if (this.isLogin) {
+  //     this.authService.authenticate(this.user.username, this.user.password).subscribe(result => {
+  //       this.errorMessage = '';
+  //       // save access token localstorage
+  //       localStorage.setItem('userId', result.user.userId.toString());
+  //       localStorage.setItem('email', result.user.email);
+  //       this.router.navigate(['']);
+  //     }, error => {
+  //       this.errorMessage = 'Email/password not correct!';
+  //       this.isSubmitted = false;
+  //     });
+  //   } else {
+  //     alert('work in progress');
+  //   }
+  // }
 }

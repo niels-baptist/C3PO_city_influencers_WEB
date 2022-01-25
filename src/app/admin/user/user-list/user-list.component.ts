@@ -1,35 +1,40 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import {User} from '../user'
-import { UserService } from '../user.service';
+// import { Component, Input, OnInit } from '@angular/core';
+// import { ActivatedRoute } from '@angular/router';
+// import {User} from '../user'
+// import { UserService } from '../user.service';
 
-import { Observable } from 'rxjs';
+// import { Location } from '../../../location';
 
-@Component({
-  selector: 'app-user-list',
-  templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss']
-})
-export class UserListComponent implements OnInit {
-  @Input() user: User = {
-    gebruikerId: 0,
-    locatieId: 0,
-    email: '',
-    password: '',
-    voornaam: '',
-    naam: '',
-    geboortedatum: ''
-  };
+// import { Observable } from 'rxjs';
+// import { Location, Location } from '@angular/common';
 
-  users$: Observable<User[]> = new Observable<User[]>();
 
-  constructor(private userSrevice: UserService, private route: ActivatedRoute) { }
+// @Component({
+//   selector: 'app-user-list',
+//   templateUrl: './user-list.component.html',
+//   styleUrls: ['./user-list.component.scss']
+// })
+// export class UserListComponent implements OnInit {
+//   @Input() user: User = {
+//     userId: 0,
+//     location: Location = {locationId: 0, name: '', postalCode: ''},
+//     email: '',
+//     password: '',
+//     firstname: '',
+//     lastname: '',
+//     username: '',
+//     birthdate: ''
+//   };
 
-  ngOnInit(): void {
+//   users$: Observable<User[]> = new Observable<User[]>();
 
-    console.log(this.route.snapshot.paramMap.get('test'));
+//   constructor(private userSrevice: UserService, private route: ActivatedRoute) { }
 
-    this.users$ = this.userSrevice.getUsers();
-  }
+//   ngOnInit(): void {
 
-}
+//     console.log(this.route.snapshot.paramMap.get('test'));
+
+//     this.users$ = this.userSrevice.getUsers();
+//   }
+
+// }

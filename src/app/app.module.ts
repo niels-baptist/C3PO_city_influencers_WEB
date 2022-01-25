@@ -13,12 +13,14 @@ import {SharedModule} from './shared/shared.module';
 import {AdminModule} from './admin/admin.module';
 
 import { HttpClientModule } from '@angular/common/http';
+// import { LocationComponent } from './location/location.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MenuComponent,
+    // LocationComponent,
   ],
   imports: [
     BrowserModule,
