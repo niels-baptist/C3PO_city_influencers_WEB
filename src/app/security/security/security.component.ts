@@ -90,8 +90,8 @@ export class SecurityComponent implements OnInit {
       , error => {
         this.errorMessage = 'Email/password not correct!';
         this.isSubmitted = false;
-
-        this.router.navigate(['/']);
+        alert("Error tijdens submit")
+        this.router.navigate(['']);
       }
       );
     } else {

@@ -15,6 +15,8 @@ import {AdminModule} from './admin/admin.module';
 import { HttpClientModule } from '@angular/common/http';
 // import { LocationComponent } from './location/location.component';
 
+import { SecurityModule } from './security/security.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     ChampaingModule,
     InfluencerModule,
     SharedModule,
-    AdminModule
+    AdminModule,
+    SecurityModule
   ],
   providers: [],
   bootstrap: [AppComponent]

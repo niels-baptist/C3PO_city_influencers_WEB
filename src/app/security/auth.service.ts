@@ -44,16 +44,10 @@ export class AuthService {
     return !!localStorage.getItem('token');
   }
 
-  authenticate(username: string, password: string): Observable<boolean> {
-    // const user_from_api = this.httpClient.get<UserResponse>('http://localhost:8053/users/username', user_from_user.username)
+  authenticate(username: string, password: string): Observable<Object> {
 
-    // user_from_api = this.userSrevice.getUserByUserName(username)
-    // if(user_from_api.password == password)
-    // {
-    //   return user_from_api;
-    // }
-    const result = this.httpClient.get<boolean>('http://localhost:8053/users/login/?user_name=' + username + '&password=' + password)
-
+    //const result = this.httpClient.post('http://java-rest-api-c3po.westeurope.cloudapp.azure.com:8080/api/users/login/?user_name=', username + '&password=' + password);
+    const result = this.httpClient.post('http://java-rest-api-c3po.westeurope.cloudapp.azure.com:8080/api/users/login/?user_name='+ username + '&password=' + password, username + password );
     return result;
   }
 
