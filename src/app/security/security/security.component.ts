@@ -59,19 +59,19 @@ export class SecurityComponent implements OnInit {
   onSubmit(): void {
 
         //debug
-       console.log("voor isLogin:" + this.user.username + " - " + this.user.password);
+        //console.log("voor isLogin:" + this.user.username + " - " + this.user.password);
 
     this.isSubmitted = true;
 
     //debug
-    alert("voor isLogin:" + this.user.username + " - " + this.user.password);
+    // alert("voor isLogin:" + this.user.username + " - " + this.user.password);
 
     if (this.isLogin) {
       this.authService.authenticate(this.user.username, this.user.password)
       .subscribe(result => {this.errorMessage = '';
 
         //debug
-        alert("voor if (result == true):" + this.user.username + " - " + this.user.password);
+        // alert("voor if (result == true):" + this.user.username + " - " + this.user.password);
 
         if (result == true){
           // save access token localstorage
@@ -79,9 +79,9 @@ export class SecurityComponent implements OnInit {
           localStorage.setItem('password', this.user.password);
 
           //debug
-          alert("na localStorage.setItem():" + this.user.username + " - " + this.user.password);
+          // alert("na localStorage.setItem():" + this.user.username + " - " + this.user.password);
 
-          this.router.navigate(['/']);
+          this.router.navigate(['/home']);
         } else {
           this.errorMessage = 'Email/password not correct!';
           this.isSubmitted = false;
