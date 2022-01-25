@@ -24,6 +24,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { LocationComponent } from './location/location.component';
 import { SocialMediaPlatformComponent } from './social-media-platform/social-media-platform.component';
 import { DomainComponent } from './domain/domain.component';
+import { UserPersonalComponent } from './user-personal/user-personal.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { DomainComponent } from './domain/domain.component';
     LocationComponent,
     SocialMediaPlatformComponent,
     DomainComponent,
+    UserPersonalComponent,
 
   ],
   imports: [

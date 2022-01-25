@@ -13,6 +13,8 @@ import { SecurityComponent } from './security/security/security.component';
 import { AdminModule } from './admin/admin.module';
 import { AuthGuard } from './security/auth.guard';
 
+import { UserPersonalComponent } from './user-personal/user-personal.component';
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'campagnes', component: CampagneListComponent },
@@ -23,7 +25,8 @@ const routes: Routes = [
   { path: 'influencers', component: InfluencerListComponent },
   { path: 'login', component: SecurityComponent},
   { path: 'logout', component: SecurityComponent},
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'PersonalUser', component: UserPersonalComponent },
 ];
 
 @NgModule({

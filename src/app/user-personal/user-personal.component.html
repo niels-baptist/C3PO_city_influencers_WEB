@@ -1,0 +1,29 @@
+<!-- container with in it a col-12 and a table with 7 rows -->
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
+        <tr>
+          <th>Gebruikersnummer</th>
+          <th>Plaats</th>
+          <th>Email</th>
+          <th>Wachtwoord</th>
+          <th>Voornaam</th>
+          <th>Naam</th>
+          <th>Geboortedatum</th>
+        </tr>
+        <tr *ngFor="let personalUser of personalUsers$ | async;">
+          <td>{{personalUser.user_id}}</td>
+          <td>{{personalUser.location}}</td>
+          <td>{{personalUser.email}}</td>
+          <td>{{personalUser.password}}</td>
+          <td>{{personalUser.first_name}}</td>
+          <td>{{personalUser.last_name}}</td>
+          <td>{{personalUser.birthdate}}</td>
+          <td><a class="btn btn-warning w-100" href="">Wijzigen</a></td>
+          <td><a class="btn btn-danger w-100" href="">Verwijderen</a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
