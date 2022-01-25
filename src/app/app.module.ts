@@ -21,6 +21,9 @@ import { SecurityComponent } from './security/security/security.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { NgChartsModule } from 'ng2-charts';
+import { LocationComponent } from './location/location.component';
+import { SocialMediaPlatformComponent } from './social-media-platform/social-media-platform.component';
+import { DomainComponent } from './domain/domain.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { NgChartsModule } from 'ng2-charts';
     HomeComponent,
     MenuComponent,
     DashboardComponent,
+    LocationComponent,
+    SocialMediaPlatformComponent,
+    DomainComponent,
 
   ],
   imports: [
@@ -48,6 +54,9 @@ import { NgChartsModule } from 'ng2-charts';
     SecurityModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    LocationComponent
+  ]
 })
 export class AppModule { }
