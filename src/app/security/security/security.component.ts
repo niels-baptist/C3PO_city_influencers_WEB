@@ -3,22 +3,24 @@ import {User} from '../../admin/user/user';
 import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
 
+
 @Component({
   selector: 'app-security',
   templateUrl: './security.component.html',
   styleUrls: ['./security.component.scss']
 })
 export class SecurityComponent implements OnInit {
-  // user: User = {
-  //   userId: 0,
-  //   location: 0,
-  //   email: '',
-  //   password: '',
-  //   firstname: '',
-  //   lastname: '',
-  //   username: '',
-  //   birthdate: ''
-  // };
+  user: User = {
+    userId: 0,
+    location: {},
+    email: '',
+    password: '',
+    firstname: '',
+    lastname: '',
+    username: '',
+    birthdate: '',
+
+  };
 
   isSubmitted: boolean = false;
   errorMessage: string = '';
@@ -54,22 +56,46 @@ export class SecurityComponent implements OnInit {
     }
   }
 
-  // onSubmit(): void {
-  //   this.isSubmitted = true;
+  onSubmit(): void {
 
-  //   if (this.isLogin) {
-  //     this.authService.authenticate(this.user.username, this.user.password).subscribe(result => {
-  //       this.errorMessage = '';
-  //       // save access token localstorage
-  //       localStorage.setItem('userId', result.user.userId.toString());
-  //       localStorage.setItem('email', result.user.email);
-  //       this.router.navigate(['']);
-  //     }, error => {
-  //       this.errorMessage = 'Email/password not correct!';
-  //       this.isSubmitted = false;
-  //     });
-  //   } else {
-  //     alert('work in progress');
-  //   }
-  // }
+        //debug
+       console.log("voor isLogin:" + this.user.username + " - " + this.user.password);
+
+    this.isSubmitted = true;
+
+    //debug
+    alert("voor isLogin:" + this.user.username + " - " + this.user.password);
+
+    if (this.isLogin) {
+      this.authService.authenticate(this.user.username, this.user.password)
+      .subscribe(result => {this.errorMessage = '';
+
+        //debug
+        alert("voor if (result == true):" + this.user.username + " - " + this.user.password);
+
+        if (result == true){
+          // save access token localstorage
+          localStorage.setItem('userName', this.user.username);
+          localStorage.setItem('password', this.user.password);
+
+          //debug
+          alert("na localStorage.setItem():" + this.user.username + " - " + this.user.password);
+
+          this.router.navigate(['/']);
+        } else {
+          this.errorMessage = 'Email/password not correct!';
+          this.isSubmitted = false;
+        }
+      }
+      , error => {
+        this.errorMessage = 'Email/password not correct!';
+        this.isSubmitted = false;
+
+        this.router.navigate(['/']);
+      }
+      );
+    } else {
+      alert('work in progress');
+    }
+  }
 }

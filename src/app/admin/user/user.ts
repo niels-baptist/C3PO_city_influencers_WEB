@@ -2,7 +2,9 @@ import { Location } from "../../location";
 
 export interface User {
   userId: number,
-  location: Location,
+  location: {
+    [key: string]: Location
+  },
   email: string,
   password: string,
   firstname: string,
