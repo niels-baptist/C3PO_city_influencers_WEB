@@ -14,7 +14,8 @@ import { AdminModule } from './admin/admin.module';
 import { AuthGuard } from './security/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: SecurityComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'campagnes', component: CampagneListComponent },
   // { path: 'gebruikers', component: UserListComponent },
 
