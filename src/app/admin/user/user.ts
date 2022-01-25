@@ -1,15 +1,9 @@
-import { Location } from "../../location";
-
 export interface User {
-  userId: number,
-  location: {
-    [key: string]: Location
-  },
+  gebruikerId: number,
+  locatieId: number,
   email: string,
   password: string,
-  firstname: string,
-  lastname: string,
-  username: string,
-  birthdate: string;
+  voornaam: string,
+  naam: string,
+  geboortedatum: string
 }
-

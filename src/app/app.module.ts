@@ -13,9 +13,6 @@ import {SharedModule} from './shared/shared.module';
 import {AdminModule} from './admin/admin.module';
 
 import { HttpClientModule } from '@angular/common/http';
-// import { LocationComponent } from './location/location.component';
-
-import { SecurityModule } from './security/security.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -42,7 +39,7 @@ import { NgChartsModule } from 'ng2-charts';
     InfluencerModule,
     SharedModule,
     NgChartsModule,
-    AdminModule,
+    // AdminModule,
 
     FormsModule,
     ReactiveFormsModule,
