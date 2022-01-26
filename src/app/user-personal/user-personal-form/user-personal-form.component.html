@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+    {{errorMessage}}
+  </div>
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1 class="p-5">Een gebruiker toevoegen of wijzigen</h1>
+    </div>
+  </div>
+  <form (ngSubmit)="onSubmit()" [formGroup]="personaluserForm">
+    <div class="form-group">
+      <label for="location">Location</label>
+      <select class="custom-select" formControlName="location" id="location" name="location">
+        <option value="" disabled>Location</option>
+        <option *ngFor="let location of locations" [ngValue]="location.locationId">{{location.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input class="form-control" type="email" id="email" name="email" placeholder="email" formControlName="email">
+    </div>
+
+    <div class="form-group">
+      <label for="firstName">Voornaam</label>
+      <input class="form-control" type="text" id="firstName" name="firstName" placeholder="first name" formControlName="firstName">
+    </div>
+
+    <div class="form-group">
+      <label for="lastname">Achternaam</label>
+      <input class="form-control" type="text" id="lastName" name="lastName" placeholder="last name" formControlName="lastName">
+    </div>
+
+    <div class="form-group">
+      <label for="birthday">Geboortedatum</label>
+      <input class="form-control" type="date" id="birthDate" name="birthDate" placeholder="birthDate" formControlName="birthDate">
+    </div>
+
+    <div class="form-group">
+      <label for="imageCaption">Wachtwoord</label>
+      <input type="password" class="form-control" id="password" name="password" formControlName="password" minlength="5">
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!personaluserForm.valid || isSubmitted" *ngIf="isAdd">Toevoegen</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!personaluserForm.valid || isSubmitted" *ngIf="isEdit">Opslaan</button>
+  </form>
+</div>

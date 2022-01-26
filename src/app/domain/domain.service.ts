@@ -9,8 +9,9 @@ import { Observable } from 'rxjs';
 export class DomainService {
 
   constructor(private httpClient: HttpClient) { }
-  rooturl: string = 'http://java-rest-api-c3po.westeurope.cloudapp.azure.com:8080/api/';
+  // rooturl: string = 'http://java-rest-api-c3po.westeurope.cloudapp.azure.com:8080/api/';
+  rooturl: string = 'http://localhost:8080/';
   getDomains(): Observable<Domain[]> {
-    return this.httpClient.get<Domain[]>(this.rooturl + 'domains/');
+    return this.httpClient.get<Domain[]>(this.rooturl + 'domains');
   }
 }

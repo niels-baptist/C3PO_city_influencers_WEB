@@ -9,20 +9,17 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
+
   constructor(private httpClient: HttpClient) {
   }
 
   getUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>("http://localhost:3000/users");
+    return this.httpClient.get<User[]>("http://localhost:8053/api/users");
   }
 
   getUserById(id: number): Observable<User> {
-    return this.httpClient.get<User>("http://localhost:3000/users/" + id);
+    return this.httpClient.get<User>("http://localhost:8053/users/" + id);
   }
-
-  // getUserByEmail(userName: string): Observable<User> {
-  //   return this.httpClient.get<User>("http://localhost:3000/users/" + userName);
-  // }
 
   checkCredentials(userName: string, password:string): Observable<Boolean>{
     return this.httpClient.get<Boolean>("http://localhost:8053/users/login/?user_name=" + userName + "&password=" + password);

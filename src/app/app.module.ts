@@ -25,6 +25,7 @@ import { LocationComponent } from './location/location.component';
 import { SocialMediaPlatformComponent } from './social-media-platform/social-media-platform.component';
 import { DomainComponent } from './domain/domain.component';
 import { UserPersonalComponent } from './user-personal/user-personal.component';
+import { UserPersonalFormComponentComponent } from './user-personal/user-personal-form/user-personal-form.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { UserPersonalComponent } from './user-personal/user-personal.component';
     SocialMediaPlatformComponent,
     DomainComponent,
     UserPersonalComponent,
+    UserPersonalFormComponentComponent,
 
   ],
   imports: [

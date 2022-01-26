@@ -1,12 +1,14 @@
 export interface UserPersonal {
-  userId: number;
+  userId: number,
   location: {
-    [key: number]: Location
+    locationId: number,
+    name: string,
+    postal_code: string
   },
-  email: string;
-  firstName: string;
-  lastName: string;
-  password: string;
-  birthdate: string;
+  email: string,
+  firstName: string,
+  lastName: string,
+  password: string,
+  birthdate: string,
   userName: string;
 }
