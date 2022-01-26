@@ -1,10 +1,12 @@
 export interface UserPersonal {
-  user_id: number;
-  location: Location;
+  userId: number;
+  location: {
+    [key: number]: Location
+  },
   email: string;
-  first_name: string;
-  last_name: string;
+  firstName: string;
+  lastName: string;
   password: string;
   birthdate: string;
-  user_name: string;
+  userName: string;
 }
