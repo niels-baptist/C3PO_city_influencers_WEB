@@ -3,6 +3,7 @@ import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 import {Influencer} from '../influencer'
 import {InfluencerService} from '../influencer.service';
+import {Domain} from '../../domain/domain'
 
 @Component({
   selector: 'app-influencer-list',
@@ -14,6 +15,9 @@ export class InfluencerListComponent implements OnInit{
   influencers: Influencer[] = [];
   influencers$: Subscription = new Subscription();
 
+  influencerDomains: Domain[] = [];
+  influencerDomains$: Subscription = new Subscription();
+
   constructor(private influencerService: InfluencerService, private router: Router) { }
 
   ngOnInit(): void {
@@ -23,5 +27,6 @@ export class InfluencerListComponent implements OnInit{
 
   getInfluencers() {
     this.influencers$ = this.influencerService.getInfluencers().subscribe(result => this.influencers = result);
+    //this.influencerDomains$ = this.influencerService.getInfluencers().subscribe(result=> {this.influencerDomains = result.map(d => d.domains);});
   }
 }
