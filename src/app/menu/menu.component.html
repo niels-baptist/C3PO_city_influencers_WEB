@@ -19,7 +19,7 @@
           <a class="nav-link" routerLink="/dashboard">Dashboard</a>
       </li>
 
-        <li class="nav-item" *ngIf="authService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav-link" routerLink="/influencers">Influencers</a>
         </li>
 

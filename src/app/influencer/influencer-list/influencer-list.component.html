@@ -1,4 +1,56 @@
 <div class="container">
   <h1>Influencers</h1>
   <p>This is the Influencer-page of our City Influencers app!</p>
+
+
+<div class="row"  *ngIf="influencers && influencers.length > 0">
+
+  <div  *ngFor="let inf of influencers" class="card col-sm-10 col-md-6 col-lg-4">
+    <div class="card-body">
+      <h5 class="card-title">Naam: {{inf.user}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">id: {{inf.influencerId}}, gender: {{inf.gender}}</h6>
+      <p class="card-text">Overzicht domains:</p>
+
+      <ul *ngFor="let domain of inf.domains">
+        <li>{{domain}}</li>
+      </ul>
+
+      <a href="#" class="card-link">Card link</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
+  </div>
+
 </div>
+
+<!--
+
+  <table class="table" *ngIf="influencers && influencers.length > 0">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Active</th>
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let inf of influencers">
+      <th scope="row">{{inf.influencerId}}</th>
+      <td>{{inf.gender}}</td>
+      <td>
+        <ul *ngFor="let domain of inf.domains">
+          <li>{{domain}}</li>
+        </ul>
+
+
+      </td>
+      <td>{{inf.user[0]}}</td>
+<td><i *ngIf="st.active" class="fas fa-check"></i><i *ngIf="!st.active" class="fas fa-times"></i></td>
+      <td>
+<button type="button" class="btn btn-success" (click)="edit(st.id)"><i class="fas fa-edit"></i></button>
+        <button type="button" class="btn btn-danger" (click)="delete(st.id)"><i class="far fa-trash-alt"></i></button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div> -->
