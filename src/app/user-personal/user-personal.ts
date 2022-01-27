@@ -6,8 +6,8 @@ export interface UserPersonal {
     postal_code: string
   },
   email: string,
-  firstName: string,
-  lastName: string,
+  firstname: string,
+  lastname: string,
   password: string,
   birthdate: string,
   userName: string;

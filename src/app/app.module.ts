@@ -26,6 +26,7 @@ import { SocialMediaPlatformComponent } from './social-media-platform/social-med
 import { DomainComponent } from './domain/domain.component';
 import { UserPersonalComponent } from './user-personal/user-personal.component';
 import { UserPersonalFormComponentComponent } from './user-personal/user-personal-form/user-personal-form.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,7 @@ import { UserPersonalFormComponentComponent } from './user-personal/user-persona
 
     SecurityModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
   exports: [
     LocationComponent

@@ -11,72 +11,41 @@ import { switchMap } from 'rxjs/operators';
 })
 
 export class UserPersonalService {
-  rooturl: string =  'http://localhost:8080/';
+  azure: string =  'https://c3poapi.azurewebsites.net/';
+  localhost: string =  'http://localhost:8080/';
 
   getUsers(): Observable<UserPersonal[]> {
-
-    const headers = new HttpHeaders()
-    .append('Content-Type', 'application/json')
-    .append('Access-Control-Allow-Headers', 'Content-Type')
-    .append('Access-Control-Allow-Methods', 'GET')
-    .append('Access-Control-Allow-Origin', '*');
-    return this.httpClient.get<UserPersonal[]>(this.rooturl + 'api/users');
+    return this.httpClient.get<UserPersonal[]>(this.azure + 'users');
   }
 
   deleteUser(userId: number): Observable<UserPersonal> {
-
-    const headers = new HttpHeaders()
-    .append('Content-Type', 'application/json')
-    .append('Access-Control-Allow-Headers', 'Content-Type')
-    .append('Access-Control-Allow-Methods', 'DELETE')
-    .append('Access-Control-Allow-Origin', '*');
-    return this.httpClient.delete<UserPersonal>(this.rooturl + 'api/users/' + userId, {headers: headers});
+    return this.httpClient.delete<UserPersonal>(this.azure + 'users/' + userId);
   }
 
   getUserById(userId: number): Observable<UserPersonal> {
-
-    const headers = new HttpHeaders()
-    .append('Content-Type', 'application/json')
-    .append('Access-Control-Allow-Headers', 'Content-Type')
-    .append('Access-Control-Allow-Methods', 'GET')
-    .append('Access-Control-Allow-Origin', '*');
-    return this.httpClient.get<UserPersonal>(this.rooturl + 'api/users/' + userId, {headers: headers});
+    return this.httpClient.get<UserPersonal>(this.azure + 'users/id/' + userId);
   }
 
   postUser(user: UserPersonal): Observable<UserPersonal> {
-
-    const headers = new HttpHeaders()
-    .append('Content-Type', 'application/json')
-    .append('Access-Control-Allow-Headers', 'Content-Type')
-    .append('Access-Control-Allow-Methods', 'POST')
-    .append('Access-Control-Allow-Origin', '*');
-    return this.httpClient.post<UserPersonal>(this.rooturl + 'api/users/register', user, {headers: headers});
+    return this.httpClient.post<UserPersonal>(this.azure + 'users/register', user);
   }
 
-  putUser(userId: number, user: UserPersonal): Observable<UserPersonal> {
-
-    const headers = new HttpHeaders()
-    .append('Content-Type', 'application/json')
-    .append('Access-Control-Allow-Headers', 'Content-Type')
-    .append('Access-Control-Allow-Methods', 'PUT')
-    .append('Access-Control-Allow-Origin', '*');
-
-  return this.httpClient.put<UserPersonal>(this.rooturl + 'api/users' + userId, user, {headers: headers});}
+  putUser(user: UserPersonal): Observable<UserPersonal> {
+  return this.httpClient.put<UserPersonal>(this.azure + 'users', user);
+}
 
   publishUser(id: number): Observable<UserPersonal> {
     return this.getUserById(id).pipe(
         switchMap(user => {
-          return this.putUser(id, user);
+          return this.putUser(user);
         })
     );
   }
 
   constructor(private httpClient: HttpClient) { }
-  //rooturl: string = 'http://java-rest-api-c3po.westeurope.cloudapp.azure.com:8080/api/';
     getPersonalUsers(): Observable<UserPersonal[]> {
-      return this.httpClient.get<UserPersonal[]>(this.rooturl + 'api/users');
+      return this.httpClient.get<UserPersonal[]>(this.azure + 'users');
     }
-
 }
 
 

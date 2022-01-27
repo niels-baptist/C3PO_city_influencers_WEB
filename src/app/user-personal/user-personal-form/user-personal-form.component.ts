@@ -1,12 +1,12 @@
 import { Location } from './../../location/location';
 import { UserPersonal } from './../user-personal';
 import { LocationService } from '../../location/location.service';
-import { UserService } from '../../admin/user/user.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {Subscription} from 'rxjs';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import { UserPersonalService } from '../user-personal.service';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-user-personal-form-component',
   templateUrl: './user-personal-form.component.html',
@@ -28,17 +28,17 @@ export class UserPersonalFormComponentComponent implements OnInit, OnDestroy {
 
   // reactive form
   personaluserForm = new FormGroup({
-    // user_id: new FormControl(''),
-    location: new FormControl('', [Validators.required]),
-    email: new FormControl('', [Validators.required]),
+    user_id: new FormControl(''),
+    location: new FormControl(''),
+    email: new FormControl(''),
     password: new FormControl(''),
-    firstName: new FormControl('', [Validators.required]),
-    lastName: new FormControl('', [Validators.required]),
-    birthDate: new FormControl(''),
+    firstname: new FormControl(''),
+    lastname: new FormControl(''),
+    birthdate: new FormControl(''),
     userName: new FormControl(''),
   });
 
-  constructor(private router: Router,
+  constructor(private router: Router, public datePipe: DatePipe,
       private route: ActivatedRoute,
       private userPersonalService: UserPersonalService,
       private LocationService: LocationService){
@@ -49,25 +49,27 @@ export class UserPersonalFormComponentComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     // get article if in edit
     if (this.isEdit) {
-      const user_id = this.route.snapshot.paramMap.get('user_id');
+      const user_id = this.route.snapshot.paramMap.get('id');
       if (user_id != null) {
         this.user_id = +user_id;
-        this.userPersonalService.getUserById(+user_id).subscribe(result => {
+        this.userPersonalService.getUserById(this.user_id).subscribe(result => {
           this.personaluserForm.patchValue({
-            // user_id: result.userId,
+            user_id: result.userId,
             location: result.location,
             email: result.email,
             password: result.password,
-            firstName: result.firstName,
-            lastName: result.lastName,
+            firstname: result.firstname,
+            lastname: result.lastname,
             userName: result.userName,
-            birthDate: result.birthdate,
+            // birthdate: this.datePipe.transform(result.birthdate, 'YYYY-MM-ddT00:00:00.000+00.00'),
+            birthdate: this.datePipe.transform(result.birthdate, 'YYYY-MM-dd')
           });
         });
       }
+      else{
+        console.log("Error: no user_id");
+      }
     }
-
-
     // get categories
     this.userPersonal$ = this.userPersonalService.getUsers().subscribe(result => {
       this.usersPersonal = result;
@@ -95,7 +97,7 @@ export class UserPersonalFormComponentComponent implements OnInit, OnDestroy {
     if (this.isAdd) {
       //Add
       this.postUserPersonal = this.userPersonalService.postUser(this.personaluserForm.value).subscribe(result => {
-          this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/PersonalUser');
         },
           error => {
           this.isSubmitted = false;
@@ -104,8 +106,8 @@ export class UserPersonalFormComponentComponent implements OnInit, OnDestroy {
     }
     else {
       //edit
-      this.postUserPersonal = this.userPersonalService.postUser(this.personaluserForm.value).subscribe(result => {
-          this.router.navigateByUrl('/');
+      this.putUserPersonal = this.userPersonalService.putUser(this.personaluserForm.value).subscribe(result => {
+          this.router.navigateByUrl('/PersonalUser');
         },
         error => {
           this.isSubmitted = false;

@@ -27,6 +27,7 @@ export class UserPersonalComponent implements OnInit {
 
     ngOnInit(): void {
         this.getUsers();
+        
     }
 
     ngOnDestroy(): void {

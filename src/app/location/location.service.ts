@@ -9,8 +9,7 @@ import { Observable } from 'rxjs';
 export class LocationService {
 
   constructor(private httpClient: HttpClient) { }
-  // rooturl: string = 'http://java-rest-api-c3po.westeurope.cloudapp.azure.com:8080/api/';
-  rooturl: string = 'http://localhost:8080/';
+  rooturl: string = 'http://java-rest-api-c3po.westeurope.cloudapp.azure.com:8080/api/';
   getLocations(): Observable<Location[]> {
     return this.httpClient.get<Location[]>(this.rooturl + 'locations/');
   }
