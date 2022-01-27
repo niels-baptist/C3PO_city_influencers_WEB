@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Influencer } from '../influencer';
 import { InfluencerService } from '../influencer.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-influencer-detail',
@@ -32,19 +33,28 @@ export class InfluencerDetailComponent implements OnInit {
         domainId: 0,
         name: '',
         description: ''
-    },
+      },
     ]
-  }
+  };
+  influencer$: Subscription = new Subscription();
 
-  constructor(private influencerService:InfluencerService, private route: ActivatedRoute) { }
+  constructor(private influencerService:InfluencerService, private route: ActivatedRoute,  private router: Router) { }
 
   ngOnInit(): void {
-    const influencerId = this.route.snapshot.paramMap.get('influencerId');
+    const influencerId = this.route.snapshot.paramMap.get('id');
+
+    // debug
+    // console.log("influencerID = " + influencerId)
+
     if (influencerId != null) {
-      let influencerTemp = this.influencerService.getInfluencerById(+influencerId) ?? null;
-      if(influencerTemp != null) {
-        // this.influencer = influencerTemp;
-      }
+      this.influencer$ = this.influencerService.getInfluencerById(+influencerId).subscribe(result => this.influencer = result);
+
+      // debug
+      // console.log(this.influencer)
     }
+  }
+
+  naarOverzicht(): void{
+    this.router.navigate(['/influencers']);
   }
 }

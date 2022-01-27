@@ -11,11 +11,14 @@ export class InfluencerService {
   constructor(private httpClient: HttpClient) { }
 
   getInfluencers(): Observable<Influencer[]> {
-    return this.httpClient.get<Influencer[]>("http://localhost:8080/influencers");
+    // return this.httpClient.get<Influencer[]>("http://localhost:8080/influencers");
+    return this.httpClient.get<Influencer[]>("https://c3poapi.azurewebsites.net/influencers");
+
   }
 
   getInfluencerById(id: number): Observable<Influencer> {
-    return this.httpClient.get<Influencer>("http://localhost:8080/influencers" + id);
+    // return this.httpClient.get<Influencer>("http://localhost:8080/influencers/" + id);
+    return this.httpClient.get<Influencer>("https://c3poapi.azurewebsites.net/influencers/" + id);
   }
 
   // postStatus(category: Status): Observable<Status> {
