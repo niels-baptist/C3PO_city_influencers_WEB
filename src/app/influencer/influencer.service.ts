@@ -15,7 +15,7 @@ export class InfluencerService {
   }
 
   getInfluencerById(id: number): Observable<Influencer> {
-    return this.httpClient.get<Influencer>("http://localhost:3000/statuses/" + id);
+    return this.httpClient.get<Influencer>("http://localhost:8080/influencers" + id);
   }
 
   // postStatus(category: Status): Observable<Status> {
