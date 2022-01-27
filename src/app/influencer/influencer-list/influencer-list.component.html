@@ -1,4 +1,42 @@
 <div class="container">
   <h1>Influencers</h1>
   <p>This is the Influencer-page of our City Influencers app!</p>
+
+
+<div class="row"  *ngIf="influencers && influencers.length > 0">
+
+  <div  *ngFor="let inf of influencers" class="card col-sm-10 col-md-6 col-lg-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-7">
+
+          <h5 class="card-title">{{inf.user.firstname}} {{inf.user.lastname}}</h5>
+
+          <h6 class="card-subtitle mb-2 text-muted">id: {{inf.influencerId}},  ({{inf.gender}})</h6>
+
+          <div *ngFor="let domain of inf.domains">
+            <span class="domain">{{domain.name}}</span>
+          </div>
+
+        </div>
+      <!-- <h5>username: {{inf.user.userName}}</h5> -->
+
+      <img  class="col-5" src="../../../assets/images/avatar.jpg" alt="" height="100" width="100">
+
+
+
+    </div>
+      <!-- <p class="card-text">Overzicht domains:</p> -->
+
+      <!-- <ul *ngFor="let domain of inf.domains">
+        <li>{{domain.name}}</li>
+      </ul> -->
+<!-- <div *ngFor="let domain of inf.domains">
+  <span class="domain">{{domain.name}}</span>
+</div> -->
+
+    </div>
+  </div>
+
 </div>
+
