@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { SharedModule } from '../shared/shared.module';
 import { InfluencerListComponent } from './influencer-list/influencer-list.component';
+import { InfluencerDetailComponent } from './influencer-detail/influencer-detail.component';
 
 
 
 
 @NgModule({
   declarations: [
-    InfluencerListComponent
+    InfluencerListComponent,
+    InfluencerDetailComponent
   ],
   imports: [
     CommonModule,
