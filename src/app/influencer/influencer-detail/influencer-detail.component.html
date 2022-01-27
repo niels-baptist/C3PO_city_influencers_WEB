@@ -1,1 +1,73 @@
-<p>influencer-detail works!</p>
+<div class="container">
+  <div class="paspoort">
+
+    <div class="row">
+      <div class="col-sm-12 col-md-9 mb-4">
+        <h1>{{influencer.user.firstname}} {{influencer.user.lastname}}</h1>
+
+        <p>geslacht: {{influencer.gender}}</p>
+
+        <div *ngFor="let domain of influencer.domains">
+          <span class="domain">{{domain.name}}</span>
+        </div>
+      </div >
+
+      <div class="col-sm-12 col-md-3">
+        <img class="rounded-circle" src="../../../assets/images/avatar.jpg" alt="profielfoto-influencer"  height="100" width="100">
+      </div>
+    </div>
+
+
+  <div>
+    <div class="row">
+      <p class="col-sm-12">Recente posts:</p>
+
+      <div class="card card-post col-md-2">
+        <a href="/influencers"><img class="card-img-top" src="..." alt="Insert influencer post here"></a>
+      </div>
+
+      <div class="card card-post col-md-2">
+        <a href="/influencers"><img class="card-img-top" src="..." alt="Insert influencer post here"></a>
+      </div>
+
+      <div class="card card-post card-right col-md-2">
+        <a href="/influencers"><img class="card-img-top" src="..." alt="Insert influencer post here"></a>
+      </div>
+
+      <div class="col-md-1">
+        <figure class="text-center figure">
+          <img class="rounded-circle figure-img" src="../../../assets/images/instagram.jpg" alt="instagram"  height="100" width="100">
+          <figcaption>600</figcaption>
+        </figure>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <p class="col-sm-12">Recente posts:</p>
+
+      <div class="card card-voucher col-md-2">
+        <a href="/influencers"><img class="card-img-top" src="..." alt="Insert influencer voucher here"></a>
+      </div>
+
+      <div class="card card-voucher col-md-2">
+        <a href="/influencers"><img class="card-img-top" src="..." alt="Insert influencer voucher here"></a>
+      </div>
+
+      <div class="card card-voucher card-right col-md-2">
+        <a href="/influencers"><img class="card-img-top" src="..." alt="Insert influencer voucher here"></a>
+      </div>
+
+      <div class="col-md-1">
+        <figure class="text-center figure">
+          <img class="rounded-circle figure-img" src="../../../assets/images/twitter.png" alt="twitter"  height="100" width="100">
+          <figcaption>600</figcaption>
+        </figure>
+      </div>
+
+    </div>
+
+    <button  type="button" class="btn btn-primary"(click)="naarOverzicht()">Terug naar overzicht</button>
+
+  </div>
+</div>

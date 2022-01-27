@@ -1,42 +1,57 @@
 <div class="container">
-  <h1>Influencers</h1>
-  <p>This is the Influencer-page of our City Influencers app!</p>
+  <div class="row">
+    <h1 class="col-sm-12 col-lg-4">Influencers</h1>
 
+    <form action=""  class = "col-sm-12 col-md-6" [formGroup]="searchByNameForm">
 
-<div class="row"  *ngIf="influencers && influencers.length > 0">
-
-  <div  *ngFor="let inf of influencers" class="card col-sm-10 col-md-6 col-lg-4">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-7">
-
-          <h5 class="card-title">{{inf.user.firstname}} {{inf.user.lastname}}</h5>
-
-          <h6 class="card-subtitle mb-2 text-muted">id: {{inf.influencerId}},  ({{inf.gender}})</h6>
-
-          <div *ngFor="let domain of inf.domains">
-            <span class="domain">{{domain.name}}</span>
-          </div>
-
+      <div class="input-group">
+        <div class="form-outline">
+          <input type="search" id="influencerName" name="influencerName" ng-model="searchBox" formControlName="influencerName" class="form-control search-bar" placeholder="Search..."/>
+          <button id="search-button" type="submit" class="btn btn-primary" >
+            <i class="fas fa-search"></i>
+          </button>
         </div>
-      <!-- <h5>username: {{inf.user.userName}}</h5> -->
+      </div>
 
-      <img  class="col-5" src="../../../assets/images/avatar.jpg" alt="" height="100" width="100">
+    </form>
 
+    <form action="" class="col-sm-4 col-md-2">
+      <select name="gender" id="gender" class=" dropdown-gender form-control" >
+        <option value="men-or-woman">Man/Vrouw</option>
+        <option value="men">Man</option>
+        <option value="woman">Vrouw</option>
+      </select>
 
+      <button id="search-button" type="button" class="btn btn-primary">
+        <i class="fas fa-search"></i>
+      </button>
+    </form>
 
-    </div>
-      <!-- <p class="card-text">Overzicht domains:</p> -->
-
-      <!-- <ul *ngFor="let domain of inf.domains">
-        <li>{{domain.name}}</li>
-      </ul> -->
-<!-- <div *ngFor="let domain of inf.domains">
-  <span class="domain">{{domain.name}}</span>
-</div> -->
-
-    </div>
   </div>
 
+  <div class="row"  *ngIf="influencers && influencers.length > 0">
+    <div  *ngFor="let inf of influencers" class="card col-sm-10 col-md-6 col-lg-4">
+      <div class="card-body">
+        <div class="row">
+
+          <div class="col-7">
+
+            <h5 class="card-title" ng-repeat="influencer in influencers | filter:searchBox">{{inf.user.firstname}} {{inf.user.lastname}}</h5>
+
+            <h6 class="card-subtitle mb-2 text-muted">id: {{inf.influencerId}},  ({{inf.gender}})</h6>
+
+            <div *ngFor="let domain of inf.domains">
+              <span class="domain">{{domain.name}}</span>
+            </div>
+
+          </div>
+          <img  class="col-5" src="../../../assets/images/avatar.jpg" alt="profielfoto-influencer" height="100" width="100">
+        </div>
+
+        <button class="btn btn-detail" (click)="detail(inf.influencerId)">Naar detail</button>
+
+      </div>
+    </div>
+  </div>
 </div>
 
