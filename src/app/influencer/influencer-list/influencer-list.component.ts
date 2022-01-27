@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {Influencer} from '../influencer'
 import {InfluencerService} from '../influencer.service';
 import {Domain} from '../../domain/domain'
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-influencer-list',
@@ -11,6 +12,10 @@ import {Domain} from '../../domain/domain'
   styleUrls: ['./influencer-list.component.scss']
 })
 export class InfluencerListComponent implements OnInit{
+
+  isSearchName: boolean = true;
+  isSearchGender: boolean = false;
+  isSearchdomain: boolean = false;
 
   influencers: Influencer[] = [];
   influencers$: Subscription = new Subscription();
@@ -40,7 +45,11 @@ export class InfluencerListComponent implements OnInit{
     },
     ]
   }
-  @Input() isDetail: boolean = false;
+
+    // reactive form
+    searchByNameForm = new FormGroup({
+      influencerName: new FormControl('')
+    });
 
   constructor(private influencerService: InfluencerService, private router: Router) { }
 
@@ -55,5 +64,29 @@ export class InfluencerListComponent implements OnInit{
 
   getInfluencers() {
     this.influencers$ = this.influencerService.getInfluencers().subscribe(result => this.influencers = result);
+  }
+
+  searchInfluencerByName(influencerName: string)  {
+
+    influencerName.toLowerCase();
+    // debug
+    console.log(influencerName);
+
+    this.influencers$ = this.influencerService.getInfluencerByName(influencerName).subscribe(result => this.influencers = result);
+  }
+
+  searchInfluencerByGender(gender: string)  {
+
+  }
+
+  onSubmit(): void{
+    if (this.isSearchName){
+        // this.searchInfluencerByName(this.searchByNameForm.influencer)
+
+    } else if (this.isSearchGender){
+
+    } else if (this.isSearchdomain){
+
+    }
   }
 }

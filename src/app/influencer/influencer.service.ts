@@ -21,6 +21,20 @@ export class InfluencerService {
     return this.httpClient.get<Influencer>("https://c3poapi.azurewebsites.net/influencers/" + id);
   }
 
+  getInfluencerByName(name: string): Observable<Influencer[]> {
+    // return this.httpClient.get<Influencer>("http://localhost:8080/influencers/" + id);
+    return this.httpClient.get<Influencer[]>("https://c3poapi.azurewebsites.net/influencers/" + name);
+  }
+
+  getInfluencerByGender(gender: string): Observable<Influencer> {
+    // return this.httpClient.get<Influencer>("http://localhost:8080/influencers/" + id);
+    return this.httpClient.get<Influencer>("https://c3poapi.azurewebsites.net/influencers/" + gender);
+  }
+
+  getInfluencerByDomain(domainId: number): Observable<Influencer> {
+    // return this.httpClient.get<Influencer>("http://localhost:8080/influencers/" + id);
+    return this.httpClient.get<Influencer>("https://c3poapi.azurewebsites.net/influencers/domain/" + domainId);
+  }
   // postStatus(category: Status): Observable<Status> {
   //   let headers = new HttpHeaders();
   //   headers = headers.set('Content-Type', 'application/json; charset=utf-8');
