@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+    {{errorMessage}}
+  </div>
+  <div class="row">
+    <div class="col-12 text-center">
+      <h1 class="p-5">Een gebruiker toevoegen of wijzigen</h1>
+    </div>
+  </div>
+  <form (ngSubmit)="onSubmit()" [formGroup]="personaluserForm">
+
+    <div class="form-group" *ngIf="isEdit">
+      <label for="user_id">ID</label>
+      <input readonly class="form-control" type="user_id" id="user_id" name="user_id" placeholder="ID" formControlName="user_id">
+    </div>
+
+    <div class="form-group">
+      <label for="location">Location</label>
+      <select class="custom-select" formControlName="location" id="location" name="location">
+        <option selected *ngFor="let location of locations" [ngValue]="location">{{location.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input class="form-control" type="email" id="email" name="email" placeholder="email" formControlName="email">
+    </div>
+
+    <div class="form-group">
+      <label for="firstname">Voornaam</label>
+      <input class="form-control" type="text" id="firstname" name="firstname" placeholder="Voornaam" formControlName="firstname">
+    </div>
+
+    <div class="form-group">
+      <label for="lastname">Achternaam</label>
+      <input class="form-control" type="text" id="lastname" name="lastname" placeholder="Achternaam" formControlName="lastname">
+    </div>
+
+    <div class="form-group">
+      <label for="birthdate">Geboortedatum</label>
+      <input class="form-control" type="date" id="birthdate" name="birthdate" placeholder="Geboortedatum" formControlName="birthdate">
+    </div>
+
+    <div class="form-group">
+      <label for="userName">Gebruikersnaam</label>
+      <input class="form-control" type="text" id="userName" name="userName" placeholder="Gebruikersnaam" formControlName="userName">
+    </div>
+
+    <div class="form-group">
+      <label for="imageCaption">Wachtwoord</label>
+      <input type="password" class="form-control" id="password" name="password" formControlName="password" minlength="5">
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!personaluserForm.valid || isSubmitted" *ngIf="isAdd">Toevoegen</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!personaluserForm.valid || isSubmitted" *ngIf="isEdit">Opslaan</button>
+  </form>
+</div>

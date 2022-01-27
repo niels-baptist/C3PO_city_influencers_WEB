@@ -25,6 +25,8 @@ import { LocationComponent } from './location/location.component';
 import { SocialMediaPlatformComponent } from './social-media-platform/social-media-platform.component';
 import { DomainComponent } from './domain/domain.component';
 import { UserPersonalComponent } from './user-personal/user-personal.component';
+import { UserPersonalFormComponentComponent } from './user-personal/user-personal-form/user-personal-form.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { UserPersonalComponent } from './user-personal/user-personal.component';
     SocialMediaPlatformComponent,
     DomainComponent,
     UserPersonalComponent,
+    UserPersonalFormComponentComponent,
 
   ],
   imports: [
@@ -55,7 +58,7 @@ import { UserPersonalComponent } from './user-personal/user-personal.component';
 
     SecurityModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
   exports: [
     LocationComponent

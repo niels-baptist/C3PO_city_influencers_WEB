@@ -1,3 +1,4 @@
+import { UserPersonalFormComponentComponent } from './user-personal/user-personal-form/user-personal-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -28,6 +29,8 @@ const routes: Routes = [
   { path: 'logout', component: SecurityComponent},
   { path: 'dashboard', component: DashboardComponent },
   { path: 'PersonalUser', component: UserPersonalComponent },
+  { path: 'newpersonaluser', component: UserPersonalFormComponentComponent },
+  { path: 'editpersonaluser/:id', component: UserPersonalFormComponentComponent },
 ];
 
 @NgModule({

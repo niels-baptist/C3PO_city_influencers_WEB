@@ -10,6 +10,7 @@ export class SocialMediaPlatformService {
 
   constructor(private httpClient: HttpClient) { }
   rooturl: string = 'http://java-rest-api-c3po.westeurope.cloudapp.azure.com:8080/api/';
+  // rooturl: string = 'http://localhost:8080/';
   getSocialMediaPlatforms(): Observable<SocialMediaPlatform[]> {
     return this.httpClient.get<SocialMediaPlatform[]>(this.rooturl + 'platforms/');
   }
