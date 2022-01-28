@@ -2,20 +2,26 @@
   <div class="row">
     <h1 class="col-sm-12 col-lg-4">Influencers</h1>
 
-    <form action=""  class = "col-sm-12 col-md-6" [formGroup]="searchByNameForm">
+    <!-- <app-header (searchcriteria)="searchThis($event)"></app-header> -->
+
+    <!-- <form action=""  class = "col-sm-12 col-md-6" [formGroup]="searchByNameForm">
 
       <div class="input-group">
         <div class="form-outline">
-          <input type="search" id="influencerName" name="influencerName" ng-model="searchBox" formControlName="influencerName" class="form-control search-bar" placeholder="Search..."/>
+          <input type="search" id="influencerName" name="influencerName" [(ngModel)]="searchBox" formControlName="influencerName" class="form-control search-bar" placeholder="Search..."/>
+
+          <input matInput type="text" [(ngModel)]="searchBox" (input)="searchThis()" class="form-control search-bar" placeholder="Search..."/>
+
           <button id="search-button" type="submit" class="btn btn-primary" >
             <i class="fas fa-search"></i>
           </button>
         </div>
       </div>
 
-    </form>
+    </form> -->
+    <input type="text" id="myFilter" class="form-control" onkeyup='myFunction()'placeholder="Search for names..">
 
-    <form action="" class="col-sm-4 col-md-2">
+    <!-- <form action="" class="col-sm-4 col-md-2">
       <select name="gender" id="gender" class=" dropdown-gender form-control" >
         <option value="men-or-woman">Man/Vrouw</option>
         <option value="men">Man</option>
@@ -25,33 +31,68 @@
       <button id="search-button" type="button" class="btn btn-primary">
         <i class="fas fa-search"></i>
       </button>
-    </form>
+    </form> -->
+
+
+    <!-- <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <span matPrefix> </span>
+
+        <input type="tel" matInput placeholder="Search" name= "search" [(ngModel)]= "search">
+
+        <button matSuffix mat-button>
+          <mat-icon >search</mat-icon>
+        </button>
+
+      </mat-form-field>
+      <br/>
+      {{search}}
+    </form> -->
 
   </div>
 
   <div class="row"  *ngIf="influencers && influencers.length > 0">
-    <div  *ngFor="let inf of influencers" class="card col-sm-10 col-md-6 col-lg-4">
-      <div class="card-body">
-        <div class="row">
 
-          <div class="col-7">
+    <!-- <form action=""  class = "col-sm-12 col-md-6" [formGroup]="searchByNameForm">
 
-            <h5 class="card-title" ng-repeat="influencer in influencers | filter:searchBox">{{inf.user.firstname}} {{inf.user.lastname}}</h5>
-
-            <h6 class="card-subtitle mb-2 text-muted">id: {{inf.influencerId}},  ({{inf.gender}})</h6>
-
-            <div *ngFor="let domain of inf.domains">
-              <span class="domain">{{domain.name}}</span>
-            </div>
-
-          </div>
-          <img  class="col-5" src="../../../assets/images/avatar.jpg" alt="profielfoto-influencer" height="100" width="100">
+      <div class="input-group">
+        <div class="form-outline">
+          <input type="search" id="influencerName" name="influencerName" [(ngModel)]="searchBox" formControlName="influencerName" class="form-control search-bar" placeholder="Search..."/>
+          <button id="search-button" type="submit" class="btn btn-primary" >
+            <i class="fas fa-search"></i>
+          </button>
         </div>
-
-        <button class="btn btn-detail" (click)="detail(inf.influencerId)">Naar detail</button>
-
       </div>
+
+    </form> -->
+
+
+    <div  class="col-sm-10 col-md-6 col-lg-4" id="myItems" >
+      <app-influencer-card *ngFor="let influencer of (influencersCard$ | async)" [influencer]="influencer"  (searchcriteria)="searchThis($event)"></app-influencer-card>
+
     </div>
   </div>
 </div>
 
+<!-- <script src="../search.js">
+</script> -->
+
+<script>
+
+function myFunction() {
+  var input, filter, cards, cardContainer, h5, title, i;
+  input = document.getElementById("myFilter");
+  filter = input.value.toUpperCase();
+  cardContainer = document.getElementById("myItems");
+  cards = cardContainer.getElementsByClassName("card");
+  for (i = 0; i < cards.length; i++) {
+      title = cards[i].querySelector(".card-body h5.card-title");
+      if (title.innerText.toUpperCase().indexOf(filter) > -1) {
+          cards[i].style.display = "";
+      } else {
+          cards[i].style.display = "none";
+      }
+  }
+}
+
+</script>

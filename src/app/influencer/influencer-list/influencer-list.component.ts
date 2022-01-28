@@ -1,10 +1,12 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Observable, Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 import {Influencer} from '../influencer'
 import {InfluencerService} from '../influencer.service';
 import {Domain} from '../../domain/domain'
 import { FormControl, FormGroup } from '@angular/forms';
+
+import { InfluencerCardComponent } from '../influencer-card/influencer-card.component';
 
 @Component({
   selector: 'app-influencer-list',
@@ -19,6 +21,13 @@ export class InfluencerListComponent implements OnInit{
 
   influencers: Influencer[] = [];
   influencers$: Subscription = new Subscription();
+
+  influencersCard$: Observable<Influencer[]> = new Observable<Influencer[]>();
+
+  search : String ="";
+  searchBox: any;
+
+  content: Influencer[] = [];
 
   @Input() influencer: Influencer = {
     influencerId: 0,
@@ -51,10 +60,15 @@ export class InfluencerListComponent implements OnInit{
       influencerName: new FormControl('')
     });
 
+
+
   constructor(private influencerService: InfluencerService, private router: Router) { }
 
   ngOnInit(): void {
     this.getInfluencers();
+
+    this.influencersCard$ = this.influencerService.getInfluencers();
+
   }
 
   detail(id: number) {
@@ -79,14 +93,46 @@ export class InfluencerListComponent implements OnInit{
 
   }
 
-  onSubmit(): void{
-    if (this.isSearchName){
-        // this.searchInfluencerByName(this.searchByNameForm.influencer)
 
-    } else if (this.isSearchGender){
+//   newArray: any
+  searchThis(data: any) {
 
-    } else if (this.isSearchdomain){
+//     //this.influencers$ = this.influencerService.getInfluencerByUsername(data).subscribe(result => this.influencers = result);
 
-    }
-  }
+//     this.content = this.newArray
+//     // console.log(data)
+
+//     console.log("voor if")
+//     if (data) {
+//       console.log("in if")
+//       this.content = this.content.filter(function (ele, i, array) {
+//         let arrayelement = ele.user.firstname.toLowerCase();
+//         return arrayelement.includes(data);
+
+//       // var Influencer = this.influencerService.getInfluencerByUsername(data);
+//       // return this.Influencer
+//       // })
+//     }
+
+//     else {
+//       console.log("in else")
+//       console.log(this.content)
+//       console.log(data)
+//     }
+//     console.log(this.content)
+//     // console.log(data)
+//     console.log("na if-else")
+//   }
+}
+
+  // onSubmit(): void{
+  //   if (this.isSearchName){
+  //       // this.searchInfluencerByName(this.searchByNameForm.influencer)
+
+  //   } else if (this.isSearchGender){
+
+  //   } else if (this.isSearchdomain){
+
+  //   }
+  // }
 }

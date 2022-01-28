@@ -27,6 +27,7 @@ import { DomainComponent } from './domain/domain.component';
 import { UserPersonalComponent } from './user-personal/user-personal.component';
 import { UserPersonalFormComponentComponent } from './user-personal/user-personal-form/user-personal-form.component';
 import { DatePipe } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,9 @@ import { DatePipe } from '@angular/common';
 
 
     SecurityModule,
+
+
+    BrowserAnimationsModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
