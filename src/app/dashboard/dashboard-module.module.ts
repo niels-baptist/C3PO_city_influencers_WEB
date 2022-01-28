@@ -11,12 +11,13 @@ import { DashboardComponent } from './dashboard.component';
 @NgModule({
   declarations: [
     HomeComponent,
-    MenuComponent
+
   ],
   imports: [
     CommonModule,
     SharedModule,
-    InfluencerModule
+    InfluencerModule,
+
   ]
 })
 export class DashboardModuleModule { }
