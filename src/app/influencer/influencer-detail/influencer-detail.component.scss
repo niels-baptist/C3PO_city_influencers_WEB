@@ -1,17 +1,19 @@
 .domain{
   padding:  0px 10px 2px 10px;
+  color:#000;
   background-color: rgb(255, 208, 0);
   border-radius: 15px;
 }
 
 .paspoort{
-  background-color: rgb(32, 192, 125);
+  color:#fff;
+  background-color: rgb(69, 175, 236);
   padding: 30px;
 
   // border-radius: 30px;
   margin-top: 20px;
 
-  border-color: rgb(42, 133, 95);
+  border-color: rgb(42, 97, 133);
   border-width: 5px;
   border-style: dashed;
   border-radius: 35px;
@@ -37,7 +39,7 @@
 .btn-primary{
   margin-top: 20px;
 
-  background-color:  rgb(42, 133, 95);
+  background-color:  rgb(42, 97, 133);
 
   border-color: rgb(255, 208, 0);
   border-width: 2px;

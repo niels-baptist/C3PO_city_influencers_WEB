@@ -1,0 +1,20 @@
+<div class="card-body" ng-repeat="influencer in influencers | filter:searchBox">
+  <div class="row">
+
+    <div class="col-7">
+
+      <h5 class="card-title">{{influencer.user.firstname}} {{influencer.user.lastname}}</h5>
+
+      <h6 class="card-subtitle mb-2 text-muted">id: {{influencer.influencerId}},  ({{influencer.gender}})</h6>
+
+      <div *ngFor="let domain of influencer.domains">
+        <span class="domain">{{domain.name}}</span>
+      </div>
+
+    </div>
+    <img  class="col-5" src="../../../assets/images/avatar.jpg" alt="profielfoto-influencer" height="100" width="100">
+  </div>
+
+  <button class="btn btn-detail" (click)="detail(influencer.influencerId)">Naar detail</button>
+
+</div>

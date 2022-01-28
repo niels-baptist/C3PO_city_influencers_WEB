@@ -4,18 +4,26 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { InfluencerListComponent } from './influencer-list/influencer-list.component';
 import { InfluencerDetailComponent } from './influencer-detail/influencer-detail.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatIcon } from '@angular/material/icon';
+import {MatIconModule} from '@angular/material/icon';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { InfluencerCardComponent } from './influencer-card/influencer-card.component';
 
 
 
 @NgModule({
   declarations: [
     InfluencerListComponent,
-    InfluencerDetailComponent
+    InfluencerDetailComponent,
+    InfluencerCardComponent
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    MatInputModule,
+    MatIconModule
   ],
   providers: [
     SharedModule
