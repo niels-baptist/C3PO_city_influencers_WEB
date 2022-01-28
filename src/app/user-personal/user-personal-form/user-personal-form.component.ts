@@ -25,6 +25,7 @@ export class UserPersonalFormComponentComponent implements OnInit, OnDestroy {
   userPersonal$: Subscription = new Subscription();
   locations: Location[] = [];
   locations$: Subscription = new Subscription();
+  locationId: number=0;
 
   // reactive form
   personaluserForm = new FormGroup({
@@ -56,6 +57,7 @@ export class UserPersonalFormComponentComponent implements OnInit, OnDestroy {
           this.personaluserForm.patchValue({
             user_id: result.userId,
             location: result.location,
+            locationId: result.location.locationId,
             email: result.email,
             password: result.password,
             firstname: result.firstname,

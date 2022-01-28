@@ -22,7 +22,6 @@ const routes: Routes = [
   { path: '', component: SecurityComponent },
   { path: 'home', component: HomeComponent },
   { path: 'campagnes', component: CampagneListComponent },
-  // { path: 'gebruikers', component: UserListComponent },
 
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard], canActivateChild: [AuthGuard]},
 

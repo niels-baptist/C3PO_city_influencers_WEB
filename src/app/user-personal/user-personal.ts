@@ -5,6 +5,7 @@ export interface UserPersonal {
     name: string,
     postal_code: string
   },
+  locationId: number,
   email: string,
   firstname: string,
   lastname: string,
