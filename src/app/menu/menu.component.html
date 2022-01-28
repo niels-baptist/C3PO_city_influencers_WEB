@@ -31,12 +31,9 @@
           <a class="nav-link" routerLink="vouchers/">Vouchers</a>
         </li>
 
-        <li class="nav-item" *ngIf="authService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-          <a class="nav-link" routerLink="/admin/user">Gebruikers</a>
-        </li>
 
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-          <a class="nav-link" routerLink="/PersonalUser">User</a>
+          <a class="nav-link" routerLink="/PersonalUser">Gebruiker</a>
         </li>
 
     </ul>

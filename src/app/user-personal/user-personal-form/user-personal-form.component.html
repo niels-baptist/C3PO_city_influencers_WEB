@@ -16,7 +16,7 @@
 
     <div class="form-group">
       <label for="location">Location</label>
-      <select class="custom-select" formControlName="location" id="location" name="location">
+      <select [selectedIndex]="locations[locationId]" class="custom-select" formControlName="location" id="location" name="location">
         <option selected *ngFor="let location of locations" [ngValue]="location">{{location.name}}</option>
       </select>
     </div>
