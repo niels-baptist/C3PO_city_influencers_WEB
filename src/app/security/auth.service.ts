@@ -43,7 +43,8 @@ export class AuthService {
   }
 
   authenticate(username: string, password: string): Observable<Object> {
-    const result = this.httpClient.post('c3poapi.azurewebsites.net/users/login/?user_name='+ username + '&password=' + password, username + password );
+    // const result = this.httpClient.post('c3poapi.azurewebsites.net/users/login/?user_name='+ username + '&password=' + password, username + password );
+    const result = this.httpClient.get('http://c3poapi.azurewebsites.net/users/login/'+ username + '/' + password);
     return result;
   }
 

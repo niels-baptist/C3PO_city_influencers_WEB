@@ -88,7 +88,7 @@ if (this.isLogin) {
   , error => {
     this.errorMessage = 'Email/password not correct!';
     this.isSubmitted = false;
-    alert("Error tijdens submit")
+    // alert("Error tijdens submit")
     this.router.navigate(['']);
   }
   );

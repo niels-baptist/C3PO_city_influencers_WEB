@@ -12,14 +12,14 @@
     <ul class="navbar-nav mr-auto">
 
         <li class="nav-item" *ngIf="authService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
         </li>
 
         <li class="nav-item" *ngIf="authService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <a class="nav-link" routerLink="/dashboard">Dashboard</a>
       </li>
 
-        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <li class="nav-item" *ngIf="authService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav-link" routerLink="/influencers">Influencers</a>
         </li>
 
@@ -27,15 +27,15 @@
           <a class="nav-link" routerLink="/campagnes">Campagnes</a>
         </li>
 
-        <li class="nav-item" *ngIf="authService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <!-- <li class="nav-item" *ngIf="authService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <a class="nav-link" routerLink="vouchers/">Vouchers</a>
-        </li>
+        </li> -->
 
         <li class="nav-item" *ngIf="authService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <a class="nav-link" routerLink="/admin/user">Gebruikers</a>
         </li>
 
-        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <li class="nav-item" *ngIf="authService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <a class="nav-link" routerLink="/PersonalUser">User</a>
         </li>
 

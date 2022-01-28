@@ -1,8 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component,Input, OnInit, Output,EventEmitter } from '@angular/core';
 import { Influencer } from '../influencer';
 import { InfluencerService } from '../influencer.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-influencer-card',
@@ -13,6 +15,8 @@ export class InfluencerCardComponent implements OnInit {
 
   influencers: Influencer[] = [];
   influencers$: Subscription = new Subscription();
+
+  searchBox: any;
 
   @Input() influencer: Influencer = {
     influencerId: 0,
@@ -52,4 +56,12 @@ export class InfluencerCardComponent implements OnInit {
   detail(id: number) {
     this.router.navigate(['/influencers', id]);
   }
+
+
+
+@Output() searchcriteria = new EventEmitter<String>();
+searchThis() {
+    this.searchcriteria.emit(this.searchBox)
+}
+
 }

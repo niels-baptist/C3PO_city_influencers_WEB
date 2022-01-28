@@ -27,6 +27,8 @@ export class InfluencerListComponent implements OnInit{
   search : String ="";
   searchBox: any;
 
+  content: Influencer[] = [];
+
   @Input() influencer: Influencer = {
     influencerId: 0,
     user: {
@@ -57,6 +59,8 @@ export class InfluencerListComponent implements OnInit{
     searchByNameForm = new FormGroup({
       influencerName: new FormControl('')
     });
+
+
 
   constructor(private influencerService: InfluencerService, private router: Router) { }
 
@@ -89,11 +93,37 @@ export class InfluencerListComponent implements OnInit{
 
   }
 
-  @Output() searchcriteria = new EventEmitter<String>();
 
-  searchThis(){
-    this.searchcriteria.emit(this.searchBox)
-  }
+//   newArray: any
+  searchThis(data: any) {
+
+//     //this.influencers$ = this.influencerService.getInfluencerByUsername(data).subscribe(result => this.influencers = result);
+
+//     this.content = this.newArray
+//     // console.log(data)
+
+//     console.log("voor if")
+//     if (data) {
+//       console.log("in if")
+//       this.content = this.content.filter(function (ele, i, array) {
+//         let arrayelement = ele.user.firstname.toLowerCase();
+//         return arrayelement.includes(data);
+
+//       // var Influencer = this.influencerService.getInfluencerByUsername(data);
+//       // return this.Influencer
+//       // })
+//     }
+
+//     else {
+//       console.log("in else")
+//       console.log(this.content)
+//       console.log(data)
+//     }
+//     console.log(this.content)
+//     // console.log(data)
+//     console.log("na if-else")
+//   }
+}
 
   // onSubmit(): void{
   //   if (this.isSearchName){

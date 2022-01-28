@@ -10,6 +10,7 @@ import {MatIconModule} from '@angular/material/icon';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { InfluencerCardComponent } from './influencer-card/influencer-card.component';
+import { HeaderComponent } from './header/header.component';
 
 
 
@@ -17,7 +18,8 @@ import { InfluencerCardComponent } from './influencer-card/influencer-card.compo
   declarations: [
     InfluencerListComponent,
     InfluencerDetailComponent,
-    InfluencerCardComponent
+    InfluencerCardComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
