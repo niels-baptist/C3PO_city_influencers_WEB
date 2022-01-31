@@ -1,18 +1,20 @@
-<div class="container">
-
-  <h1>Login</h1>
-<div class="alert alert-danger" role="alert" *ngIf="errorMessage">
-  {{errorMessage}}
-</div>
-<form (ngSubmit)="onSubmit()" #authForm="ngForm">
-  <div class="form-group">
-    <label for="username">Username</label>
-    <input type="username" name="username" id="username" class="form-control" [(ngModel)]="user.username" required username>
+<div class="body">
+  <div class="container-fluid">
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+      {{errorMessage}}
+    </div>
+    <form (ngSubmit)="onSubmit()" #authForm="ngForm">
+      <img class="" src="/assets/images/ci-logo-nobg.png" alt="CI logo">
+      <h1 class="text-blue p-3 pt-0">City Influencers</h1>
+      <div class="form-group">
+        <label class="text-secondary" for="username">Username</label>
+        <input type="username" name="username" id="username" class="form-control" [(ngModel)]="user.username" required username>
+      </div>
+      <div class="form-group mb-4">
+        <label class="text-secondary" for="password">Password</label>
+        <input type="password" name="password" id="password" class="form-control" minlength="4" [(ngModel)]="user.password" required="">
+      </div>
+      <input name="login" id="login" class="btn btn-dark" type="submit" value="Login" [disabled]="!authForm.form.valid">
+    </form>
   </div>
-  <div class="form-group mb-4">
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" class="form-control" minlength="4" [(ngModel)]="user.password" required="">
-  </div>
-  <input name="login" id="login" class="btn btn-block btn-primary mb-4" type="submit" value="Login" [disabled]="!authForm.form.valid">
-</form>
 </div>

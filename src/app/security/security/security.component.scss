@@ -1,0 +1,55 @@
+.body, .container-fluid{
+  background-color: #34b6c6;
+  height: 200vh;
+  position: fixed;
+}
+
+img{
+  width: 50%;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa;
+  width: 25%;
+  margin: 0 auto;
+  border-radius: 10%;
+  margin-top: 10%;
+  padding: 50px;
+}
+
+label{
+  //make text cursive;
+  font-style: italic;
+}
+
+.btn{
+  background-color: #34b6c6;
+  border: #34b6c6;
+  width: 33%;
+}
+
+.text-blue, h1{
+  color: #34b6c6;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 800px) {
+  body{
+    height: 100vh;
+  }
+  form{
+    width: 90%;
+    //center this div vertically
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+//comment
+
