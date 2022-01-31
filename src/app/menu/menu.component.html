@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav *ngIf="authService.isLoggedIn()"class="navbar navbar-expand-lg navbar-light bg-light">
 
   <a class="navbar-brand" *ngIf="authService.isLoggedIn()" routerLink="/">City Influencers</a>
   <a class="navbar-brand" *ngIf="!authService.isLoggedIn()">City Influencers</a>
