@@ -79,7 +79,7 @@ if (this.isLogin) {
       //debug
       // alert("na localStorage.setItem():" + this.user.username + " - " + this.user.password);
 
-      this.router.navigate(['/home']);
+      this.router.navigate(['/dashboard']);
     } else {
       this.errorMessage = 'Email/password not correct!';
       this.isSubmitted = false;
