@@ -10,13 +10,13 @@
   <form (ngSubmit)="onSubmit()" [formGroup]="personaluserForm">
 
     <div class="form-group" *ngIf="isEdit">
-      <label for="user_id">ID</label>
-      <input readonly class="form-control" type="user_id" id="user_id" name="user_id" placeholder="ID" formControlName="user_id">
+      <label for="userId">ID</label>
+      <input readonly class="form-control" type="userId" id="userId" name="userId" placeholder="ID" formControlName="userId">
     </div>
 
     <div class="form-group">
       <label for="location">Location</label>
-      <select [selectedIndex]="locations[locationId]" class="custom-select" formControlName="location" id="location" name="location">
+      <select  class="custom-select" formControlName="location" id="location" name="location">
         <option selected *ngFor="let location of locations" [ngValue]="location">{{location.name}}</option>
       </select>
     </div>

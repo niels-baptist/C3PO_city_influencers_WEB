@@ -13,7 +13,7 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./user-personal-form.component.scss']
 })
 export class UserPersonalFormComponentComponent implements OnInit, OnDestroy {
-  user_id: number=0;
+  userId: number=0;
   isAdd: boolean = false;
   isEdit: boolean = false;
   isSubmitted: boolean = false;
@@ -29,7 +29,7 @@ export class UserPersonalFormComponentComponent implements OnInit, OnDestroy {
 
   // reactive form
   personaluserForm = new FormGroup({
-    user_id: new FormControl(''),
+    userId: new FormControl(''),
     location: new FormControl(''),
     email: new FormControl(''),
     password: new FormControl(''),
@@ -50,12 +50,12 @@ export class UserPersonalFormComponentComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     // get article if in edit
     if (this.isEdit) {
-      const user_id = this.route.snapshot.paramMap.get('id');
-      if (user_id != null) {
-        this.user_id = +user_id;
-        this.userPersonalService.getUserById(this.user_id).subscribe(result => {
+      const userId = this.route.snapshot.paramMap.get('id');
+      if (userId != null) {
+        this.userId = +userId;
+        this.userPersonalService.getUserById(this.userId).subscribe(result => {
           this.personaluserForm.patchValue({
-            user_id: result.userId,
+            userId: result.userId,
             location: result.location,
             locationId: result.location.locationId,
             email: result.email,
@@ -69,7 +69,7 @@ export class UserPersonalFormComponentComponent implements OnInit, OnDestroy {
         });
       }
       else{
-        console.log("Error: no user_id");
+        console.log("Error: no userId");
       }
     }
     // get categories
