@@ -3,21 +3,33 @@
 <div class="card-body" ng-repeat="influencer in influencers | filter:searchBox">
   <div class="row">
 
-    <div class="col-7">
+    <div class="col-9">
 
       <h2 class="card-title bold">{{influencer.user.firstname}}</h2>
       <h2 class="card-title lean">{{influencer.user.lastname}}</h2>
+      <button class="btn btn-detail align-bottom" (click)="detail(influencer.influencerId)"><i class="fas fa-arrow-right"></i></button>
+    </div>
 
+    <div class="col-3 text-center">
+      <div class="mb-3">
+        <i class="fab fa-twitter fa-3x"></i>
+        600
+      </div>
+      <div>
+        <i class="fab fa-instagram fa-3x"></i>
+        200
+      </div>
+    </div>
      <!-- <h6 class="card-subtitle mb-2 text-muted">id: {{influencer.influencerId}},  ({{influencer.gender}})</h6> -->
 
       <!-- <div *ngFor="let domain of influencer.domains">
         <span class="domain">{{domain.name}}</span>
       </div> -->
 
-    </div>
+
 
   </div>
-  <button class="btn btn-detail align-bottom" (click)="detail(influencer.influencerId)">Naar detail</button>
+  <!-- <button class="btn btn-detail align-bottom" (click)="detail(influencer.influencerId)"><i class="fas fa-arrow-right"></i></button> -->
 
 </div>
 </div>
