@@ -12,16 +12,17 @@
   padding: 30px;
 
   // border-radius: 30px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  // margin-top: 200px;
+  // margin-bottom: 20px;
 
+  margin: -100px 30px 30px 30px;
 
-  border-color: rgb(117, 117, 117);
-  border-width: 2px;
-  border-style: solid;
-  border-radius: 35px;
+  // border-color: rgb(117, 117, 117);
+  // border-width: 2px;
+  // border-style: solid;
+  border-radius: 50px;
 
-
+  z-index: 2;
 }
 
 .card-post {
@@ -41,14 +42,41 @@
 //   margin-right: 250px;
 // }
 
-.btn-primary{
+.btn-naar-overzicht{
   margin-top: 20px;
+  // color: #000;
+  background-color: transparent;
 
-  background-color:  rgb(42, 97, 133);
+  // border-color: #000;
+  // border-width: 4px;
+  // border-radius: 35px;
+}
 
-  border-color: rgb(255, 208, 0);
-  border-width: 2px;
+.naar-overzicht{
+  font-size: 30px;
+}
+
+.card.background{
+  background: rgb(228, 227, 227);
+  // height: 500px;
+  margin-bottom: 30px;
   border-radius: 35px;
+  border: none;
+}
 
 
+.card.banner{
+  background-color: #34b6c6;
+  border-radius: 35px;
+  height: 300px;
+  z-index: 1;
+}
+
+h1{
+  margin-bottom: 0px;
+}
+
+.small-text{
+  font-size: 13px;
+  color: rgb(146, 146, 146);
 }
