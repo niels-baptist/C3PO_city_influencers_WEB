@@ -23,7 +23,7 @@ export class UserPersonalService {
   }
 
   getUserById(userId: number): Observable<UserPersonal> {
-    return this.httpClient.get<UserPersonal>(this.azure + 'users/id/' + userId);
+    return this.httpClient.get<UserPersonal>(this.azure + 'users/' + userId);
   }
 
   postUser(user: UserPersonal): Observable<UserPersonal> {
@@ -31,8 +31,9 @@ export class UserPersonalService {
   }
 
   putUser(user: UserPersonal): Observable<UserPersonal> {
+    console.log(user.userId);
   return this.httpClient.put<UserPersonal>(this.azure + 'users', user);
-}
+  }
 
   publishUser(id: number): Observable<UserPersonal> {
     return this.getUserById(id).pipe(
@@ -46,7 +47,7 @@ export class UserPersonalService {
     getPersonalUsers(): Observable<UserPersonal[]> {
       return this.httpClient.get<UserPersonal[]>(this.azure + 'users');
     }
-}
+  }
 
 
 
