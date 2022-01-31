@@ -6,15 +6,16 @@
         <h1>{{influencer.user.firstname}} {{influencer.user.lastname}}</h1>
 
         <p>geslacht: {{influencer.gender}}</p>
-
-        <div *ngFor="let domain of influencer.domains">
-          <span class="domain">{{domain.name}}</span>
+        <div >
+          <span *ngFor="let domain of influencer.domains" class="domain">
+            {{domain.name}}
+          </span>
         </div>
       </div >
 
-      <div class="col-sm-12 col-md-3">
-        <img class="rounded-circle" src="../../../assets/images/avatar.jpg" alt="profielfoto-influencer"  height="100" width="100">
-      </div>
+      <!-- <div class="col-sm-12 col-md-3">
+        <img class="rounded-circle" src="/assets/images/avatar.jpg" alt="profielfoto-influencer"  height="100" width="100">
+      </div> -->
     </div>
 
 
@@ -43,7 +44,7 @@
 
     </div>
 
-    <div class="row">
+    <!-- <div class="row">
       <p class="col-sm-12">Recente posts:</p>
 
       <div class="card card-voucher col-md-2">
@@ -65,7 +66,7 @@
         </figure>
       </div>
 
-    </div>
+    </div> -->
 
     <button  type="button" class="btn btn-primary"(click)="naarOverzicht()">Terug naar overzicht</button>
 

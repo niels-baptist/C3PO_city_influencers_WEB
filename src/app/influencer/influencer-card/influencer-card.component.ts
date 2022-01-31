@@ -6,6 +6,8 @@ import { Subscription } from 'rxjs';
 
 
 
+
+
 @Component({
   selector: 'app-influencer-card',
   templateUrl: './influencer-card.component.html',

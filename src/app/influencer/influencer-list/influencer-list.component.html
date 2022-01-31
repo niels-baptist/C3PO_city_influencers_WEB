@@ -1,83 +1,21 @@
 <div class="container">
   <div class="row">
     <h1 class="col-sm-12 col-lg-4">Influencers</h1>
-
-    <!-- <app-header (searchcriteria)="searchThis($event)"></app-header> -->
-
-    <!-- <form action=""  class = "col-sm-12 col-md-6" [formGroup]="searchByNameForm">
-
-      <div class="input-group">
-        <div class="form-outline">
-          <input type="search" id="influencerName" name="influencerName" [(ngModel)]="searchBox" formControlName="influencerName" class="form-control search-bar" placeholder="Search..."/>
-
-          <input matInput type="text" [(ngModel)]="searchBox" (input)="searchThis()" class="form-control search-bar" placeholder="Search..."/>
-
-          <button id="search-button" type="submit" class="btn btn-primary" >
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-
-    </form> -->
-    <input type="text" id="myFilter" class="form-control" onkeyup='myFunction()'placeholder="Search for names..">
-
-    <!-- <form action="" class="col-sm-4 col-md-2">
-      <select name="gender" id="gender" class=" dropdown-gender form-control" >
-        <option value="men-or-woman">Man/Vrouw</option>
-        <option value="men">Man</option>
-        <option value="woman">Vrouw</option>
-      </select>
-
-      <button id="search-button" type="button" class="btn btn-primary">
-        <i class="fas fa-search"></i>
-      </button>
-    </form> -->
-
-
-    <!-- <form class="example-form">
-      <mat-form-field class="example-full-width">
-        <span matPrefix> </span>
-
-        <input type="tel" matInput placeholder="Search" name= "search" [(ngModel)]= "search">
-
-        <button matSuffix mat-button>
-          <mat-icon >search</mat-icon>
-        </button>
-
-      </mat-form-field>
-      <br/>
-      {{search}}
-    </form> -->
-
+    <!-- <input type="text" id="myFilter" class="form-control" onkeyup='myFunction()'placeholder="Search for names.."> -->
   </div>
 
   <div class="row"  *ngIf="influencers && influencers.length > 0">
 
-    <!-- <form action=""  class = "col-sm-12 col-md-6" [formGroup]="searchByNameForm">
-
-      <div class="input-group">
-        <div class="form-outline">
-          <input type="search" id="influencerName" name="influencerName" [(ngModel)]="searchBox" formControlName="influencerName" class="form-control search-bar" placeholder="Search..."/>
-          <button id="search-button" type="submit" class="btn btn-primary" >
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-
-    </form> -->
-
-
-    <div  class="row" id="myItems" >
+   <div  class="row" id="myItems" >
       <app-influencer-card *ngFor="let influencer of (influencersCard$ | async)" [influencer]="influencer"  (searchcriteria)="searchThis($event)" class="col-sm-10 col-md-6 col-lg-4"></app-influencer-card>
 
     </div>
   </div>
 </div>
 
-<!-- <script src="../search.js">
-</script> -->
 
-<script>
+
+<!-- <script>
 
 function myFunction() {
   var input, filter, cards, cardContainer, h5, title, i;
@@ -95,4 +33,4 @@ function myFunction() {
   }
 }
 
-</script>
+</script> -->

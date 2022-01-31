@@ -1,3 +1,5 @@
+
+
 .domain{
   padding:  0px 10px 2px 10px;
   background-color: rgb(255, 208, 0);
@@ -7,10 +9,10 @@
 .btn-detail{
   margin-top: 20px;
   color: #fff;
-  background-color:  rgb(42, 97, 133);
+  background-color: transparent;
 
-  border-color: rgb(255, 208, 0);
-  border-width: 2px;
+  border-color: #fff;
+  border-width: 4px;
   border-radius: 35px;
 
 
@@ -26,6 +28,31 @@
 }
 
 
+.influencer-card{
+  // height: 260px;
+  margin-bottom: 30px;
+
+  border-radius: 35px;
+}
+
 .card{
-  height: 260px;
+  background-color: rgb(73, 241, 253);
+}
+
+h2{
+ color: #fff;
+  .bold{
+    font-weight: 300;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+  }
+
+  .lean{
+    font-weight: normal;
+
+  }
+}
+
+p{
+color: #fff;
 }
