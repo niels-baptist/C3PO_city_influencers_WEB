@@ -53,7 +53,9 @@
       <div>
         <div class="row">
           <p class="col-sm-12">Recente posts:</p>
-              <div class="card card-post col-md-2">
+          <app-influencer-post *ngFor="let domain of influencer.domains" class="col-md-2"></app-influencer-post>
+
+              <!-- <div class="card card-post col-md-2">
                 <a href="/influencers"><img class="card-img-top" src="..." alt="Insert influencer post here"></a>
               </div>
 
@@ -63,7 +65,7 @@
 
               <div class="card card-post card-right col-md-2">
                 <a href="/influencers"><img class="card-img-top" src="..." alt="Insert influencer post here"></a>
-              </div>
+              </div> -->
 
         </div>
         <!-- <button  type="button" class="btn btn-naar-overzicht"(click)="naarOverzicht()"><i class="fas fa-arrow-left fa-2x"></i></button> -->
