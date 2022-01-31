@@ -67,8 +67,8 @@
     </form> -->
 
 
-    <div  class="col-sm-10 col-md-6 col-lg-4" id="myItems" >
-      <app-influencer-card *ngFor="let influencer of (influencersCard$ | async)" [influencer]="influencer"  (searchcriteria)="searchThis($event)"></app-influencer-card>
+    <div  class="row" id="myItems" >
+      <app-influencer-card *ngFor="let influencer of (influencersCard$ | async)" [influencer]="influencer"  (searchcriteria)="searchThis($event)" class="col-sm-10 col-md-6 col-lg-4"></app-influencer-card>
 
     </div>
   </div>
