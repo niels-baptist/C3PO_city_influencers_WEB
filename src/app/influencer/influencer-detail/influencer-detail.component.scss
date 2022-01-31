@@ -6,17 +6,21 @@
 }
 
 .paspoort{
-  color:#fff;
-  background-color: rgb(69, 175, 236);
+  color:#000;
+  background-color: #fff;
   padding: 30px;
 
   // border-radius: 30px;
   margin-top: 20px;
+  margin-bottom: 20px;
 
-  border-color: rgb(42, 97, 133);
-  border-width: 5px;
-  border-style: dashed;
+
+  border-color: rgb(117, 117, 117);
+  border-width: 2px;
+  border-style: solid;
   border-radius: 35px;
+
+
 }
 
 .card-post {
