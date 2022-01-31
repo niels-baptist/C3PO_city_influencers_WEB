@@ -1,73 +1,79 @@
+<button  type="button" class="btn btn-naar-overzicht"(click)="naarOverzicht()">
+  <span class="naar-overzicht">
+    <i class="fas fa-arrow-left mr-2"></i>
+    {{influencer.user.firstname}} {{influencer.user.lastname}}
+  </span>
+</button>
+
 <div class="container">
-  <div class="paspoort">
+  <div class="card background">
+    <div class="card banner">
+    </div>
 
-    <div class="row">
-      <div class="col-sm-12 col-md-9 mb-4">
-        <h1>{{influencer.user.firstname}} {{influencer.user.lastname}}</h1>
+    <div class="paspoort">
+      <div class="row">
 
-        <p>geslacht: {{influencer.gender}}</p>
+        <div class="col-sm-12 col-md-9 mb-4">
+          <h1>{{influencer.user.firstname}} {{influencer.user.lastname}} </h1>
+          <div class="small-text">{{influencer.user.location.name}}</div>
+          <div>
+            <p class="small-text">geslacht: {{influencer.gender}}</p>
+          </div>
 
-        <div *ngFor="let domain of influencer.domains">
-          <span class="domain">{{domain.name}}</span>
+          <!-- <p class="small-text">geslacht: {{influencer.gender}}</p> -->
+          <div >
+            <span *ngFor="let domain of influencer.domains" class="domain">{{domain.name}}</span>
+          </div>
+        </div >
+            <!-- <div class="col-sm-12 col-md-3">
+              <img class="rounded-circle" src="/assets/images/avatar.jpg" alt="profielfoto-influencer"  height="100" width="100">
+            </div> -->
+        <div class="text-center row">
+          <div class="col-6">
+            <i class="fab fa-twitter fa-3x"></i>
+            <p>600</p>
+          </div>
+          <div class="col-6">
+            <i class="fab fa-instagram fa-3x"></i>
+            <p>200</p>
+          </div>
+
+
+          <!-- <div  class="col-12">
+            <p class="small-text">geslacht: {{influencer.gender}}</p>
+          </div> -->
         </div>
-      </div >
+        <!-- <div class="row d-flex justify-content-end"> -->
 
-      <div class="col-sm-12 col-md-3">
-        <img class="rounded-circle" src="../../../assets/images/avatar.jpg" alt="profielfoto-influencer"  height="100" width="100">
-      </div>
-    </div>
+          <!-- <div  class="col-12">
+            <p class="small-text">geslacht: {{influencer.gender}}</p>
+          </div> -->
+        <!-- </div> -->
 
 
-  <div>
-    <div class="row">
-      <p class="col-sm-12">Recente posts:</p>
-
-      <div class="card card-post col-md-2">
-        <a href="/influencers"><img class="card-img-top" src="..." alt="Insert influencer post here"></a>
       </div>
 
-      <div class="card card-post col-md-2">
-        <a href="/influencers"><img class="card-img-top" src="..." alt="Insert influencer post here"></a>
-      </div>
+      <div>
+        <div class="row">
+          <p class="col-sm-12">Recente posts:</p>
+          <app-influencer-post *ngFor="let domain of influencer.domains" class="col-md-2"></app-influencer-post>
 
-      <div class="card card-post card-right col-md-2">
-        <a href="/influencers"><img class="card-img-top" src="..." alt="Insert influencer post here"></a>
-      </div>
+              <!-- <div class="card card-post col-md-2">
+                <a href="/influencers"><img class="card-img-top" src="..." alt="Insert influencer post here"></a>
+              </div>
 
-      <div class="col-md-1">
-        <figure class="text-center figure">
-          <img class="rounded-circle figure-img" src="../../../assets/images/instagram.jpg" alt="instagram"  height="100" width="100">
-          <figcaption>600</figcaption>
-        </figure>
-      </div>
+              <div class="card card-post col-md-2">
+                <a href="/influencers"><img class="card-img-top" src="..." alt="Insert influencer post here"></a>
+              </div>
 
-    </div>
+              <div class="card card-post card-right col-md-2">
+                <a href="/influencers"><img class="card-img-top" src="..." alt="Insert influencer post here"></a>
+              </div> -->
 
-    <div class="row">
-      <p class="col-sm-12">Recente posts:</p>
-
-      <div class="card card-voucher col-md-2">
-        <a href="/influencers"><img class="card-img-top" src="..." alt="Insert influencer voucher here"></a>
-      </div>
-
-      <div class="card card-voucher col-md-2">
-        <a href="/influencers"><img class="card-img-top" src="..." alt="Insert influencer voucher here"></a>
-      </div>
-
-      <div class="card card-voucher card-right col-md-2">
-        <a href="/influencers"><img class="card-img-top" src="..." alt="Insert influencer voucher here"></a>
-      </div>
-
-      <div class="col-md-1">
-        <figure class="text-center figure">
-          <img class="rounded-circle figure-img" src="../../../assets/images/twitter.png" alt="twitter"  height="100" width="100">
-          <figcaption>600</figcaption>
-        </figure>
+        </div>
+        <!-- <button  type="button" class="btn btn-naar-overzicht"(click)="naarOverzicht()"><i class="fas fa-arrow-left fa-2x"></i></button> -->
       </div>
 
     </div>
-
-    <button  type="button" class="btn btn-primary"(click)="naarOverzicht()">Terug naar overzicht</button>
-
   </div>
 </div>

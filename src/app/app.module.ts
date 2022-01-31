@@ -29,6 +29,8 @@ import { UserPersonalFormComponentComponent } from './user-personal/user-persona
 import { DatePipe } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +63,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
     BrowserAnimationsModule,
+
+    FontAwesomeModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
