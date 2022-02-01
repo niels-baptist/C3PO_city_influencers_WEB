@@ -44,6 +44,8 @@ export interface Campaign {
   name: string,
   description: string,
   fotoUrl: string,
+  startDate:	string,
+  endDate:	string,
   domains: [
     {
       domainId: number,

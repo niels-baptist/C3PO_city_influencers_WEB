@@ -1,0 +1,60 @@
+<div class="container">
+
+  <div class="alert alert-danger" role="alert" *ngIf="isSubmitted && errorMessage">
+    {{errorMessage}}
+  </div>
+
+  <!-- <div class="alert alert-warning" role="warning">
+    <p>Form Status: {{ campaignForm.campaign }}</p>
+  </div> -->
+  <form (ngSubmit)="onSubmit()" [formGroup]="campaignForm">
+    <div class="form-group">
+      <label for="name">Naam</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Name" formControlName="name" minlength="2">
+    </div>
+
+    <div class="form-group">
+      <input type="text" formControlName="description" id="description" class="mr-2">
+      <label for="description">Beschrijving</label>
+    </div>
+
+    <div class="form-group">
+      <input type="text" formControlName="fotoUrl" id="fotoUrl" class="mr-2">
+      <label for="fotoUrl">FotoUrl</label>
+    </div>
+
+    <div class="form-group">
+      <input type="text" formControlName="startDate" id="startDate" class="mr-2">
+      <label for="startDate">Startdatum</label>
+    </div>
+
+    <div class="form-group">
+      <input type="text" formControlName="endDate" id="endDate" class="mr-2">
+      <label for="endDate">Einddatum</label>
+    </div>
+
+    <div class="form-group">
+      <input type="text" formControlName="location" id="location" class="mr-2">
+      <label for="location">Locatie</label>
+    </div>
+
+    <div class="form-group">
+      <input type="text" formControlName="campaignStatus" id="campaignStatus" class="mr-2">
+      <label for="campaignStatus">Campagnestatus</label>
+    </div>
+
+    <div class="form-group">
+      <input type="text" formControlName="domains" id="domains" class="mr-2">
+      <label for="domains">Domein</label>
+    </div>
+
+    <div class="form-group">
+      <input type="text" formControlName="platforms" id="platforms" class="mr-2">
+      <label for="platforms">Platforms</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary" *ngIf="isAdd" [disabled]="!campaignForm.valid || isSubmitted">Add</button>
+    <button type="submit" class="btn btn-primary" *ngIf="isEdit" [disabled]="!campaignForm.valid || isSubmitted">Save</button>
+  </form>
+
+</div>
