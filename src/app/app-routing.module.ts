@@ -24,8 +24,10 @@ import { UserPersonalComponent } from './user-personal/user-personal.component';
 const routes: Routes = [
   { path: '', component: SecurityComponent },
   { path: 'home', component: HomeComponent },
+
   { path: 'campagnes', component: CampagneListComponent },
-  { path: 'campagnes/form', component: CampaignFormComponent },
+  { path: 'newcampaign', component: CampaignFormComponent },
+  { path: 'editcampaign/:id', component: CampaignFormComponent },
 
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard], canActivateChild: [AuthGuard]},
 

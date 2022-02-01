@@ -32,12 +32,12 @@ export class CampagneListComponent implements OnInit, OnDestroy {
 
   add() {
     //Navigate to form in add mode
-    this.router.navigate(['campagnes/form'], {state: {mode: 'add'}});
+    this.router.navigate(['newcampaign']);
   }
 
   edit(id: number) {
     //Navigate to form in edit mode
-    this.router.navigate(['campagnes/form'], {state: {id: id, mode: 'edit'}});
+    this.router.navigate(['editcampaign/' + id]);
   }
 
   delete(id: number) {
