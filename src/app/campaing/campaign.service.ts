@@ -15,14 +15,14 @@ export class CampaignService {
   }
 
   getCampaignById(id: number): Observable<Campaign> {
-    return this.httpClient.get<Campaign>("http://c3poapi.azurewebsites.net/campaigns" + id);
+    return this.httpClient.get<Campaign>("http://c3poapi.azurewebsites.net/campaigns/" + id);
   }
 
-  postCampaign(category: Campaign): Observable<Campaign> {
+  postCampaign(campaign: Campaign): Observable<Campaign> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
 
-    return this.httpClient.post<Campaign>("http://c3poapi.azurewebsites.net/campaigns", category, {headers: headers});
+    return this.httpClient.post<Campaign>("http://c3poapi.azurewebsites.net/campaigns", campaign, {headers: headers});
   }
 
   putCampaign(id:number, category: Campaign): Observable<Campaign> {
