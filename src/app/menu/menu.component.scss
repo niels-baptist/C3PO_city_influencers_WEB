@@ -1,0 +1,159 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav{
+  position: fixed;
+  left: 20px;
+  top: 25%;
+  bottom: 35%;
+  width: 70px;
+  border-radius: 10px;
+  box-sizing: initial;
+  border-left: 5px solid #4dd0e1;
+  background: #4dd0e1;
+  transition: width 0.5s;
+  overflow-x: hidden;
+}
+
+.nav.active{
+  width: 250px;
+}
+
+.nav ul{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-left: 5px;
+  padding-top: 40px;
+}
+
+.nav ul li{
+  position: relative;
+  list-style-type: none;
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.nav ul li.active{
+  background: #fff;
+}
+
+.nav ul li b:nth-child(1){
+  position: absolute;
+  top: -20px;
+  height: 20px;
+  width: 100%;
+  background: #fff;
+  display: none;
+}
+
+.nav ul li b:nth-child(1)::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-bottom-right-radius: 20px;
+  background: #4dd0e1;
+}
+
+.nav ul li b:nth-child(2){
+  position: absolute;
+  bottom: -20px;
+  height: 20px;
+  width: 100%;
+  background: #fff;
+  display: none;
+}
+
+.nav ul li b:nth-child(2)::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-top-right-radius: 20px;
+  background: #4dd0e1;
+}
+
+.nav ul li.active b:nth-child(1),
+.nav ul li.active b:nth-child(2){
+  display: block;
+}
+
+.nav ul li a{
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: #fff;
+}
+
+.nav ul li.active a{
+ color: #333;
+}
+
+.nav ul li a .icon{
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 70px;
+  text-align: center;
+}
+
+.nav ul li a .icon i{
+  font-size: 1.5em;
+}
+
+.nav ul li a .title{
+  position: relative;
+  display: block;
+  padding-left: 10px;
+  height: 60px;
+  line-height: 60px;
+  white-space: normal;
+}
+
+.toggle{
+  position: fixed;
+  top: 20%;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  background: #4dd0e1;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggle.active{
+  background: #ff4d89;
+}
+
+.toggle i{
+  position: absolute;
+  color: #fff;
+  font-size: 34px;
+  display: none;
+}
+
+.toggle i.open,
+.toggle.active i.close{
+  display: block;
+}
+
+.toggle i.close,
+.toggle.active i.open {
+  display: none;
+}
