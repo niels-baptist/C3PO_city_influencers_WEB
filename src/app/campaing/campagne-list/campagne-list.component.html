@@ -12,7 +12,7 @@
     <th scope="col">Campaigne details</th>
     <th scope="col">Platform</th>
     <th scope="col">Voucher</th>
-    <th scope="col">Datum</th>
+    <th scope="col">Einddatum</th>
     <th scope="col">Status</th>
   </tr>
   </thead>
@@ -26,10 +26,10 @@
     </td>
 
     <td>
-      <span *ngFor="let platform of camp.platforms" class="platform">
+      <span *ngFor="let platform of camp.platforms" class="platform mr-">
         {{platform.name.toLowerCase()}}
-        <i class="fab fa-{{platform.name.toLowerCase()}} fa-2x"></i>
-        <!-- <i class="fab fa-tiktok"></i>
+        <!-- <i class="fab fa-{{platform.name.toLowerCase()}} fa-2x"></i>
+        <i class="fab fa-tiktok"></i>
         <i class="fab fa-tiktok"></i> -->
       </span>
     </td>

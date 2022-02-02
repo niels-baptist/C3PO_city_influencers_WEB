@@ -25,14 +25,14 @@ export class CampaignService {
     return this.httpClient.post<Campaign>("http://c3poapi.azurewebsites.net/campaigns", campaign, {headers: headers});
   }
 
-  putCampaign(id:number, category: Campaign): Observable<Campaign> {
+  putCampaign(campaign: Campaign): Observable<Campaign> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
 
-    return this.httpClient.put<Campaign>("http://c3poapi.azurewebsites.net/campaigns" + id, category, {headers: headers});
+    return this.httpClient.put<Campaign>("http://c3poapi.azurewebsites.net/campaigns", campaign);
   }
 
   deleteCampaign(id: number): Observable<Campaign> {
-    return this.httpClient.delete<Campaign>("http://c3poapi.azurewebsites.net/campaigns" + id);
+    return this.httpClient.delete<Campaign>("http://c3poapi.azurewebsites.net/campaigns/" + id);
   }
 }

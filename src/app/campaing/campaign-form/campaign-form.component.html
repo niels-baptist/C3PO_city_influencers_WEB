@@ -9,6 +9,11 @@
   </div> -->
   <form (ngSubmit)="onSubmit()" [formGroup]="campaignForm">
     <div class="form-group">
+      <label for="employee">Employee</label>
+      <input type="text" class="form-control" id="employee" name="employee" placeholder="employee" formControlName="employee" minlength="2">
+    </div>
+
+    <div class="form-group">
       <label for="name">Naam</label>
       <input type="text" class="form-control" id="name" name="name" placeholder="Name" formControlName="name" minlength="2">
     </div>
@@ -45,30 +50,52 @@
       </select>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="campaignStatus">Campagnestatus</label>
       <input type="text" formControlName="campaignStatus" id="campaignStatus" class="mr-2 form-control">
 
-    </div>
+    </div> -->
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <p>Domein</p>
       <div *ngFor="let domain of domainsList">
         <div>
-          <input unchecked type="checkbox" formControlName="domains" id="domains" class="mr-2">
+          <input  type="checkbox" formControlName="domains" id="domains" class="mr-2">
           <label for="domains">{{domain.name}}</label>
         </div>
       </div>
-    </div>
+    </div> -->
 
-    <div class="form-group">
+    <!-- <div class="form-group">
+      <p>Social media platform</p>
+      <div *ngFor="let platform of platformsList"  formControlName="platforms">
+        <div *ngIf="platform in platforms">
+          <input checked type="checkbox" formControlName="platform" id="platform" class="mr-2">
+          <label >{{platform.name}}</label>
+        </div>
+        <div  *ngIf="isAdd">
+          <input type="checkbox" id="platform" class="mr-2">
+          <label >{{platform.name}}</label>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- <div class="form-group">
       <label for="platforms">Platforms</label>
       <input type="text" formControlName="platforms" id="platforms" class="mr-2 form-control">
 
+    </div> -->
+
+    <div class="form-group">
+      <label for="location">Platforms</label>
+      <select  class="custom-select" formControlName="platforms" id="platforms" name="platforms">
+        <!-- <option selected value="0">Kies een locatie</option> -->
+        <option selected *ngFor="let platform of platformsList" [ngValue]="platform">{{platform.name}}</option>
+      </select>
     </div>
 
-    <button type="submit" class="btn btn-primary" *ngIf="isAdd" [disabled]="!campaignForm.valid || isSubmitted">Add</button>
-    <button type="submit" class="btn btn-primary" *ngIf="isEdit" [disabled]="!campaignForm.valid || isSubmitted">Save</button>
+    <button type="submit" class="btn btn-primary" *ngIf="isAdd" [disabled]="!campaignForm.valid || isSubmitted">Add campaign</button>
+    <button type="submit" class="btn btn-primary" *ngIf="isEdit" [disabled]="!campaignForm.valid">Save campaign</button>
   </form>
 
 </div>

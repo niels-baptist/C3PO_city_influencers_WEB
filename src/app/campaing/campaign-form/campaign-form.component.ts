@@ -11,6 +11,9 @@ import { DatePipe } from '@angular/common';
 import { Domain } from '../../domain/domain';
 import { DomainService } from 'src/app/domain/domain.service';
 
+import { Platform } from 'src/app/shared/platform';
+import { PlatformService } from 'src/app/shared/platform.service';
+
 
 @Component({
   selector: 'app-campaign-form',
@@ -36,11 +39,15 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
   domainsList: Domain[] = [];
   domainsList$: Subscription = new Subscription();
 
+  platformsList: Platform[] = [];
+  platformsList$: Subscription = new Subscription();
+
   // platformList: Platform[] = [];
   // platformList$: Subscription = new Subscription();
 
   // reactive form
   campaignForm = new FormGroup({
+    employee: new FormControl(''),
     name: new FormControl(''),
     description: new FormControl(''),
     fotoUrl: new FormControl(''),
@@ -57,7 +64,8 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     public datePipe: DatePipe,
     private LocationService: LocationService,
-    private domainService: DomainService) {
+    private domainService: DomainService,
+    private platformService: PlatformService) {
 
       this.isAdd = this.router.url === '/newcampaign';
       this.isEdit = !this.isAdd;
@@ -89,6 +97,7 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
           this.campaignForm.patchValue({
             campaignId: result.campaignId,
 
+            employee: result.employee,
             name: result.name,
             description: result.description,
             fotoUrl: result.fotoUrl,
@@ -103,6 +112,8 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
             platforms: result.platforms,
           });
         });
+
+        console.log()
       }
       else{
         console.log("Error: no campaignId");
@@ -117,6 +128,11 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
     // get domains
     this.domainsList$ = this.domainService.getDomains().subscribe(result => {
       this.domainsList = result;
+    });
+
+    // get domains
+    this.platformsList$ = this.platformService.getPlatforms().subscribe(result => {
+      this.platformsList = result;
     });
   }
 
@@ -142,7 +158,7 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
       });
     }
     if (this.isEdit) {
-      this.putCampaign$ = this.campaignService.putCampaign(this.campaignId, this.campaignForm.value).subscribe(result => {
+      this.putCampaign$ = this.campaignService.putCampaign(this.campaignForm.value).subscribe(result => {
         //all went well
         this.router.navigateByUrl("/campagnes");
       },
