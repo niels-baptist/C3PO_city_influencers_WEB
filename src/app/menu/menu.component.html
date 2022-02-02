@@ -1,44 +1,53 @@
-<nav *ngIf="authService.isLoggedIn()"class="navbar navbar-expand-lg navbar-light bg-light">
-
-  <a class="navbar-brand" *ngIf="authService.isLoggedIn()" routerLink="/">City Influencers</a>
-  <a class="navbar-brand" *ngIf="!authService.isLoggedIn()">City Influencers</a>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-
-        <li class="nav-item" *ngIf="authService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-          <a class="nav-link" routerLink="/dashboard">Dashboard</a>
-      </li>
-
-        <li class="nav-item" *ngIf="authService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-            <a class="nav-link" routerLink="/influencers">Influencers</a>
-        </li>
-
-        <li class="nav-item" *ngIf="authService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-          <a class="nav-link" routerLink="/campagnes">Campagnes</a>
-        </li>
-
-        <li class="nav-item" *ngIf="authService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-          <a class="nav-link" routerLink="/PersonalUser">User</a>
-
-        </li>
-    </ul>
-
-    <ul class="navbar-nav ml-auto">
-      <li *ngIf="!authService.isLoggedIn()" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <a class="nav-link" routerLink="/login">Login</a>
-      </li>
-      <!-- <li *ngIf="!authService.isLoggedIn()" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <a class="nav-link" routerLink="/register">Register</a>
-      </li> -->
-      <li *ngIf="authService.isLoggedIn()" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <a class="nav-link" routerLink="/logout">Logout</a>
-      </li>
-    </ul>
-</div>
-</nav>
+<div class="nav-body">
+  <div class="container">
+    <div class="nav">
+        <ul>
+            <li class="list" *ngIf="authService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <b></b>
+                <b></b>
+                <a routerLink="/dashboard" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <span class="icon"><i class="fas fa-chart-line"></i></span>
+                    <span class="title"> Dashboard</span>
+                </a>
+            </li>
+            <li *ngIf="authService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="list">
+                <b></b>
+                <b></b>
+                <a routerLink="/influencers" data-toggle="tooltip" data-placement="right" title="Influencers">
+                    <span class="icon"><i class="fas fa-mobile"></i></span>
+                    <span class="title"> Influencers</span>
+                </a>
+            </li>
+            <li *ngIf="authService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="list">
+                <b></b>
+                <b></b>
+                <a routerLink="/campagnes" data-toggle="tooltip" data-placement="right" title="Campagnes">
+                    <span class="icon"><i class="fas fa-hashtag"></i></span>
+                    <span class="title"> Campagnes</span>
+                </a>
+            </li>
+            <li *ngIf="authService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="list">
+                <b></b>
+                <b></b>
+                <a routerLink="/PersonalUser" data-toggle="tooltip" data-placement="right" title="Gebruikers">
+                    <span class="icon"><i class="fas fa-users"></i></span>
+                    <span class="title"> Users</span>
+                </a>
+            </li>
+            <li class="list" *ngIf="authService.isLoggedIn()" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <b></b>
+                <b></b>
+                <a routerLink="/logout" data-toggle="tooltip" data-placement="right" title="Uitloggen">
+                    <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+                    <span class="title"> Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+  </div>
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
+<div>
