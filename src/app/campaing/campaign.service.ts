@@ -22,7 +22,7 @@ export class CampaignService {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
 
-    return this.httpClient.post<Campaign>("http://c3poapi.azurewebsites.net/campaigns", campaign, {headers: headers});
+    return this.httpClient.post<Campaign>("http://c3poapi.azurewebsites.net/campaigns", campaign);
   }
 
   putCampaign(campaign: Campaign): Observable<Campaign> {

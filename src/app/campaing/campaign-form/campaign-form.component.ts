@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Campaign} from '../campaign';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {CampaignService} from '../campaign.service';
 
 import { Location } from './../../location/location';
@@ -13,6 +13,9 @@ import { DomainService } from 'src/app/domain/domain.service';
 
 import { Platform } from 'src/app/shared/platform';
 import { PlatformService } from 'src/app/shared/platform.service';
+
+import { UserPersonal } from 'src/app/user-personal/user-personal';
+import { UserPersonalService } from 'src/app/user-personal/user-personal.service';
 
 
 @Component({
@@ -32,6 +35,9 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
   postCampaign$: Subscription = new Subscription();
   putCampaign$: Subscription = new Subscription();
 
+  campaignsList: Campaign[] = [];
+  campaignsList$: Subscription = new Subscription();
+
   locations: Location[] = [];
   locations$: Subscription = new Subscription();
   locationId: number=0;
@@ -42,11 +48,14 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
   platformsList: Platform[] = [];
   platformsList$: Subscription = new Subscription();
 
+  // employee1: UserPersonal[] = [];
+
   // platformList: Platform[] = [];
   // platformList$: Subscription = new Subscription();
 
   // reactive form
   campaignForm = new FormGroup({
+    campaignId: new FormControl(''),
     employee: new FormControl(''),
     name: new FormControl(''),
     description: new FormControl(''),
@@ -65,7 +74,8 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
     public datePipe: DatePipe,
     private LocationService: LocationService,
     private domainService: DomainService,
-    private platformService: PlatformService) {
+    private platformService: PlatformService,
+    private userPersonalService: UserPersonalService) {
 
       this.isAdd = this.router.url === '/newcampaign';
       this.isEdit = !this.isAdd;
@@ -109,11 +119,14 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
 
             campaignStatus: result.campaignStatus,
             domains: result.domains,
+
             platforms: result.platforms,
+            // platformsId: result.platforms.social_media_platformId
+
           });
         });
 
-        console.log()
+
       }
       else{
         console.log("Error: no campaignId");
@@ -133,7 +146,12 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
     // get domains
     this.platformsList$ = this.platformService.getPlatforms().subscribe(result => {
       this.platformsList = result;
+      console.log(this.platformsList[0])
     });
+
+    this.campaignsList$ = this.campaignService.getCampaigns().subscribe(result => this.campaignsList = result);
+
+    console.log("aantal campagnes: " + this.campaignsList.length);
   }
 
   ngOnDestroy(): void {
@@ -149,21 +167,78 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
 
   submitData(): void {
     if (this.isAdd) {
+
+      console.log(this.userPersonalService.getUserById(1))
+
+
+
+      this.campaignForm.patchValue({
+        campaignId: this.campaignsList.length,
+        employee: {
+          "employeeId": 1,
+          "employee_role": {
+            "roleId": 1,
+            "name": "admin"
+          },
+          "user": {
+            "userId": 5,
+            "location": {
+              "locationId": 5,
+              "name": "Heusden-Zolder",
+              "postalCode": "3550"
+            },
+            "email": "Kelly.Lemmens@heusdenzolder.be",
+            "password": "changeme",
+            "firstname": "Kelly",
+            "lastname": "Lemmens",
+            "userName": "kellylemmens",
+            "birthdate": "1980-02-20T00:00:00.000+00:00"
+          }
+        },
+        domains: this.domainsList[0],
+        campaignStatus: {
+          "statusId": 2,
+          "name": "open"
+        }
+
+      });
+
       this.postCampaign$ = this.campaignService.postCampaign(this.campaignForm.value).subscribe(result => {
         //all went well
         this.router.navigateByUrl("/campagnes");
       },
         error => {
         this.errorMessage = error.message;
+
+        // debug
+        console.log(this.campaignForm.value)
+        console.log("aantal campagnes: " + this.campaignsList.length);
       });
     }
     if (this.isEdit) {
+      this.platformsList.splice(3)
+      this.campaignForm.patchValue({
+
+
+        platforms: this.platformsList,
+        // platformsId: result.platforms.social_media_platformId
+
+      });
+
       this.putCampaign$ = this.campaignService.putCampaign(this.campaignForm.value).subscribe(result => {
+
+        // debug
+        console.log(this.campaignForm.value)
+
         //all went well
         this.router.navigateByUrl("/campagnes");
       },
         error => {
+
         this.errorMessage = error.message;
+
+        // debug
+        console.log(this.campaignForm.value)
       });
     }
   }

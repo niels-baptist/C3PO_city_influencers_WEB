@@ -8,9 +8,14 @@
     <p>Form Status: {{ campaignForm.campaign }}</p>
   </div> -->
   <form (ngSubmit)="onSubmit()" [formGroup]="campaignForm">
-    <div class="form-group">
+
+    <div class="form-group d-none">
       <label for="employee">Employee</label>
       <input type="text" class="form-control" id="employee" name="employee" placeholder="employee" formControlName="employee" minlength="2">
+    </div>
+    <div class="form-group d-none">
+      <label for="employee">ID</label>
+      <input type="text" class="form-control" id="campaignId" name="campaignId" placeholder="campaignId" formControlName="campaignId" minlength="2" value="campaignId">
     </div>
 
     <div class="form-group">
@@ -90,11 +95,12 @@
       <label for="location">Platforms</label>
       <select  class="custom-select" formControlName="platforms" id="platforms" name="platforms">
         <!-- <option selected value="0">Kies een locatie</option> -->
+
         <option selected *ngFor="let platform of platformsList" [ngValue]="platform">{{platform.name}}</option>
       </select>
     </div>
 
-    <button type="submit" class="btn btn-primary" *ngIf="isAdd" [disabled]="!campaignForm.valid || isSubmitted">Add campaign</button>
+    <button type="submit" class="btn btn-primary" *ngIf="isAdd" [disabled]="!campaignForm.valid">Add campaign</button>
     <button type="submit" class="btn btn-primary" *ngIf="isEdit" [disabled]="!campaignForm.valid">Save campaign</button>
   </form>
 

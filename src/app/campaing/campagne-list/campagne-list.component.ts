@@ -23,6 +23,7 @@ export class CampagneListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getCampaigns();
+    console.log("alle campagnes: " + this.campaigns.length)
   }
 
   ngOnDestroy(): void {
