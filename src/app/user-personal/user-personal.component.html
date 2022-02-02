@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h1 class="p-5 text-center">Gebruikers beheren</h1>
+      <h1>Gebruikers beheren</h1>
     </div>
   </div>
   <div class="row mt-3 mb-3">
@@ -24,7 +24,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr scope="row" *ngFor="let pu of personalUsers">
+      <tr scope="row" *ngFor="let pu of personalUsers | paginate: { itemsPerPage: 10, currentPage:p}">
         <td>{{pu.userId}}</td>
         <td>{{pu.location.name}}</td>
         <td>{{pu.email}}</td>
@@ -38,4 +38,7 @@
       </tr>
     </tbody>
   </table>
+  <div id="pagination">
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+  </div>
 </div>

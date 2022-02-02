@@ -27,9 +27,7 @@ export class SecurityComponent implements OnInit {
   isRegister: boolean = false;
   isLogout: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {
-
-  }
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     switch (this.router.url) {
@@ -43,10 +41,6 @@ export class SecurityComponent implements OnInit {
         this.router.navigate(['']);
         break;
       }
-      // case '/register': {
-      //   this.isRegister = true;
-      //   break;
-      // }
       default: {
         this.isLogin = true;
         break;
@@ -55,45 +49,26 @@ export class SecurityComponent implements OnInit {
   }
 
   onSubmit(): void {
-
-    //debug
-    //console.log("voor isLogin:" + this.user.username + " - " + this.user.password);
-
-this.isSubmitted = true;
-
-//debug
-// alert("voor isLogin:" + this.user.username + " - " + this.user.password);
-
-if (this.isLogin) {
-  this.authService.authenticate(this.user.username, this.user.password)
-  .subscribe(result => {this.errorMessage = '';
-
-    //debug
-    // alert("voor if (result == true):" + this.user.username + " - " + this.user.password);
-
-    if (result == true){
-      // save access token localstorage
-      localStorage.setItem('userName', this.user.username);
-      localStorage.setItem('password', this.user.password);
-
-      //debug
-      // alert("na localStorage.setItem():" + this.user.username + " - " + this.user.password);
-
-      this.router.navigate(['/dashboard']);
-    } else {
-      this.errorMessage = 'Email/password not correct!';
-      this.isSubmitted = false;
+    this.isSubmitted = true;
+    if (this.isLogin) {
+      this.authService.authenticate(this.user.username, this.user.password)
+      .subscribe(result => {this.errorMessage = '';
+        if (result == true){
+          localStorage.setItem('userName', this.user.username);
+          localStorage.setItem('password', this.user.password);
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.errorMessage = 'Email/password not correct!';
+          this.isSubmitted = false;
+        }
+      }
+      , error => {
+        this.errorMessage = 'Email/password not correct!';
+        this.isSubmitted = false;
+        this.router.navigate(['']);
+      });
+      } else {
+        alert('work in progress');
     }
   }
-  , error => {
-    this.errorMessage = 'Email/password not correct!';
-    this.isSubmitted = false;
-    // alert("Error tijdens submit")
-    this.router.navigate(['']);
-  }
-  );
-} else {
-  alert('work in progress');
-}
-}
 }

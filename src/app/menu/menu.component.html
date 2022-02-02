@@ -1,7 +1,12 @@
-<div class="nav-body">
+<div class="nav-body" *ngIf="authService.isLoggedIn()">
   <div class="container">
     <div class="nav">
         <ul>
+          <li class="list">
+            <b></b>
+            <b></b>
+            <img class="w-100" id="LogoNav" src="./assets/images/ci-logo-nobg.png" alt="Logo City Influencers">
+          </li>
             <li class="list" *ngIf="authService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 <b></b>
                 <b></b>
@@ -29,7 +34,7 @@
             <li *ngIf="authService.isLoggedIn()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="list">
                 <b></b>
                 <b></b>
-                <a routerLink="/PersonalUser" data-toggle="tooltip" data-placement="right" title="Gebruikers">
+                <a routerLink="/PersonalUser" id="usernavitem" data-toggle="tooltip" data-placement="right" title="Gebruikers">
                     <span class="icon"><i class="fas fa-users"></i></span>
                     <span class="title"> Users</span>
                 </a>
@@ -42,6 +47,14 @@
                     <span class="title"> Logout</span>
                 </a>
             </li>
+            <li class="list" *ngIf="!authService.isLoggedIn()" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+              <b></b>
+              <b></b>
+              <a routerLink="/login" data-toggle="tooltip" data-placement="right" title="Inloggen">
+                  <span class="icon"><i class="fas fa-sign-in-alt"></i></span>
+                  <span class="title"> Login</span>
+              </a>
+          </li>
         </ul>
     </div>
   </div>

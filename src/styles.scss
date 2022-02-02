@@ -8,15 +8,36 @@
 
 //custom code/partials
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  min-height: 110vh;
+}
+
 .btn-blue{
-  background-color: #34b6c6;
-  border: #34b6c6;
+  background-color: #4dd0e1;
+  border: #4dd0e1;
   color: #fff;
 }
 
 .text-blue{
   color: #34b6c6;
   font-weight: bold;
+}
+
+pagination-controls  {
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+
+h1{
+  padding-bottom: 20px;
+  padding-top: 0;
+  margin-top: 0;
+  text-align: center;
 }

@@ -11,23 +11,28 @@ import { ActivatedRoute, CanActivateChild } from '@angular/router';
 
 @Component({
   templateUrl: './user-personal.component.html',
-  styleUrls: ['./user-personal.component.scss']
+  styleUrls: ['./user-personal.component.scss'],
+  template: `
+    <ul>
+      <li *ngFor="let item of collection | paginate: { itemsPerPage: 10, currentPage: p }"> ... </li>
+    </ul>
+
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    `
 })
 export class UserPersonalComponent implements OnInit {
-   //declaring the variables
-  //  personalUsers$: Observable<UserPersonal[]> = new Observable<UserPersonal[]>();
-  //  lengthPersonalUsers$: number=0;
    personalUsers: UserPersonal[] = [];
    personalUsers$: Subscription = new Subscription();
    deleteUser$: Subscription = new Subscription();
    errorMessage: string = '';
+   p: number=1;
 
-   //retrieving the variables from the service
    constructor(private userPersonalService:UserPersonalService,private router :Router) { }
 
     ngOnInit(): void {
         this.getUsers();
-        
+        this.p = 1;
+
     }
 
     ngOnDestroy(): void {
