@@ -32,6 +32,7 @@
     "jquery": "^3.6.0",
     "ng2-charts": "^3.0.8",
     "ng2-search-filter": "^0.5.1",
+    "ngx-pagination": "^5.1.1",
     "rxjs": "~6.6.0",
     "save": "^2.4.0",
     "tslib": "^2.1.0",

@@ -37,6 +37,8 @@ export class UserPersonalFormComponentComponent implements OnInit, OnDestroy {
     lastname: new FormControl(''),
     birthdate: new FormControl(''),
     userName: new FormControl(''),
+    locationId: new FormControl(''),
+    locationName: new FormControl('')
   });
 
   constructor(private router: Router, public datePipe: DatePipe,
@@ -58,6 +60,7 @@ export class UserPersonalFormComponentComponent implements OnInit, OnDestroy {
             userId: result.userId,
             location: result.location,
             locationId: result.location.locationId,
+            locationName: result.location.name,
             email: result.email,
             password: result.password,
             firstname: result.firstname,

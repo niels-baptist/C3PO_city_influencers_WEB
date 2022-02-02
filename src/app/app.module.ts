@@ -21,7 +21,7 @@ import { UserPersonalComponent } from './user-personal/user-personal.component';
 import { UserPersonalFormComponentComponent } from './user-personal/user-personal-form/user-personal-form.component';
 import { DatePipe } from '@angular/common';
 import {RouterModule} from '@angular/router';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,8 @@ import {RouterModule} from '@angular/router';
     FormsModule,
     ReactiveFormsModule,
     SecurityModule,
-    RouterModule
+    RouterModule,
+    NgxPaginationModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],

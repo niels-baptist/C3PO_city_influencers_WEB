@@ -1,23 +1,21 @@
-<div class="container">
+<div class="container" onload="myfunction()">
   <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
     {{errorMessage}}
   </div>
-  <div class="row">
-    <div class="col-12 text-center">
-      <h1 class="p-5">Een gebruiker toevoegen of wijzigen</h1>
-    </div>
-  </div>
-  <form (ngSubmit)="onSubmit()" [formGroup]="personaluserForm">
 
+  <h1>Een gebruiker toevoegen of wijzigen</h1>
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="personaluserForm">
     <div class="form-group" *ngIf="isEdit">
       <label for="userId">ID</label>
       <input readonly class="form-control" type="userId" id="userId" name="userId" placeholder="ID" formControlName="userId">
     </div>
 
     <div class="form-group">
-      <label for="location">Location</label>
-      <select  class="custom-select" formControlName="location" id="location" name="location">
-        <option selected *ngFor="let location of locations" [ngValue]="location">{{location.name}}</option>
+      <label for="location">Location</label> <br>
+      <input readonly type="text" class="form-control" formControlName="locationName" type="locationName" id="locationName" name="locationName">
+      <select class="custom-select" formControlName="locationId" id="locationId" name="locationId">
+        <option *ngFor="let location of locations" [ngValue]="location">{{location.name}}</option>
       </select>
     </div>
 
@@ -51,7 +49,13 @@
       <input type="password" class="form-control" id="password" name="password" formControlName="password" minlength="5">
     </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="!personaluserForm.valid || isSubmitted" *ngIf="isAdd">Toevoegen</button>
-    <button type="submit" class="btn btn-primary" [disabled]="!personaluserForm.valid || isSubmitted" *ngIf="isEdit">Opslaan</button>
+    <button type="submit" class="btn btn-blue" [disabled]="!personaluserForm.valid || isSubmitted" *ngIf="isAdd">Toevoegen</button>
+    <button type="submit" class="btn btn-blue" [disabled]="!personaluserForm.valid || isSubmitted" *ngIf="isEdit">
+      <i class="fas fa-save"></i>&nbsp;Opslaan
+    </button>
+    &nbsp;
+    <a href="/PersonalUser" class="btn btn-dark">
+      <i class="fas fa-backspace"></i>&nbsp;Terug
+    </a>
   </form>
 </div>

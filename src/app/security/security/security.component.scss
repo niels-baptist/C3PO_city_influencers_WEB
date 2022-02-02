@@ -1,7 +1,7 @@
 .body, .container-fluid{
-  background-color: #34b6c6;
-  height: 200vh;
-  position: fixed;
+  background-color: #fff;
+
+  position: relative;
 }
 
 img{
@@ -17,12 +17,12 @@ form{
   width: 25%;
   margin: 0 auto;
   border-radius: 10%;
-  margin-top: 10%;
   padding: 50px;
+  //drop shadow in 4dd0e1
+  box-shadow: 5px 10px 1px #4dd0e1;
 }
 
 label{
-  //make text cursive;
   font-style: italic;
 }
 

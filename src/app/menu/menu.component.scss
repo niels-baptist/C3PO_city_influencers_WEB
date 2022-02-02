@@ -8,7 +8,7 @@
   position: fixed;
   left: 20px;
   top: 25%;
-  bottom: 35%;
+  bottom: 25%;
   width: 70px;
   border-radius: 10px;
   box-sizing: initial;
@@ -16,6 +16,7 @@
   background: #4dd0e1;
   transition: width 0.5s;
   overflow-x: hidden;
+  border: #fff 1px solid;
 }
 
 .nav.active{
