@@ -35,9 +35,6 @@
     <div class="form-group">
       <label for="fotoUrl">FotoUrl</label>
       <input type="text" formControlName="fotoUrl" id="fotoUrl" class="mr-2 form-control"  >
-
-      <!-- <img *ngIf="isEdit" src="'{{currentCampaign.fotoUrl}}'" alt="">
-      <p>//{{currentCampaign.fotoUrl}}//</p> -->
     </div>
 
     <div class="form-group">
@@ -62,22 +59,6 @@
       </select>
     </div>
 
-    <!-- <div class="form-group">
-      <label for="campaignStatus">Campagnestatus</label>
-      <input type="text" formControlName="campaignStatus" id="campaignStatus" class="mr-2 form-control">
-
-    </div> -->
-<!--
-    <div class="form-group">
-      <p>Domein</p>
-      <div *ngFor="let domain of domainsList">
-        <div>
-          <input  type="checkbox" formControlName="domains" id="domains" class="mr-2">
-          <label for="domains">{{domain.name}}</label>
-        </div>
-      </div>
-    </div> -->
-
     <div class="form-group">
       <label for="domains">Domein</label>
       <!-- <input *ngIf="isEdit" readonly type="text" class="form-control" formControlName="domainName" type="domainName" id="domainName" name="domainName"> -->
@@ -87,26 +68,6 @@
         <option selected *ngFor="let domain of domainsList" [ngValue]="domain">{{domain.name}}</option>
       </select>
     </div>
-
-    <!-- <div class="form-group">
-      <p>Social media platform</p>
-      <div *ngFor="let platform of platformsList"  formControlName="platforms">
-        <div *ngIf="platform in platforms">
-          <input checked type="checkbox" formControlName="platform" id="platform" class="mr-2">
-          <label >{{platform.name}}</label>
-        </div>
-        <div  *ngIf="isAdd">
-          <input type="checkbox" id="platform" class="mr-2">
-          <label >{{platform.name}}</label>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- <div class="form-group">
-      <label for="platforms">Platforms</label>
-      <input type="text" formControlName="platforms" id="platforms" class="mr-2 form-control">
-
-    </div> -->
 
     <div class="form-group">
       <label for="location">Platforms</label>

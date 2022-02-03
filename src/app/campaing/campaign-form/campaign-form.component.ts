@@ -54,11 +54,6 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
   platformsList: Platform[] = [];
   platformsList$: Subscription = new Subscription();
 
-  // employee1: UserPersonal[] = [];
-
-  // platformList: Platform[] = [];
-  // platformList$: Subscription = new Subscription();
-
   // reactive form
   campaignForm = new FormGroup({
     campaignId: new FormControl(''),
@@ -89,24 +84,8 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
       this.isAdd = this.router.url === '/newcampaign';
       this.isEdit = !this.isAdd;
     }
-    // if (this.campaignId != null && this.campaignId > 0) {
-    //   this.campaign$ = this.campaignService.getCampaignById(this.campaignId).subscribe(result => {
-    //     this.campaignForm.setValue({
-    //       name: result.name,
-    //       description: result.description,
-    //       fotoUrl: result.fotoUrl,
-    //       startDate: result.startDate,
-    //       endDate: result.endDate,
-    //       location: result.location,
-    //       campaignStatus: result.campaignStatus,
-    //       domains: result.domains,
-    //       platforms: result.platforms,
-    //     });
-    //   });
-    // }
 
-
-  ngOnInit(): void {
+    ngOnInit(): void {
     // get campaign if in edit
     if (this.isEdit) {
       const campaignId = this.route.snapshot.paramMap.get('id');
@@ -133,8 +112,6 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
 
             platforms: result.platforms,
             platformName: result.platforms
-            // platformsId: result.platforms.social_media_platformId
-
           });
         });
 
@@ -163,7 +140,6 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
 
     this.campaignsList$ = this.campaignService.getCampaigns().subscribe(result => this.campaignsList = result);
     this.campaignService.getCampaignById(this.campaignId)
-    // console.log("aantal campagnes: " + this.campaignsList.length);
   }
 
   ngOnDestroy(): void {
@@ -187,13 +163,8 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
         "url": "https://twitter.com"
       });
 
-      // console.log(this.userPersonalService.getUserById(1))
-
-
-
       this.campaignForm.patchValue({
         campaignId: (this.campaignsList.length + 100),
-        // employee: this.userPersonalService.getUsersByUsername(JSON.parse(localStorage.getItem("userName"))),
         employee: {
           "employeeId": 1,
           "employee_role": {
@@ -256,7 +227,6 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
 
         platforms: this.platformsList,
         domains: this.domainsList
-        // platformsId: result.platforms.social_media_platformId
 
       });
 

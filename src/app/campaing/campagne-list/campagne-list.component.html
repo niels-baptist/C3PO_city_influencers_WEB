@@ -1,6 +1,4 @@
 <div class="container">
-<!-- <h1>Campagnes</h1>
-<p>This is the campagne-page of our City Influencers app!</p> -->
 
 <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
   {{errorMessage}}
@@ -34,18 +32,14 @@
 
     <td>
       <span *ngFor="let platform of camp.platforms" class="platform mr-">
+        <!-- {{platform.name}} -->
         {{platform.name.toLowerCase()}}
-        <!-- <i class="fab fa-{{platform.name.toLowerCase()}} fa-2x"></i>
-        <i class="fab fa-tiktok"></i>
-        <i class="fab fa-tiktok"></i> -->
       </span>
     </td>
 
     <td>€ 50</td>
     <td>{{camp.endDate | date:'shortDate'}}</td>
     <td>{{camp.campaignStatus.name}}</td>
-
-    <!-- <td><i *ngIf="camp.active" class="fas fa-check"></i><i *ngIf="!camp.active" class="fas fa-times"></i></td> -->
     <td>
       <button type="button" class="btn btn-lighet" (click)="edit(camp.campaignId)"><i class="fas fa-edit"></i></button>
       <button type="button" class="btn btn-dark" (click)="delete(camp.campaignId)"><i class="far fa-trash-alt"></i></button>
