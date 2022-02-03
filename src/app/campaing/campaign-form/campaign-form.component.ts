@@ -173,7 +173,7 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
 
 
       this.campaignForm.patchValue({
-        campaignId: this.campaignsList.length,
+        campaignId: (this.campaignsList.length + 100),
         employee: {
           "employeeId": 1,
           "employee_role": {
@@ -195,11 +195,12 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
             "birthdate": "1980-02-20T00:00:00.000+00:00"
           }
         },
-        domains: this.domainsList[0],
+        domains: this.domainsList,
         campaignStatus: {
           "statusId": 2,
           "name": "open"
-        }
+        },
+        platforms: this.platformsList
 
       });
 
