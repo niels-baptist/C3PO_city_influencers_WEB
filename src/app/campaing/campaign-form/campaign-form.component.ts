@@ -1,13 +1,17 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Campaign} from '../campaign';
+
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Observable, Subscription} from 'rxjs';
+
+import { DatePipe } from '@angular/common';
+
+import {Campaign} from '../campaign';
 import {CampaignService} from '../campaign.service';
 
 import { Location } from './../../location/location';
 import { LocationService } from '../../location/location.service';
-import { DatePipe } from '@angular/common';
+
 import { Domain } from '../../domain/domain';
 import { DomainService } from 'src/app/domain/domain.service';
 
@@ -35,6 +39,8 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
   postCampaign$: Subscription = new Subscription();
   putCampaign$: Subscription = new Subscription();
 
+  currentCampaign: Campaign={campaignId: 0,employee: {employeeId: 0,employee_role: {roleId: 0,name: ''},user: {userId: 0,location: {locationId: 0,name: '',postalCode: ''},email: '',password: '',firstname: '',lastname: '',userName: '',birthdate: ''}},location: {locationId: 0,name: '',postalCode: ''},campaignStatus: {statusId: 0,name: ''},submissions: [{submissionId: 0,url: '',description: '',submissionStatus: {statusId: 0,name: ''}}],name: '',description: '',fotoUrl: '',startDate: '',endDate: '',domains:[{domainId: 0,name: '',description: ''}],platforms:[{social_media_platformId: 0,name: '',url: ''}]};
+
   campaignsList: Campaign[] = [];
   campaignsList$: Subscription = new Subscription();
 
@@ -48,11 +54,6 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
   platformsList: Platform[] = [];
   platformsList$: Subscription = new Subscription();
 
-  // employee1: UserPersonal[] = [];
-
-  // platformList: Platform[] = [];
-  // platformList$: Subscription = new Subscription();
-
   // reactive form
   campaignForm = new FormGroup({
     campaignId: new FormControl(''),
@@ -63,9 +64,12 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
     startDate: new FormControl(''),
     endDate: new FormControl(''),
     location: new FormControl(''),
+    locationName: new FormControl(''),
     campaignStatus: new FormControl(''),
     domains: new FormControl(''),
+    domainName: new FormControl(''),
     platforms: new FormControl(''),
+    platformName: new FormControl('')
   });
 
   constructor(private router: Router,
@@ -80,24 +84,8 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
       this.isAdd = this.router.url === '/newcampaign';
       this.isEdit = !this.isAdd;
     }
-    // if (this.campaignId != null && this.campaignId > 0) {
-    //   this.campaign$ = this.campaignService.getCampaignById(this.campaignId).subscribe(result => {
-    //     this.campaignForm.setValue({
-    //       name: result.name,
-    //       description: result.description,
-    //       fotoUrl: result.fotoUrl,
-    //       startDate: result.startDate,
-    //       endDate: result.endDate,
-    //       location: result.location,
-    //       campaignStatus: result.campaignStatus,
-    //       domains: result.domains,
-    //       platforms: result.platforms,
-    //     });
-    //   });
-    // }
 
-
-  ngOnInit(): void {
+    ngOnInit(): void {
     // get campaign if in edit
     if (this.isEdit) {
       const campaignId = this.route.snapshot.paramMap.get('id');
@@ -116,13 +104,14 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
 
             location: result.location,
             locationId: result.location.locationId,
+            locationName: result.location.name,
 
             campaignStatus: result.campaignStatus,
             domains: result.domains,
+            domainName: result.domains,
 
             platforms: result.platforms,
-            // platformsId: result.platforms.social_media_platformId
-
+            platformName: result.platforms
           });
         });
 
@@ -150,8 +139,7 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
     });
 
     this.campaignsList$ = this.campaignService.getCampaigns().subscribe(result => this.campaignsList = result);
-
-    console.log("aantal campagnes: " + this.campaignsList.length);
+    this.campaignService.getCampaignById(this.campaignId)
   }
 
   ngOnDestroy(): void {
@@ -168,9 +156,12 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
   submitData(): void {
     if (this.isAdd) {
 
-      console.log(this.userPersonalService.getUserById(1))
-
-
+      this.platformsList.splice(0);
+      this.platformsList.push(  {
+        "social_media_platformId": 1,
+        "name": "Twitter",
+        "url": "https://twitter.com"
+      });
 
       this.campaignForm.patchValue({
         campaignId: (this.campaignsList.length + 100),
@@ -217,12 +208,25 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
       });
     }
     if (this.isEdit) {
-      this.platformsList.splice(3)
+      this.platformsList.splice(0);
+      this.platformsList.push(    {
+        "social_media_platformId": 3,
+        "name": "instagram",
+        "url": "https://www.instagram.com/"
+      });
+
+      // this.domainsList.splice(0);
+      // this.domainsList.push(  {
+      //   "domainId": 2,
+      //   "name": "Natuur",
+      //   "description": "Planten huisplanten zowel tuin en bos planten en ecologie projecten"
+      // });
+
       this.campaignForm.patchValue({
 
 
         platforms: this.platformsList,
-        // platformsId: result.platforms.social_media_platformId
+        domains: this.domainsList
 
       });
 
