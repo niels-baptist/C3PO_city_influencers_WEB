@@ -18,6 +18,10 @@ export class UserPersonalService {
     return this.httpClient.get<UserPersonal[]>(this.azure + 'users');
   }
 
+  getUsersByUsername(username: string): Observable<UserPersonal[]> {
+    return this.httpClient.get<UserPersonal[]>(this.azure + 'users/username/' + username);
+  }
+
   deleteUser(userId: number): Observable<UserPersonal> {
     return this.httpClient.delete<UserPersonal>(this.azure + 'users/' + userId);
   }

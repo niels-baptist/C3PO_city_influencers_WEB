@@ -1,5 +1,5 @@
 export interface Domain {
-  domain_id: number;
+  domainId: number;
   name: string;
   description: string;
 }

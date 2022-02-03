@@ -7,49 +7,56 @@
   <!-- <div class="alert alert-warning" role="warning">
     <p>Form Status: {{ campaignForm.campaign }}</p>
   </div> -->
+
+  <h1 *ngIf="isAdd">Maak een nieuwe campagne</h1>
+  <h1 *ngIf="isEdit">Bewerk deze campagne</h1>
   <form (ngSubmit)="onSubmit()" [formGroup]="campaignForm">
 
     <div class="form-group d-none">
       <label for="employee">Employee</label>
-      <input type="text" class="form-control" id="employee" name="employee" placeholder="employee" formControlName="employee" minlength="2">
+      <input type="text" class="form-control" id="employee" name="employee" placeholder="employee" formControlName="employee" minlength="2" >
     </div>
     <div class="form-group d-none">
       <label for="employee">ID</label>
-      <input type="text" class="form-control" id="campaignId" name="campaignId" placeholder="campaignId" formControlName="campaignId" minlength="2" value="campaignId">
+      <input type="text" class="form-control" id="campaignId" name="campaignId" placeholder="campaignId" formControlName="campaignId" minlength="2" value="campaignId" >
     </div>
 
     <div class="form-group">
       <label for="name">Naam</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="Name" formControlName="name" minlength="2">
+      <input type="text" class="form-control" id="name" name="name" placeholder="Name" formControlName="name" minlength="2" >
     </div>
 
     <div class="form-group">
       <label for="description">Beschrijving</label>
-      <input type="text" formControlName="description" id="description" class="mr-2 form-control">
+      <input type="text" formControlName="description" id="description" class="mr-2 form-control" >
 
     </div>
 
     <div class="form-group">
       <label for="fotoUrl">FotoUrl</label>
-      <input type="text" formControlName="fotoUrl" id="fotoUrl" class="mr-2 form-control">
+      <input type="text" formControlName="fotoUrl" id="fotoUrl" class="mr-2 form-control"  >
 
+      <!-- <img *ngIf="isEdit" src="'{{currentCampaign.fotoUrl}}'" alt="">
+      <p>//{{currentCampaign.fotoUrl}}//</p> -->
     </div>
 
     <div class="form-group">
       <label for="startDate">Startdatum</label>
-      <input type="date" formControlName="startDate" id="startDate" class="mr-2 form-control" min="2022-01-01">
+      <input type="date" formControlName="startDate" id="startDate" class="mr-2 form-control" min="2022-01-01"  >
 
     </div>
 
     <div class="form-group">
       <label for="endDate">Einddatum</label>
-      <input type="date" formControlName="endDate" id="endDate" class="mr-2 form-control" min="2022-01-01">
+      <input type="date" formControlName="endDate" id="endDate" class="mr-2 form-control" min="2022-01-01"  >
 
     </div>
 
     <div class="form-group">
-      <label for="location">Location</label>
-      <select  class="custom-select" formControlName="location" id="location" name="location">
+      <label for="location">Locatie</label>
+
+      <input *ngIf="isEdit" readonly type="text" class="form-control" formControlName="locationName" type="locationName" id="locationName" name="locationName">
+      <select  class="custom-select" formControlName="location" id="location" name="location" >
         <!-- <option selected value="0">Kies een locatie</option> -->
         <option selected *ngFor="let location of locations" [ngValue]="location">{{location.name}}</option>
       </select>
@@ -60,8 +67,8 @@
       <input type="text" formControlName="campaignStatus" id="campaignStatus" class="mr-2 form-control">
 
     </div> -->
-
-    <!-- <div class="form-group">
+<!--
+    <div class="form-group">
       <p>Domein</p>
       <div *ngFor="let domain of domainsList">
         <div>
@@ -70,6 +77,16 @@
         </div>
       </div>
     </div> -->
+
+    <div class="form-group">
+      <label for="domains">Domein</label>
+      <!-- <input *ngIf="isEdit" readonly type="text" class="form-control" formControlName="domainName" type="domainName" id="domainName" name="domainName"> -->
+      <select  class="custom-select" formControlName="domains" id="domains" name="domains" >
+        <!-- <option selected value="0">Kies een locatie</option> -->
+
+        <option selected *ngFor="let domain of domainsList" [ngValue]="domain">{{domain.name}}</option>
+      </select>
+    </div>
 
     <!-- <div class="form-group">
       <p>Social media platform</p>
@@ -93,6 +110,7 @@
 
     <div class="form-group">
       <label for="location">Platforms</label>
+      <!-- <input *ngIf="isEdit" readonly type="text" class="form-control" formControlName="platformName" type="platformName" id="platformName" name="platformName"> -->
       <select  class="custom-select" formControlName="platforms" id="platforms" name="platforms">
         <!-- <option selected value="0">Kies een locatie</option> -->
 
@@ -100,8 +118,12 @@
       </select>
     </div>
 
-    <button type="submit" class="btn btn-primary" *ngIf="isAdd" [disabled]="!campaignForm.valid">Add campaign</button>
-    <button type="submit" class="btn btn-primary" *ngIf="isEdit" [disabled]="!campaignForm.valid">Save campaign</button>
+    <button type="submit" class="btn btn-blue" *ngIf="isAdd" [disabled]="!campaignForm.valid">Add campaign</button>
+    <button type="submit" class="btn btn-blue" *ngIf="isEdit" [disabled]="!campaignForm.valid">Save campaign</button>
+    &nbsp;
+    <a href="/campagnes" class="btn btn-dark">
+      <i class="fas fa-backspace"></i>&nbsp;Terug
+    </a>
   </form>
 
 </div>

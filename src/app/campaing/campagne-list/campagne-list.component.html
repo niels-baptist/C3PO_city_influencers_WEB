@@ -5,7 +5,13 @@
 <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
   {{errorMessage}}
 </div>
-<button type="button" class="btn btn-success addBtn" (click)="add()"><i class="fas fa-plus"></i> Add new campaign</button>
+
+<div class="row">
+  <div class="col-12">
+    <h1>Campagnes beheren</h1>
+  </div>
+</div>
+<button type="button" class="btn  btn-blue addBtn mb-2" (click)="add()"><i class="fas fa-plus"></i> Add new campaign</button>
 <table class="table" *ngIf="campaigns && campaigns.length > 0">
   <thead>
   <tr>
@@ -14,6 +20,7 @@
     <th scope="col">Voucher</th>
     <th scope="col">Einddatum</th>
     <th scope="col">Status</th>
+    <th scope="col"></th>
   </tr>
   </thead>
   <tbody>
@@ -40,8 +47,8 @@
 
     <!-- <td><i *ngIf="camp.active" class="fas fa-check"></i><i *ngIf="!camp.active" class="fas fa-times"></i></td> -->
     <td>
-      <button type="button" class="btn btn-success" (click)="edit(camp.campaignId)"><i class="fas fa-edit"></i></button>
-      <button type="button" class="btn btn-danger" (click)="delete(camp.campaignId)"><i class="far fa-trash-alt"></i></button>
+      <button type="button" class="btn btn-lighet" (click)="edit(camp.campaignId)"><i class="fas fa-edit"></i></button>
+      <button type="button" class="btn btn-dark" (click)="delete(camp.campaignId)"><i class="far fa-trash-alt"></i></button>
     </td>
   </tr>
   </tbody>
