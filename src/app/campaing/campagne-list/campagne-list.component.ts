@@ -15,7 +15,6 @@ export class CampagneListComponent implements OnInit, OnDestroy {
   campaigns: Campaign[] = [];
   campaigns$: Subscription = new Subscription();
   deleteCampaign$: Subscription = new Subscription();
-
   errorMessage: string = '';
 
   constructor(private campaignService: CampaignService, private router: Router) { }

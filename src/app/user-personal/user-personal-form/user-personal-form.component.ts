@@ -81,15 +81,14 @@ export class UserPersonalFormComponentComponent implements OnInit, OnDestroy {
     });
 
     // get locations
-    this.locations$ = this.LocationService.getLocations().subscribe(result => {
-      this.locations = result;
-    }
+      this.locations$ = this.LocationService.getLocations().subscribe(result => {
+        this.locations = result;
+      }
     );
   }
 
   ngOnDestroy(): void {
     this.userPersonal$.unsubscribe();
-    this.locations$.unsubscribe();
     this.locations$.unsubscribe();
   }
 
