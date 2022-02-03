@@ -1,4 +1,50 @@
 <div class="container">
-<h1>Campagnes</h1>
-<p>This is the campagne-page of our City Influencers app!</p>
+<!-- <h1>Campagnes</h1>
+<p>This is the campagne-page of our City Influencers app!</p> -->
+
+<div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+  {{errorMessage}}
+</div>
+<button type="button" class="btn btn-success addBtn" (click)="add()"><i class="fas fa-plus"></i> Add new campaign</button>
+<table class="table" *ngIf="campaigns && campaigns.length > 0">
+  <thead>
+  <tr>
+    <th scope="col">Campaigne details</th>
+    <th scope="col">Platform</th>
+    <th scope="col">Voucher</th>
+    <th scope="col">Einddatum</th>
+    <th scope="col">Status</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let camp of campaigns">
+    <td>
+      <img src="{{camp.fotoUrl}}" alt="foto-{{camp.name}}" height="50" width="50" class="rounded-circle mr-1">
+
+      <span>{{camp.name}}</span>
+
+    </td>
+
+    <td>
+      <span *ngFor="let platform of camp.platforms" class="platform mr-">
+        {{platform.name.toLowerCase()}}
+        <!-- <i class="fab fa-{{platform.name.toLowerCase()}} fa-2x"></i>
+        <i class="fab fa-tiktok"></i>
+        <i class="fab fa-tiktok"></i> -->
+      </span>
+    </td>
+
+    <td>€ 50</td>
+    <td>{{camp.endDate | date:'shortDate'}}</td>
+    <td>{{camp.campaignStatus.name}}</td>
+
+    <!-- <td><i *ngIf="camp.active" class="fas fa-check"></i><i *ngIf="!camp.active" class="fas fa-times"></i></td> -->
+    <td>
+      <button type="button" class="btn btn-success" (click)="edit(camp.campaignId)"><i class="fas fa-edit"></i></button>
+      <button type="button" class="btn btn-danger" (click)="delete(camp.campaignId)"><i class="far fa-trash-alt"></i></button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
 </div>
