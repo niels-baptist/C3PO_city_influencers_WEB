@@ -70,7 +70,7 @@
 .card.banner{
   background-color: #34b6c6;
   border-radius: 35px;
-  height: 300px;
+  height: 370px;
   z-index: 1;
 }
 
@@ -81,4 +81,14 @@ h1{
 .small-text{
   font-size: 13px;
   color: rgb(146, 146, 146);
+}
+
+.M{
+  background-image: url("/assets/images/influencer-man.jpg");
+  background-size: 1000px;
+}
+
+.V{
+  background-image: url("/assets/images/influencer-vrouw.jpg");
+  background-size: 1000px;
 }
