@@ -36,7 +36,7 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
   employeeForm = new FormGroup(
     {
       employeeId: new FormControl(''),
-      location: new FormControl(''),
+      locationId: new FormControl(''),
       email: new FormControl(''),
       password: new FormControl(''),
       firstname: new FormControl(''),
@@ -44,7 +44,7 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
       birthdate: new FormControl(''),
       userName: new FormControl(''),
       // locationName: new FormControl(''),
-      employeeRole: new FormControl(''),
+      roleId: new FormControl(''),
       // employeeRoleName: new FormControl(''),
     }
   );
@@ -67,7 +67,8 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
         this.EmployeeService.getEmployee(this.employeeId).subscribe(result => {
           this.employeeForm.patchValue({
             employeeId: result.employeeId,
-            location: result.user.location,
+            locationId: result.user.location.locationId,
+            roleId: result.employee_role.roleId,
             // locationName: result.user.location.name,
             email: result.user.email,
             password: result.user.password,
@@ -75,7 +76,7 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
             lastname: result.user.lastname,
             userName: result.user.userName,
             birthdate: this.datePipe.transform(result.user.birthdate, 'YYYY-MM-dd'),
-            employeeRole: result.employee_role,
+            // employeeRole: result.employee_role
             // employeeRoleName: result.employee_role.name
           });
         });
@@ -110,24 +111,6 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
     if (this.isAdd) {
       //Add
       this.postEmployee = this.EmployeeService.postEmployee(this.employeeForm.value).subscribe(result => {
-        // make a new user and fill it with the values of employeeForm
-        // let user = new User();
-        // user.location = this.employeeForm.value.location;
-        // user.email = this.employeeForm.value.email;
-        // user.password = this.employeeForm.value.password;
-        // user.firstname = this.employeeForm.value.firstname;
-        // user.lastname = this.employeeForm.value.lastname;
-        // user.userName = this.employeeForm.value.userName;
-        // user.birthdate = this.employeeForm.value.birthdate;
-        // // add user to employee
-        // result.user = user;
-        // // add employee to user
-        // user.employee = result;
-        // // add employee role to employee
-        // result.employee_role = this.employeeForm.value.employeeRole;
-
-
-
           this.router.navigateByUrl('/employees');
         },
           error => {

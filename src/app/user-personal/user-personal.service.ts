@@ -12,7 +12,6 @@ import { switchMap } from 'rxjs/operators';
 
 export class UserPersonalService {
   azure: string =  'https://c3poapi.azurewebsites.net/';
-  localhost: string =  'http://localhost:8080/';
 
   getUsers(): Observable<UserPersonal[]> {
     return this.httpClient.get<UserPersonal[]>(this.azure + 'users');

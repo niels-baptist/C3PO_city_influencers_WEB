@@ -24,12 +24,12 @@ export class EmployeeService {
   }
 
   postEmployee(employee: Employee): Observable<Employee> {
-    return this.httpClient.post<Employee>(this.azure + 'employees', employee);
+    return this.httpClient.post<Employee>(this.azure + 'employees/employeeForm', employee);
   }
 
   putEmployee(employee: Employee): Observable<Employee> {
     console.log(employee.employeeId);
-  return this.httpClient.put<Employee>(this.azure + 'employees', employee);
+  return this.httpClient.put<Employee>(this.azure + 'employees/employeeForm', employee);
   }
 
   deleteEmployee(employeeId: number): Observable<Employee> {

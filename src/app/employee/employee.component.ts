@@ -7,14 +7,20 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.scss']
+  styleUrls: ['./employee.component.scss'],
+  template : `
+  <ul>
+    <li *ngFor="let item of collection | paginate: { itemsPerPage: 10, currentPage: e }"> ... </li>
+  </ul>
+  <pagination-controls (pageChange)="e = $event"></pagination-controls>
+  `
 })
 export class EmployeeComponent implements OnInit {
   employees: Employee[] = [];
   employees$: Subscription = new Subscription();
   deleteEmployee$: Subscription = new Subscription();
   errorMessage: string = '';
-  p: number=1;
+  e: number=1;
 
   constructor(private employeeService: EmployeeService, private router :Router) { }
 

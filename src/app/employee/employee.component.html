@@ -25,7 +25,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr scope="row" *ngFor="let emp of employees | paginate: { itemsPerPage: 10, currentPage:p}">
+      <tr scope="row" *ngFor="let emp of employees | paginate: { itemsPerPage: 10, currentPage:e}">
         <td>{{emp.employeeId}}</td>
         <td>{{emp.employee_role.name}}</td>
         <td>{{emp.user.location.name}}</td>
@@ -40,4 +40,7 @@
       </tr>
     </tbody>
   </table>
+  <div id="pagination">
+    <pagination-controls (pageChange)="e=$event"></pagination-controls>
+  </div>
 </div>

@@ -12,20 +12,18 @@
     </div>
 
     <div class="form-group">
-      <label for="employee_roleName">Rol</label>
+      <label for="roleId">Rol</label>
       <br>
-      <!-- <input readonly type="text" class="form-control" formControlName="employeeRoleName" type="employeeRoleName" id="employeeRoleName" name="employeeRoleName"> -->
-      <select class="custom-select" formControlName="employeeRole" id="employeeRole" name="employeeRole">
-        <option *ngFor="let role of employeeRoles" [ngValue]="role">{{role.name}}</option>
+      <select class="custom-select" formControlName="roleId" id="roleId" name="roleId">
+        <option *ngFor="let role of employeeRoles" [ngValue]="role.roleId">{{role.name}}</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="locationName">Locatie</label>
+      <label for="locationId">Locatie</label>
       <br>
-      <!-- <input readonly type="text" class="form-control" formControlName="locationName" type="locationName" id="locationName" name="locationName"> -->
-      <select class="custom-select" formControlName="location" id="location" name="location">
-        <option *ngFor="let location of locations" [ngValue]="location">{{location.name}}</option>
+      <select class="custom-select" formControlName="locationId" id="locationId" name="locationId">
+        <option *ngFor="let location of locations" [ngValue]="location.locationId">{{location.name}}</option>
       </select>
     </div>
 
