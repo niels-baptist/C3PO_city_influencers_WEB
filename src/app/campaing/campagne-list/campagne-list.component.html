@@ -22,7 +22,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let camp of campaigns">
+  <tr *ngFor="let camp of campaigns | paginate: { itemsPerPage: 10, currentPage:p}">
     <td>
       <img src="{{camp.fotoUrl}}" alt="foto-{{camp.name}}" height="50" width="50" class="rounded-circle mr-1">
 
@@ -47,4 +47,7 @@
   </tr>
   </tbody>
 </table>
+  <div id="pagination">
+    <pagination-controls (pageChange)="p=$event"></pagination-controls>
+  </div>
 </div>

@@ -8,7 +8,6 @@ import { CampaignFormComponent } from './campaign-form/campaign-form.component';
 
 @NgModule({
   declarations: [
-    CampagneListComponent,
     CampaignFormComponent
   ],
   imports: [
