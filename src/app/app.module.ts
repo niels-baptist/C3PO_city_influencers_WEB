@@ -1,3 +1,4 @@
+import { EmployeeComponent } from './employee/employee.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -22,11 +23,12 @@ import { UserPersonalFormComponentComponent } from './user-personal/user-persona
 import { DatePipe } from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { EmployeeFormComponent } from './employee/employee-form/employee-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+
     MenuComponent,
     DashboardComponent,
     LocationComponent,
@@ -34,6 +36,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     DomainComponent,
     UserPersonalComponent,
     UserPersonalFormComponentComponent,
+    EmployeeComponent,
+    EmployeeFormComponent
   ],
   imports: [
     BrowserModule,
