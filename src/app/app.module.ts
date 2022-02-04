@@ -1,3 +1,4 @@
+import { CampagneListComponent } from './campaing/campagne-list/campagne-list.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -28,7 +29,7 @@ import { EmployeeFormComponent } from './employee/employee-form/employee-form.co
 @NgModule({
   declarations: [
     AppComponent,
-
+    CampagneListComponent,
     MenuComponent,
     DashboardComponent,
     LocationComponent,

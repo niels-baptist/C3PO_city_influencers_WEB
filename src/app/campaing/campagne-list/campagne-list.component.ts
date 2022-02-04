@@ -8,7 +8,13 @@ import {CampaignService} from '../campaign.service';
 @Component({
   selector: 'app-campagne-list',
   templateUrl: './campagne-list.component.html',
-  styleUrls: ['./campagne-list.component.scss']
+  styleUrls: ['./campagne-list.component.scss'],
+  template : `
+  <ul>
+    <li *ngFor="let item of collection | paginate: { itemsPerPage: 10, currentPage: p }"> ... </li>
+  </ul>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  `
 })
 export class CampagneListComponent implements OnInit, OnDestroy {
 
@@ -16,6 +22,7 @@ export class CampagneListComponent implements OnInit, OnDestroy {
   campaigns$: Subscription = new Subscription();
   deleteCampaign$: Subscription = new Subscription();
   errorMessage: string = '';
+  p: number=1;
 
   constructor(private campaignService: CampaignService, private router: Router) { }
 
