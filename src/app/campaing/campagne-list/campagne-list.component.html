@@ -22,29 +22,20 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let camp of campaigns | paginate: { itemsPerPage: 10, currentPage:p}">
-    <td>
-      <img src="{{camp.fotoUrl}}" alt="foto-{{camp.name}}" height="50" width="50" class="rounded-circle mr-1">
-
-      <span>{{camp.name}}</span>
-
-    </td>
-
-    <td>
-      <span *ngFor="let platform of camp.platforms" class="platform mr-">
-        <!-- {{platform.name}} -->
-        {{platform.name.toLowerCase()}}
-      </span>
-    </td>
-
-    <td>€ 50</td>
-    <td>{{camp.endDate | date:'shortDate'}}</td>
-    <td>{{camp.campaignStatus.name}}</td>
-    <td>
-      <button type="button" class="btn btn-lighet" (click)="edit(camp.campaignId)"><i class="fas fa-edit"></i></button>
-      <button type="button" class="btn btn-dark" (click)="delete(camp.campaignId)"><i class="far fa-trash-alt"></i></button>
-    </td>
-  </tr>
+    <tr *ngFor="let camp of campaigns | paginate: { itemsPerPage: 10, currentPage:p}">
+        <td>
+            <img src="{{camp.fotoUrl}}" alt="foto-{{camp.name}}" height="50" width="50" class="rounded-circle mr-1">
+            <span>{{camp.name}}</span>
+        </td>
+        <td><span>{{camp.socialMediaPlatform.name}}</span></td>
+        <td>€ 50</td>
+        <td>{{camp.endDate | date:'shortDate'}}</td>
+        <td>{{camp.campaignStatus.name}}</td>
+        <td>
+            <button type="button" class="btn btn-lighet" (click)="edit(camp.campaignId)"><i class="fas fa-edit"></i></button>
+            <button type="button" class="btn btn-dark" (click)="delete(camp.campaignId)"><i class="far fa-trash-alt"></i></button>
+        </td>
+    </tr>
   </tbody>
 </table>
   <div id="pagination">

@@ -7,6 +7,7 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  rooturl:string = "https://c3poapi.azurewebsites.net/";
 
   constructor(private httpClient: HttpClient) {
   }
@@ -43,12 +44,17 @@ export class AuthService {
   }
 
   authenticate(username: string, password: string): Observable<Object> {
-    // const result = this.httpClient.post('c3poapi.azurewebsites.net/users/login/?user_name='+ username + '&password=' + password, username + password );
-    const result = this.httpClient.get('http://c3poapi.azurewebsites.net/users/login/'+ username + '/' + password);
+    const result = this.httpClient.get(this.rooturl + 'users/login/' + username + '/' + password);
     return result;
   }
 
-  // register(user: User): Observable<UserResponse> {
-  //   return this.httpClient.post<UserResponse>('http://localhost:3000/register', user);
-  // }
+  authenticateWithId(username:string, password:string): Observable<Object> {
+    //fil variable login with username and password in json format
+    const login = {
+      "user_username": username,
+      "user_password": password
+    };
+    const result = this.httpClient.post(this.rooturl + 'employees/login/returnsId', login);
+    return result;
+  }
 }

@@ -33,24 +33,18 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
   isEdit: boolean = false;
   isSubmitted: boolean = false;
   errorMessage: string = '';
-
+  
   campaign: Campaign[] = [];
   campaign$: Subscription = new Subscription();
   postCampaign$: Subscription = new Subscription();
   putCampaign$: Subscription = new Subscription();
-
-  currentCampaign: Campaign={campaignId: 0,employee: {employeeId: 0,employee_role: {roleId: 0,name: ''},user: {userId: 0,location: {locationId: 0,name: '',postalCode: ''},email: '',password: '',firstname: '',lastname: '',userName: '',birthdate: ''}},location: {locationId: 0,name: '',postalCode: ''},campaignStatus: {statusId: 0,name: ''},submissions: [{submissionId: 0,url: '',description: '',submissionStatus: {statusId: 0,name: ''}}],name: '',description: '',fotoUrl: '',startDate: '',endDate: '',domains:[{domainId: 0,name: '',description: ''}],platforms:[{social_media_platformId: 0,name: '',url: ''}]};
-
   campaignsList: Campaign[] = [];
   campaignsList$: Subscription = new Subscription();
-
   locations: Location[] = [];
   locations$: Subscription = new Subscription();
   locationId: number=0;
-
   domainsList: Domain[] = [];
   domainsList$: Subscription = new Subscription();
-
   platformsList: Platform[] = [];
   platformsList$: Subscription = new Subscription();
 
@@ -64,12 +58,12 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
     startDate: new FormControl(''),
     endDate: new FormControl(''),
     location: new FormControl(''),
-    locationName: new FormControl(''),
+    locationId: new FormControl(''),
     campaignStatus: new FormControl(''),
     domains: new FormControl(''),
-    domainName: new FormControl(''),
+    domainId: new FormControl(''),
     platforms: new FormControl(''),
-    platformName: new FormControl('')
+    platformId: new FormControl('')
   });
 
   constructor(private router: Router,
@@ -80,7 +74,6 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
     private domainService: DomainService,
     private platformService: PlatformService,
     private userPersonalService: UserPersonalService) {
-
       this.isAdd = this.router.url === '/newcampaign';
       this.isEdit = !this.isAdd;
     }
@@ -94,28 +87,20 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
         this.campaignService.getCampaignById(this.campaignId).subscribe(result => {
           this.campaignForm.patchValue({
             campaignId: result.campaignId,
-
             employee: result.employee,
             name: result.name,
             description: result.description,
             fotoUrl: result.fotoUrl,
             startDate: this.datePipe.transform(result.startDate, 'YYYY-MM-dd'),
             endDate: this.datePipe.transform(result.endDate, 'YYYY-MM-dd'),
-
             location: result.location,
             locationId: result.location.locationId,
             locationName: result.location.name,
-
             campaignStatus: result.campaignStatus,
-            domains: result.domains,
-            domainName: result.domains,
-
-            platforms: result.platforms,
-            platformName: result.platforms
+            domainId: result.domain.domainId,
+            platformId: result.socialMediaPlatform.social_media_platformId
           });
         });
-
-
       }
       else{
         console.log("Error: no campaignId");
@@ -165,34 +150,13 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
 
       this.campaignForm.patchValue({
         campaignId: (this.campaignsList.length + 100),
-        employee: {
-          "employeeId": 1,
-          "employee_role": {
-            "roleId": 1,
-            "name": "admin"
-          },
-          "user": {
-            "userId": 5,
-            "location": {
-              "locationId": 5,
-              "name": "Heusden-Zolder",
-              "postalCode": "3550"
-            },
-            "email": "Kelly.Lemmens@heusdenzolder.be",
-            "password": "changeme",
-            "firstname": "Kelly",
-            "lastname": "Lemmens",
-            "userName": "kellylemmens",
-            "birthdate": "1980-02-20T00:00:00.000+00:00"
-          }
-        },
+        employeeId: 1,
         domains: this.domainsList,
         campaignStatus: {
           "statusId": 2,
           "name": "open"
         },
         platforms: this.platformsList
-
       });
 
       this.postCampaign$ = this.campaignService.postCampaign(this.campaignForm.value).subscribe(result => {
@@ -215,33 +179,19 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
         "url": "https://www.instagram.com/"
       });
 
-      // this.domainsList.splice(0);
-      // this.domainsList.push(  {
-      //   "domainId": 2,
-      //   "name": "Natuur",
-      //   "description": "Planten huisplanten zowel tuin en bos planten en ecologie projecten"
-      // });
-
       this.campaignForm.patchValue({
-
-
         platforms: this.platformsList,
         domains: this.domainsList
-
       });
 
       this.putCampaign$ = this.campaignService.putCampaign(this.campaignForm.value).subscribe(result => {
-
         // debug
         console.log(this.campaignForm.value)
-
         //all went well
         this.router.navigateByUrl("/campagnes");
       },
         error => {
-
         this.errorMessage = error.message;
-
         // debug
         console.log(this.campaignForm.value)
       });
