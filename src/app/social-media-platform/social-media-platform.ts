@@ -1,5 +1,5 @@
 export interface SocialMediaPlatform {
-  social_media_platform_id: number;
+  social_media_platformId: number;
   name: string;
   url: string;
 }

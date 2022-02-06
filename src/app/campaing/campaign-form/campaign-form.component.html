@@ -50,32 +50,23 @@
     </div>
 
     <div class="form-group">
-      <label for="location">Locatie</label>
-
-      <input *ngIf="isEdit" readonly type="text" class="form-control" formControlName="locationName" type="locationName" id="locationName" name="locationName">
-      <select  class="custom-select" formControlName="location" id="location" name="location" >
-        <!-- <option selected value="0">Kies een locatie</option> -->
-        <option selected *ngFor="let location of locations" [ngValue]="location">{{location.name}}</option>
+      <label for="locationId">Locatie</label>
+      <select  class="custom-select" formControlName="locationId" id="locationId" name="locationId" >
+        <option selected *ngFor="let location of locations" [ngValue]="location.locationId">{{location.name}}</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="domains">Domein</label>
-      <!-- <input *ngIf="isEdit" readonly type="text" class="form-control" formControlName="domainName" type="domainName" id="domainName" name="domainName"> -->
-      <select  class="custom-select" formControlName="domains" id="domains" name="domains" >
-        <!-- <option selected value="0">Kies een locatie</option> -->
-
-        <option selected *ngFor="let domain of domainsList" [ngValue]="domain">{{domain.name}}</option>
+      <label for="domainId">Domein</label>
+      <select  class="custom-select" formControlName="domainId" id="domainId" name="domainId" >
+        <option selected *ngFor="let domain of domainsList" [ngValue]="domain.domainId">{{domain.name}}</option>
       </select>
     </div>
 
     <div class="form-group">
       <label for="location">Platforms</label>
-      <!-- <input *ngIf="isEdit" readonly type="text" class="form-control" formControlName="platformName" type="platformName" id="platformName" name="platformName"> -->
-      <select  class="custom-select" formControlName="platforms" id="platforms" name="platforms">
-        <!-- <option selected value="0">Kies een locatie</option> -->
-
-        <option selected *ngFor="let platform of platformsList" [ngValue]="platform">{{platform.name}}</option>
+      <select  class="custom-select" formControlName="platformId" id="platformId" name="platformId">
+        <option selected *ngFor="let platform of platformsList" [ngValue]="platform.social_media_platformId">{{platform.name}}</option>
       </select>
     </div>
 

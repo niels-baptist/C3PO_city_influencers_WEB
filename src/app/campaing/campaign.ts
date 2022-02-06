@@ -1,37 +1,21 @@
+import { Domain } from './../domain/domain';
+import { SocialMediaPlatform } from './../social-media-platform/social-media-platform';
+import { Employee } from './../employee/employee';
+import { User } from './../admin/user/user';
+import { Location } from './../location/location';
 export interface Campaign {
   campaignId: number,
-  employee: {
-    employeeId: number,
-    employee_role: {
-      roleId: number,
-      name: string
-    },
-    user: {
-      userId: number,
-      location: {
-        locationId: number,
-        name: string,
-        postalCode: string
-      },
-      email: string,
-      password: string,
-      firstname: string,
-      lastname: string,
-      userName: string,
-      birthdate: string
-    }
-  },
-  location: {
-    locationId: number,
-    name: string,
-    postalCode: string
-  },
+  employee: Employee,
+  user: User,
+  location: Location,
+  domain: Domain,
+  socialMediaPlatform: SocialMediaPlatform,
   campaignStatus: {
     statusId: number,
     name: string
   },
   submissions: [
-    {
+  {
       submissionId: number,
       url: string,
       description: string,
@@ -46,18 +30,4 @@ export interface Campaign {
   fotoUrl: string,
   startDate:	string,
   endDate:	string,
-  domains: [
-    {
-      domainId: number,
-      name: string,
-      description: string
-    }
-  ],
-  platforms: [
-    {
-      social_media_platformId: number,
-      name: string,
-      url: string
-    }
-  ]
 }

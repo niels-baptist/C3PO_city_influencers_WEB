@@ -1,5 +1,6 @@
+import { Platform } from './../shared/platform';
 import { Domain } from './domain';
-import { Injectable } from '@angular/core';
+import { getPlatform, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -9,8 +10,7 @@ import { Observable } from 'rxjs';
 export class DomainService {
 
   constructor(private httpClient: HttpClient) { }
-  rooturl: string = 'http://java-rest-api-c3po.westeurope.cloudapp.azure.com:8080/api/';
-  getDomains(): Observable<Domain[]> {
-    return this.httpClient.get<Domain[]>(this.rooturl + 'domains');
-  }
+  rooturl: string = 'https://c3poapi.azurewebsites.net/';
+  getPlatforms(): Observable<Platform[]> {return this.httpClient.get<Platform[]>(this.rooturl + 'platforms');}
+  getDomains(): Observable<Domain[]> {return this.httpClient.get<Domain[]>(this.rooturl + 'domains');}
 }

@@ -1,8 +1,15 @@
+import { LocationService } from './../../location/location.service';
+import { SocialMediaPlatformService } from './../../social-media-platform/social-media-platform.service';
+import { PlatformService } from './../../shared/platform.service';
+import { DomainService } from './../../domain/domain.service';
+import { Domain } from './../../domain/domain';
+import { Location } from './../../location/location';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 import {Campaign} from '../campaign';
 import {CampaignService} from '../campaign.service';
+import { SocialMediaPlatform } from 'src/app/social-media-platform/social-media-platform';
 // import { setUncaughtExceptionCaptureCallback } from 'process';
 
 @Component({
@@ -20,11 +27,17 @@ export class CampagneListComponent implements OnInit, OnDestroy {
 
   campaigns: Campaign[] = [];
   campaigns$: Subscription = new Subscription();
+  domains: Domain[] = [];
+  domains$: Subscription = new Subscription();
+  platformsList: SocialMediaPlatform[] = [];
+  platformsList$: Subscription = new Subscription();
+  LocationsList: Location[] = [];
+  LocationsList$: Subscription = new Subscription();
   deleteCampaign$: Subscription = new Subscription();
   errorMessage: string = '';
   p: number=1;
 
-  constructor(private campaignService: CampaignService, private router: Router) { }
+  constructor(private campaignService: CampaignService, private router: Router, private SocialMediaPlatformService: SocialMediaPlatformService, private DomainService:DomainService, private LocationService:LocationService  ) { }
 
 
   ngOnInit(): void {
@@ -59,5 +72,18 @@ export class CampagneListComponent implements OnInit, OnDestroy {
 
   getCampaigns() {
     this.campaigns$ = this.campaignService.getCampaigns().subscribe(result => this.campaigns = result);
+    console.log("campaign content" + this.campaigns)
+  }
+
+  getDomains() {
+    this.domains$ = this.DomainService.getDomains().subscribe(result => this.domains = result);
+  }
+
+  getPlatforms() {
+    this.platformsList$ = this.SocialMediaPlatformService.getSocialMediaPlatforms().subscribe(result => this.platformsList = result);
+  }
+
+  getLocations() {
+    this.LocationsList$ = this.LocationService.getLocations().subscribe(result => this.LocationsList = result);
   }
 }

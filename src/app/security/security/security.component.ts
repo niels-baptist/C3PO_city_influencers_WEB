@@ -51,11 +51,12 @@ export class SecurityComponent implements OnInit {
   onSubmit(): void {
     this.isSubmitted = true;
     if (this.isLogin) {
-      this.authService.authenticate(this.user.username, this.user.password)
+      this.authService.authenticateWithId(this.user.username, this.user.password)
       .subscribe(result => {this.errorMessage = '';
-        if (result == true){
+        if (result != 0){
           localStorage.setItem('userName', this.user.username);
           localStorage.setItem('password', this.user.password);
+          localStorage.setItem('userId', result.toString());
           this.router.navigate(['/dashboard']);
         } else {
           this.errorMessage = 'Email/password not correct!';
