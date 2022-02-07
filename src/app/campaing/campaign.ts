@@ -5,7 +5,7 @@ import { User } from './../admin/user/user';
 import { Location } from './../location/location';
 export interface Campaign {
   campaignId: number,
-  employee: Employee,
+  employeeId: number,
   user: User,
   location: Location,
   domain: Domain,

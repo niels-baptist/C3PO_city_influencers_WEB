@@ -11,28 +11,27 @@ export class CampaignService {
   constructor(private httpClient: HttpClient) { }
 
   getCampaigns(): Observable<Campaign[]> {
-    return this.httpClient.get<Campaign[]>("http://c3poapi.azurewebsites.net/campaigns");
+    return this.httpClient.get<Campaign[]>("https://c3poapi.azurewebsites.net/campaigns");
   }
 
   getCampaignById(id: number): Observable<Campaign> {
-    return this.httpClient.get<Campaign>("http://c3poapi.azurewebsites.net/campaigns/" + id);
+    return this.httpClient.get<Campaign>("https://c3poapi.azurewebsites.net/campaigns/" + id);
   }
 
   postCampaign(campaign: Campaign): Observable<Campaign> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
-
-    return this.httpClient.post<Campaign>("http://c3poapi.azurewebsites.net/campaigns", campaign);
+    console.log(campaign);
+    return this.httpClient.post<Campaign>("https://c3poapi.azurewebsites.net/campaigns/campaignForm", campaign);
   }
 
   putCampaign(campaign: Campaign): Observable<Campaign> {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json; charset=utf-8');
-
-    return this.httpClient.put<Campaign>("http://c3poapi.azurewebsites.net/campaigns", campaign);
+    return this.httpClient.put<Campaign>("https://c3poapi.azurewebsites.net/campaigns/campaignForm", campaign);
   }
 
   deleteCampaign(id: number): Observable<Campaign> {
-    return this.httpClient.delete<Campaign>("http://c3poapi.azurewebsites.net/campaigns/" + id);
+    return this.httpClient.delete<Campaign>("https://c3poapi.azurewebsites.net/campaigns/" + id);
   }
 }

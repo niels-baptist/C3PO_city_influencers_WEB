@@ -33,7 +33,7 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
   isEdit: boolean = false;
   isSubmitted: boolean = false;
   errorMessage: string = '';
-  
+
   campaign: Campaign[] = [];
   campaign$: Subscription = new Subscription();
   postCampaign$: Subscription = new Subscription();
@@ -51,18 +51,15 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
   // reactive form
   campaignForm = new FormGroup({
     campaignId: new FormControl(''),
-    employee: new FormControl(''),
+    employeeId: new FormControl(''),
     name: new FormControl(''),
     description: new FormControl(''),
     fotoUrl: new FormControl(''),
     startDate: new FormControl(''),
     endDate: new FormControl(''),
-    location: new FormControl(''),
     locationId: new FormControl(''),
-    campaignStatus: new FormControl(''),
-    domains: new FormControl(''),
+    campaignStatusId: new FormControl(''),
     domainId: new FormControl(''),
-    platforms: new FormControl(''),
     platformId: new FormControl('')
   });
 
@@ -87,18 +84,16 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
         this.campaignService.getCampaignById(this.campaignId).subscribe(result => {
           this.campaignForm.patchValue({
             campaignId: result.campaignId,
-            employee: result.employee,
+            employeeId: result.employeeId,
             name: result.name,
             description: result.description,
             fotoUrl: result.fotoUrl,
             startDate: this.datePipe.transform(result.startDate, 'YYYY-MM-dd'),
             endDate: this.datePipe.transform(result.endDate, 'YYYY-MM-dd'),
-            location: result.location,
             locationId: result.location.locationId,
-            locationName: result.location.name,
-            campaignStatus: result.campaignStatus,
+            campaignStatusId: result.campaignStatus.statusId,
             domainId: result.domain.domainId,
-            platformId: result.socialMediaPlatform.social_media_platformId
+            platformId: result.socialMediaPlatform.platformId
           });
         });
       }
@@ -140,25 +135,11 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
 
   submitData(): void {
     if (this.isAdd) {
-
-      this.platformsList.splice(0);
-      this.platformsList.push(  {
-        "social_media_platformId": 1,
-        "name": "Twitter",
-        "url": "https://twitter.com"
-      });
-
       this.campaignForm.patchValue({
         campaignId: (this.campaignsList.length + 100),
         employeeId: 1,
-        domains: this.domainsList,
-        campaignStatus: {
-          "statusId": 2,
-          "name": "open"
-        },
-        platforms: this.platformsList
+        campaignStatusId: 2
       });
-
       this.postCampaign$ = this.campaignService.postCampaign(this.campaignForm.value).subscribe(result => {
         //all went well
         this.router.navigateByUrl("/campagnes");
@@ -172,16 +153,9 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
       });
     }
     if (this.isEdit) {
-      this.platformsList.splice(0);
-      this.platformsList.push(    {
-        "social_media_platformId": 3,
-        "name": "instagram",
-        "url": "https://www.instagram.com/"
-      });
-
       this.campaignForm.patchValue({
-        platforms: this.platformsList,
-        domains: this.domainsList
+        employeeId: 1,
+        campaignStatusId: 2
       });
 
       this.putCampaign$ = this.campaignService.putCampaign(this.campaignForm.value).subscribe(result => {
