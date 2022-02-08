@@ -3,36 +3,10 @@
     <div class="col-12">
       <h1 class="p-5 text-center">Influencers</h1>
     </div>
-    <!-- <input type="text" id="myFilter" class="form-control" onkeyup='myFunction()'placeholder="Search for names.."> -->
   </div>
-
   <div class="row"  *ngIf="influencers && influencers.length > 0">
-
    <div  class="row" id="myItems" >
       <app-influencer-card *ngFor="let influencer of (influencersCard$ | async)" [influencer]="influencer"  (searchcriteria)="searchThis($event)" class="col-sm-10 col-md-6 col-lg-4"></app-influencer-card>
-
     </div>
   </div>
 </div>
-
-
-
-<!-- <script>
-
-function myFunction() {
-  var input, filter, cards, cardContainer, h5, title, i;
-  input = document.getElementById("myFilter");
-  filter = input.value.toUpperCase();
-  cardContainer = document.getElementById("myItems");
-  cards = cardContainer.getElementsByClassName("card");
-  for (i = 0; i < cards.length; i++) {
-      title = cards[i].querySelector(".card-body h5.card-title");
-      if (title.innerText.toUpperCase().indexOf(filter) > -1) {
-          cards[i].style.display = "";
-      } else {
-          cards[i].style.display = "none";
-      }
-  }
-}
-
-</script> -->

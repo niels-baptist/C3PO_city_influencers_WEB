@@ -21,15 +21,13 @@ export class EmployeeComponent implements OnInit {
   deleteEmployee$: Subscription = new Subscription();
   errorMessage: string = '';
   e: number=1;
+  id:number=0;
+  locationId: number=0;
 
   constructor(private employeeService: EmployeeService, private router :Router) { }
 
   ngOnInit(): void {
-    this.getEmployees();
-  }
-
-  getEmployees() {
-    this.employees$ = this.employeeService.getEmployees().subscribe(result => this.employees = result);
+    this.getEmployeesByLocation();
   }
 
   add() {
@@ -45,6 +43,21 @@ export class EmployeeComponent implements OnInit {
       this.getEmployees();
     }, error => {
       this.errorMessage = error.message;
+    });
+  }
+
+  getEmployees() {
+    this.employees$ = this.employeeService.getEmployees().subscribe(result => this.employees = result);
+  }
+
+  getEmployeesByLocation(){
+    this.id=parseInt(localStorage.getItem('employeeId') as string);
+    this.employeeService.getEmployee(this.id).subscribe(employee => {
+      this.locationId = employee.user.location.locationId;
+      this.employeeService.getEmployeeByLocation(this.locationId).subscribe(result => this.employees = result);
+      localStorage.setItem('locationId', this.locationId.toString());
+    }, error => {
+      console.log(error);
     });
   }
 }

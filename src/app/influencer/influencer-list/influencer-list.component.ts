@@ -1,3 +1,4 @@
+import { EmployeeService } from './../../employee/employee.service';
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
 import {Router} from '@angular/router';
@@ -18,6 +19,8 @@ export class InfluencerListComponent implements OnInit{
   isSearchName: boolean = true;
   isSearchGender: boolean = false;
   isSearchdomain: boolean = false;
+  id: number=0;
+  locationId: number=0;
 
   influencers: Influencer[] = [];
   influencers$: Subscription = new Subscription();
@@ -62,13 +65,11 @@ export class InfluencerListComponent implements OnInit{
 
 
 
-  constructor(private influencerService: InfluencerService, private router: Router) { }
+  constructor(private influencerService: InfluencerService, private router: Router, private EmployeeService:EmployeeService) { }
 
   ngOnInit(): void {
-    this.getInfluencers();
-
-    this.influencersCard$ = this.influencerService.getInfluencers();
-
+    this.getInfluencersByLocation();
+    this.influencersCard$ = this.influencerService.getInfluencerByLocation(this.locationId);
   }
 
   detail(id: number) {
@@ -78,6 +79,17 @@ export class InfluencerListComponent implements OnInit{
 
   getInfluencers() {
     this.influencers$ = this.influencerService.getInfluencers().subscribe(result => this.influencers = result);
+  }
+
+  getInfluencersByLocation() {
+    this.id=parseInt(localStorage.getItem('employeeId') as string);
+    this.EmployeeService.getEmployee(this.id).subscribe(employee => {
+      this.locationId = employee.user.location.locationId;
+      this.influencerService.getInfluencerByLocation(this.locationId).subscribe(result => this.influencers = result);
+      localStorage.setItem('locationId', this.locationId.toString());
+    }, error => {
+      console.log(error);
+    });
   }
 
   searchInfluencerByName(influencerName: string)  {

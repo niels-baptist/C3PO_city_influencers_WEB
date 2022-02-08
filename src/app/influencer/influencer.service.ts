@@ -7,54 +7,34 @@ import {Influencer} from './influencer';
   providedIn: 'root'
 })
 export class InfluencerService {
-
   constructor(private httpClient: HttpClient) { }
+  azure:string="https://c3poapi.azurewebsites.net/";
 
   getInfluencers(): Observable<Influencer[]> {
-    // return this.httpClient.get<Influencer[]>("http://localhost:8080/influencers");
     return this.httpClient.get<Influencer[]>("https://c3poapi.azurewebsites.net/influencers");
-
   }
 
   getInfluencerById(id: number): Observable<Influencer> {
-    // return this.httpClient.get<Influencer>("http://localhost:8080/influencers/" + id);
-    return this.httpClient.get<Influencer>("https://c3poapi.azurewebsites.net/influencers/" + id);
+    return this.httpClient.get<Influencer>(this.azure + id);
   }
 
   getInfluencerByName(name: string): Observable<Influencer[]> {
-    // return this.httpClient.get<Influencer>("http://localhost:8080/influencers/" + id);
-    return this.httpClient.get<Influencer[]>("https://c3poapi.azurewebsites.net/influencers/" + name);
+    return this.httpClient.get<Influencer[]>(this.azure + name);
   }
 
   getInfluencerByUsername(userName: string): Observable<Influencer[]> {
-    // return this.httpClient.get<Influencer>("http://localhost:8080/influencers/" + id);
-    return this.httpClient.get<Influencer[]>("https://c3poapi.azurewebsites.net/influencers/username/" + userName);
+    return this.httpClient.get<Influencer[]>(this.azure + userName);
   }
 
   getInfluencerByGender(gender: string): Observable<Influencer> {
-    // return this.httpClient.get<Influencer>("http://localhost:8080/influencers/" + id);
-    return this.httpClient.get<Influencer>("https://c3poapi.azurewebsites.net/influencers/" + gender);
+    return this.httpClient.get<Influencer>(this.azure + gender);
   }
 
   getInfluencerByDomain(domainId: number): Observable<Influencer> {
-    // return this.httpClient.get<Influencer>("http://localhost:8080/influencers/" + id);
-    return this.httpClient.get<Influencer>("https://c3poapi.azurewebsites.net/influencers/domain/" + domainId);
+    return this.httpClient.get<Influencer>(this.azure + domainId);
   }
-  // postStatus(category: Status): Observable<Status> {
-  //   let headers = new HttpHeaders();
-  //   headers = headers.set('Content-Type', 'application/json; charset=utf-8');
 
-  //   return this.httpClient.post<Status>("http://localhost:3000/statuses", category, {headers: headers});
-  // }
-
-  // putStatus(id:number, category: Status): Observable<Status> {
-  //   let headers = new HttpHeaders();
-  //   headers = headers.set('Content-Type', 'application/json; charset=utf-8');
-
-  //   return this.httpClient.put<Status>("http://localhost:3000/statuses/" + id, category, {headers: headers});
-  // }
-
-  // deleteStatus(id: number): Observable<Status> {
-  //   return this.httpClient.delete<Status>("http://localhost:3000/statuses/" + id);
-  // }
+  getInfluencerByLocation(locationId:number): Observable<Influencer[]> {
+    return this.httpClient.get<Influencer[]>(this.azure + 'influencers/location/' + locationId);
+  }
 }
