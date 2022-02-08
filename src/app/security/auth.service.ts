@@ -27,7 +27,6 @@ export class AuthService {
         lastname: '',
         birthdate: '',
         username: localStorage.getItem('userName') ?? ''
-        // token: this.getToken()  };
       }
     } else {
       return null;
