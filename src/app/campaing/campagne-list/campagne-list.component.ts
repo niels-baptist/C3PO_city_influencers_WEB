@@ -1,3 +1,7 @@
+import { EmployeeRole } from './../../employee-role/emplyee-role';
+import { UserPersonal } from './../../user-personal/user-personal';
+import { EmployeeService } from './../../employee/employee.service';
+import { Employee } from './../../employee/employee';
 import { LocationService } from './../../location/location.service';
 import { SocialMediaPlatformService } from './../../social-media-platform/social-media-platform.service';
 import { PlatformService } from './../../shared/platform.service';
@@ -5,7 +9,7 @@ import { DomainService } from './../../domain/domain.service';
 import { Domain } from './../../domain/domain';
 import { Location } from './../../location/location';
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs';
+import { Subscription, Observable, observable } from 'rxjs';
 import {Router} from '@angular/router';
 import {Campaign} from '../campaign';
 import {CampaignService} from '../campaign.service';
@@ -36,13 +40,19 @@ export class CampagneListComponent implements OnInit, OnDestroy {
   deleteCampaign$: Subscription = new Subscription();
   errorMessage: string = '';
   p: number=1;
+  id:number=0;
+  locationId=0;
 
-  constructor(private campaignService: CampaignService, private router: Router, private SocialMediaPlatformService: SocialMediaPlatformService, private DomainService:DomainService, private LocationService:LocationService  ) { }
+  constructor(private campaignService: CampaignService,
+    private router: Router,
+    private SocialMediaPlatformService: SocialMediaPlatformService,
+    private DomainService:DomainService,
+    private LocationService:LocationService,
+    private EmployeeService: EmployeeService) { }
 
 
   ngOnInit(): void {
-    this.getCampaigns();
-    console.log("alle campagnes: " + this.campaigns.length)
+    this.getCampaignsByLocation();
   }
 
   ngOnDestroy(): void {
@@ -63,7 +73,7 @@ export class CampagneListComponent implements OnInit, OnDestroy {
   delete(id: number) {
     this.deleteCampaign$ = this.campaignService.deleteCampaign(id).subscribe(result => {
       //all went well
-      this.getCampaigns();
+      this.getCampaignsByLocation();
     }, error => {
       //error
       this.errorMessage = error.message;
@@ -73,6 +83,18 @@ export class CampagneListComponent implements OnInit, OnDestroy {
   getCampaigns() {
     this.campaigns$ = this.campaignService.getCampaigns().subscribe(result => this.campaigns = result);
     console.log("campaign content" + this.campaigns)
+  }
+
+  getCampaignsByLocation(){
+    this.id=parseInt(localStorage.getItem('employeeId') as string);
+    this.EmployeeService.getEmployee(this.id).subscribe(employee => {
+      this.locationId = employee.user.location.locationId;
+      this.campaignService.getCampaignByLocation(this.locationId).subscribe(result => this.campaigns = result);
+      localStorage.setItem('locationId', this.locationId.toString());
+    }, error => {
+      console.log(error);
+    });
+
   }
 
   getDomains() {

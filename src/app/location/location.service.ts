@@ -13,4 +13,8 @@ export class LocationService {
   getLocations(): Observable<Location[]> {
     return this.httpClient.get<Location[]>(this.rooturl + 'locations');
   }
+
+  getLocationById(id:number): Observable<Location> {
+    return this.httpClient.get<Location>(this.rooturl + 'locations/' + id);
+  }
 }

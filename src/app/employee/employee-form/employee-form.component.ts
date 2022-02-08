@@ -59,7 +59,6 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    // get article if in edit
     if (this.isEdit) {
       const employeeId = this.route.snapshot.paramMap.get('id');
       if (employeeId != null) {
@@ -69,15 +68,12 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
             employeeId: result.employeeId,
             locationId: result.user.location.locationId,
             roleId: result.employee_role.roleId,
-            // locationName: result.user.location.name,
             email: result.user.email,
             password: result.user.password,
             firstname: result.user.firstname,
             lastname: result.user.lastname,
             userName: result.user.userName,
             birthdate: this.datePipe.transform(result.user.birthdate, 'YYYY-MM-dd'),
-            // employeeRole: result.employee_role
-            // employeeRoleName: result.employee_role.name
           });
         });
       }

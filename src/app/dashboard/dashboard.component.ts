@@ -24,14 +24,16 @@ import { Employee } from '../employee/employee';
 
 export class DashboardComponent implements OnInit {
   employeeName: string = '';
+  employeeLocationName: string = '';
   id:number=0;
 
   constructor(private EmployeeService:EmployeeService) { }
   ngOnInit(): void {
     //fill id variable with localstorage id
-    this.id=parseInt(localStorage.getItem('userId') as string);
+    this.id=parseInt(localStorage.getItem('employeeId') as string);
     this.EmployeeService.getEmployee(this.id).subscribe(employee => {
       this.employeeName = employee.user.firstname + ' ' + employee.user.lastname;
+      this.employeeLocationName = employee.user.location.name;
     }, error => {
       console.log(error);
     });

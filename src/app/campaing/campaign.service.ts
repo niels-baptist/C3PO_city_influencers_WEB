@@ -14,6 +14,10 @@ export class CampaignService {
     return this.httpClient.get<Campaign[]>("https://c3poapi.azurewebsites.net/campaigns");
   }
 
+  getCampaignByLocation(locationId:number): Observable<Campaign[]> {
+    return this.httpClient.get<Campaign[]>("https://c3poapi.azurewebsites.net/campaigns/location/" + locationId);
+  }
+
   getCampaignById(id: number): Observable<Campaign> {
     return this.httpClient.get<Campaign>("https://c3poapi.azurewebsites.net/campaigns/" + id);
   }

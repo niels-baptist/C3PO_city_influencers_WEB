@@ -1,3 +1,4 @@
+import { EmployeeService } from './../../employee/employee.service';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
@@ -33,6 +34,7 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
   isEdit: boolean = false;
   isSubmitted: boolean = false;
   errorMessage: string = '';
+  id:number=0;
 
   campaign: Campaign[] = [];
   campaign$: Subscription = new Subscription();
@@ -43,6 +45,7 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
   locations: Location[] = [];
   locations$: Subscription = new Subscription();
   locationId: number=0;
+  onelocationid:number=0;
   domainsList: Domain[] = [];
   domainsList$: Subscription = new Subscription();
   platformsList: Platform[] = [];
@@ -70,7 +73,7 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
     private LocationService: LocationService,
     private domainService: DomainService,
     private platformService: PlatformService,
-    private userPersonalService: UserPersonalService) {
+    private EmployeeService: EmployeeService) {
       this.isAdd = this.router.url === '/newcampaign';
       this.isEdit = !this.isAdd;
     }
@@ -138,7 +141,8 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
       this.campaignForm.patchValue({
         campaignId: (this.campaignsList.length + 100),
         employeeId: 1,
-        campaignStatusId: 2
+        campaignStatusId: 2,
+        locationId: localStorage.getItem('locationId')
       });
       this.postCampaign$ = this.campaignService.postCampaign(this.campaignForm.value).subscribe(result => {
         //all went well

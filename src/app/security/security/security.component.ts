@@ -56,7 +56,7 @@ export class SecurityComponent implements OnInit {
         if (result != 0){
           localStorage.setItem('userName', this.user.username);
           localStorage.setItem('password', this.user.password);
-          localStorage.setItem('userId', result.toString());
+          localStorage.setItem('employeeId', result.toString());
           this.router.navigate(['/dashboard']);
         } else {
           this.errorMessage = 'Email/password not correct!';
@@ -64,7 +64,7 @@ export class SecurityComponent implements OnInit {
         }
       }
       , error => {
-        this.errorMessage = 'Email/password not correct!';
+        this.errorMessage = 'Error!';
         this.isSubmitted = false;
         this.router.navigate(['']);
       });
