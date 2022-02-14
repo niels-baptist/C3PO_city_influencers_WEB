@@ -56,6 +56,13 @@
     </div>
 
     <div class="form-group">
+      <label for="campaignStatusId">Status</label>
+      <select  class="custom-select" formControlName="campaignStatusId" id="campaignStatusId" name="campaignStatusId" >
+        <option selected *ngFor="let campaignStatus of campaignstatuses" [ngValue]="campaignStatus.statusId">{{campaignStatus.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
       <label for="location">Platforms</label>
       <select  class="custom-select" formControlName="platformId" id="platformId" name="platformId">
         <option selected *ngFor="let platform of platformsList" [ngValue]="platform.social_media_platformId">{{platform.name}}</option>
