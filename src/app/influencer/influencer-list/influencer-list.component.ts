@@ -93,11 +93,9 @@ export class InfluencerListComponent implements OnInit{
   }
 
   searchInfluencerByName(influencerName: string)  {
-
     influencerName.toLowerCase();
     // debug
     console.log(influencerName);
-
     this.influencers$ = this.influencerService.getInfluencerByName(influencerName).subscribe(result => this.influencers = result);
   }
 
