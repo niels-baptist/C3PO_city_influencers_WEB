@@ -20,14 +20,6 @@
     </div>
 
     <div class="form-group">
-      <label for="locationId">Locatie</label>
-      <br>
-      <select class="custom-select" formControlName="locationId" id="locationId" name="locationId">
-        <option *ngFor="let location of locations" [ngValue]="location.locationId">{{location.name}}</option>
-      </select>
-    </div>
-
-    <div class="form-group">
       <label for="email">Email</label>
       <input class="form-control" type="email" id="email" name="email" placeholder="email" formControlName="email">
     </div>

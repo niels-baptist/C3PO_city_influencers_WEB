@@ -36,8 +36,8 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
   employeeForm = new FormGroup(
     {
       employeeId: new FormControl(''),
-      locationId: new FormControl(''),
       email: new FormControl(''),
+      locationId: new FormControl(''),
       password: new FormControl(''),
       firstname: new FormControl(''),
       lastname: new FormControl(''),
@@ -61,12 +61,14 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     if (this.isEdit) {
       const employeeId = this.route.snapshot.paramMap.get('id');
+      const locationId = localStorage.getItem('locationId');
+      console.log(locationId);
       if (employeeId != null) {
         this.employeeId = +employeeId;
         this.EmployeeService.getEmployee(this.employeeId).subscribe(result => {
           this.employeeForm.patchValue({
             employeeId: result.employeeId,
-            locationId: result.user.location.locationId,
+            locationId: locationId,
             roleId: result.employee_role.roleId,
             email: result.user.email,
             password: result.user.password,
@@ -106,6 +108,9 @@ export class EmployeeFormComponent implements OnInit, OnDestroy {
   submitData(): void {
     if (this.isAdd) {
       //Add
+      this.employeeForm.patchValue({
+        locationId: localStorage.getItem('locationId')
+      });
       this.postEmployee = this.EmployeeService.postEmployee(this.employeeForm.value).subscribe(result => {
           this.router.navigateByUrl('/employees');
         },
