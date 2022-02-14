@@ -40,7 +40,7 @@ export class EmployeeComponent implements OnInit {
 
   delete(employeeId: number) {
     this.deleteEmployee$ = this.employeeService.deleteEmployee(employeeId).subscribe(result => {
-      this.getEmployees();
+      this.getEmployeesByLocation();
     }, error => {
       this.errorMessage = error.message;
     });
