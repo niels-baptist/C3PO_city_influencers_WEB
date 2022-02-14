@@ -1,3 +1,5 @@
+import { CampaignstatusService } from './../../campaignstatus.service';
+import { Campaignstatus } from './../../campaignstatus';
 import { EmployeeService } from './../../employee/employee.service';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
@@ -50,6 +52,8 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
   domainsList$: Subscription = new Subscription();
   platformsList: Platform[] = [];
   platformsList$: Subscription = new Subscription();
+  campaignstatuses : Campaignstatus[] = [];
+  campaignstatuses$: Subscription = new Subscription();
 
   // reactive form
   campaignForm = new FormGroup({
@@ -63,7 +67,8 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
     locationId: new FormControl(''),
     campaignStatusId: new FormControl(''),
     domainId: new FormControl(''),
-    platformId: new FormControl('')
+    platformId: new FormControl(''),
+    statusId: new FormControl('')
   });
 
   constructor(private router: Router,
@@ -73,7 +78,8 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
     private LocationService: LocationService,
     private domainService: DomainService,
     private platformService: PlatformService,
-    private EmployeeService: EmployeeService) {
+    private EmployeeService: EmployeeService,
+    private CampaignstatusService: CampaignstatusService) {
       this.isAdd = this.router.url === '/newcampaign';
       this.isEdit = !this.isAdd;
     }
@@ -96,7 +102,7 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
             locationId: result.location.locationId,
             campaignStatusId: result.campaignStatus.statusId,
             domainId: result.domain.domainId,
-            platformId: result.socialMediaPlatform.platformId
+            platformId: result.socialMediaPlatform.platformId,
           });
         });
       }
@@ -113,6 +119,11 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
     // get domains
     this.domainsList$ = this.domainService.getDomains().subscribe(result => {
       this.domainsList = result;
+    });
+
+    // get domains
+    this.campaignstatuses$ = this.CampaignstatusService.getStatuses().subscribe(result => {
+      this.campaignstatuses = result;
     });
 
     // get domains
@@ -141,7 +152,6 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
       this.campaignForm.patchValue({
         campaignId: (this.campaignsList.length + 100),
         employeeId: 1,
-        campaignStatusId: 2,
         locationId: localStorage.getItem('locationId')
       });
       this.postCampaign$ = this.campaignService.postCampaign(this.campaignForm.value).subscribe(result => {
@@ -159,7 +169,6 @@ export class CampaignFormComponent implements OnInit, OnDestroy {
     if (this.isEdit) {
       this.campaignForm.patchValue({
         employeeId: 1,
-        campaignStatusId: 2
       });
 
       this.putCampaign$ = this.campaignService.putCampaign(this.campaignForm.value).subscribe(result => {
