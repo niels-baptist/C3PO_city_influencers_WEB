@@ -15,6 +15,10 @@ export class EmployeeService {
     return this.httpClient.get<Employee[]>(this.azure + 'employees');
   }
 
+  getEmployeeByLocation(id:number): Observable<Employee[]> {
+    return this.httpClient.get<Employee[]>(this.azure + 'employees/location/' + id);
+  }
+
   getEmployee(employeeId:number): Observable<Employee> {
     return this.httpClient.get<Employee>(this.azure + 'employees/' + employeeId);
   }

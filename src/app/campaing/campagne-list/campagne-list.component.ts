@@ -94,7 +94,6 @@ export class CampagneListComponent implements OnInit, OnDestroy {
     }, error => {
       console.log(error);
     });
-
   }
 
   getDomains() {
