@@ -11,7 +11,7 @@ towards munucipalities that want to manage social media campaigns with their loc
 - **Database**: [PostgreSQL](https://www.postgresql.org)
 - **Deployment**: [Azure](https://portal.azure.com/)
 - **icons**: [Fontawesome](https://fontawesome.com)
-- **API**: [Spring boot API](https://spring.io/projects/spring-boot) that can be found on [GitHub]('https://github.com/niels-baptist/C3PO_city_influencers_API')
+- **API**: [Spring boot API](https://spring.io/projects/spring-boot) that can be found on [GitHub](https://github.com/niels-baptist/C3PO_city_influencers_API)
 - **UI**: [Bootstrap](https://getbootstrap.com)
 - **Documentation**: [Gitbook](https://project-4-0-ci-c3po.gitbook.io/c3po-docs/webapp/about)
 
