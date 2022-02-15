@@ -7,7 +7,7 @@ towards munucipalities that want to manage social media campaigns with their loc
 
 ## Technical information
 - **Frontend**: [Angular](https://angular.io)
-- **Backend**: [Node.js](https://nodejs.org)
+- **Package manager**: [Node.js](https://nodejs.org)
 - **Database**: [PostgreSQL](https://www.postgresql.org)
 - **Deployment**: [Azure](https://portal.azure.com/)
 - **icons**: [Fontawesome](https://fontawesome.com)
