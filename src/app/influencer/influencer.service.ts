@@ -15,23 +15,23 @@ export class InfluencerService {
   }
 
   getInfluencerById(id: number): Observable<Influencer> {
-    return this.httpClient.get<Influencer>(this.azure + id);
+    return this.httpClient.get<Influencer>(this.azure + '/influencers/' + id);
   }
 
   getInfluencerByName(name: string): Observable<Influencer[]> {
-    return this.httpClient.get<Influencer[]>(this.azure + name);
+    return this.httpClient.get<Influencer[]>(this.azure + '/influencers/' + name);
   }
 
   getInfluencerByUsername(userName: string): Observable<Influencer[]> {
-    return this.httpClient.get<Influencer[]>(this.azure + userName);
+    return this.httpClient.get<Influencer[]>(this.azure + '/influencers/' + userName);
   }
 
   getInfluencerByGender(gender: string): Observable<Influencer> {
-    return this.httpClient.get<Influencer>(this.azure + gender);
+    return this.httpClient.get<Influencer>(this.azure + + '/influencers/' + gender);
   }
 
   getInfluencerByDomain(domainId: number): Observable<Influencer> {
-    return this.httpClient.get<Influencer>(this.azure + domainId);
+    return this.httpClient.get<Influencer>(this.azure + '/influencers/' + domainId);
   }
 
   getInfluencerByLocation(locationId:number): Observable<Influencer[]> {
